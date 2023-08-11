@@ -17,6 +17,8 @@ library(phytools)
 library(ggtree)
 
 # Read in the tree files for the single gene and mix models
+# Select 20 taxas from the fungi dataset
+# The provided data was aa alignment so I backtransed them to DNA sequence
 tree_single <- read.tree(file = "./single_gene_20/one_EOG092C580G.treefile")
 tree_mix <- read.tree(file = "./single_gene_20/mix_EOG092C580G.treefile")
 ```
