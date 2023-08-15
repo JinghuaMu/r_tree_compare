@@ -3,6 +3,13 @@ title: "single_gene_test"
 output: html_document
 date: "2023-08-09"
 ---
+## Package requirement
+Multi-alignment reading: Biostrings  
+Multi-alignment visualization: ggmsa  
+Phylogenic tree Visualization: ggtree  
+Basic tree reading and operation: ape, phytools  
+Tree distance calculation: distory   
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -10,34 +17,83 @@ knitr::opts_chunk$set(echo = TRUE)
 # Dataset usage: Mammal dataset with 66 species
 ```
 
-## Set system environment and file location
+## Check alignment and execute iqtree command
+### Set system environment and file location
 ```{r}
+# I need to reload the path for rstudio-server didn't allow login as superuser
 mypath <- readLines("./mypath.txt")
 Sys.setenv(PATH = mypath)
 
-geneset_loc <- "../datasets/Myrtales/supercontig/"
+candidate <- 3
+id <- as.character(candidate)
+# "geneset_loc" is the folder where you save a set of multi-alignments
+geneset_loc <- "../datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gappyout/"
 gene_sets <- system2(command = "ls", args = geneset_loc, stdout = TRUE)
 cat("Current gene file location:", geneset_loc, "\n")
 cat("Number of gene:", length(gene_sets),"\n")
-gene_file <- gene_sets[1]
+gene_file <- gene_sets[candidate]
 gene_path <-  paste(geneset_loc,gene_file, sep = "")
 
-prefix_single <- paste("./test/","Single_","1", sep = "")
-prefix_mix <- paste("./test/","Mix_","1", sep = "")
-
-arg_single <- c("-s", gene_path, "-B", "1000", "-T", "AUTO", "--prefix", prefix_single)
-arg_mix <- c("-s", gene_path, "-m", "ESTMIXNUM", "-mrate", "E,I,G,I+G,R,I+R", "-opt_qmix_criteria", "1", "-T", "AUTO", "--prefix", prefix_single)
+# Set the path and filename for iqtree running result
+prefix_single <- paste("./test/","dm_Single_",id, sep = "")
+prefix_mix <- paste("./test/","dm_Mix_",id, sep = "")
+# Set the command for both single and mix model
+arg_single <- c("-s", gene_path, "-B", "1000", "-nt", "AUTO", "--prefix", prefix_single)
+arg_mix <- c("-s", gene_path, "-m", "ESTMIXNUM", "-mrate", "E,I,G,I+G,R,I+R", "-opt_qmix_criteria", "1", "-T", "AUTO", "--prefix", prefix_mix)
 ```
-## Run iqtree command in R
+### Check the alignment
+```{r message=FALSE, warning=FALSE}
+library(Biostrings)
+```
+
 ```{r}
-# system2(command = "iqtree", args = arg_single, stdout = FALSE)
-# system2(command = "iqtree2", args = arg_mix, stdout = FALSE)
+alignment <- readDNAMultipleAlignment(filepath = gene_path, format = "phylip")
+
+algn_length <- ncol(alignment)
+taxa_num <- nrow(alignment)
+
+A <- consensusMatrix(alignment, baseOnly=TRUE)
+avg_other_ratio <- mean(A["other",]/colSums(A))
+sdist <- stringDist(as(alignment,"DNAStringSet"), method="hamming")
+avg_hamm_dist <- mean(sdist)
+identity_seq_ratio <- sum(sdist == 0)/length(sdist)
+
+A_base <- A[1:4,]
+maxmum_base_num <- apply(A_base, 2,max)
+dominant_base_ratio <- mean(maxmum_base_num/colSums(A_base))
+consensus_site_ratio <- sum((A_base == maxmum_base_num))/algn_length
+
+# dominant base: base with maximum ratio on a loci
+# consensus site: loci have identical base across all taxa
+# Proportion of identical seq pairs: ratio of 0-distance pair
+output <- paste(
+  "Alignment length: ", algn_length,
+  " with ", taxa_num, " taxa\n",
+  "Average ambigious ratio: ", round(avg_other_ratio, 2), "\n",
+  "Average proportion of dominant base: ", round(dominant_base_ratio, 2), "\n",
+  "Proportion of consensus sites: ", round(consensus_site_ratio, 2), "\n",
+  "Average Hamming distance between sequences: ", round(avg_hamm_dist, 2), "\n",
+  "Proportion of identical seq pairs: ", round(identity_seq_ratio, 2), "\n",
+  sep = ""
+)
+cat(output)
+
+# Visualization? too slow
+# library(ggmsa)
+# ggmsa(alignment, char_width = 0.5, seq_name = F) + geom_seqlogo()
 ```
 
 
-# Comparison of trees
+### Run iqtree command in R
+```{r}
+system2(command = "iqtree", args = arg_single, stdout = FALSE)
+system2(command = "iqtree2", args = arg_mix, stdout = FALSE)
+```
 
-## Load the necessary libraries
+
+## Comparison of trees
+
+### Load the necessary libraries
 ```{r message=FALSE}
 library(ape)
 library(phytools)
@@ -47,22 +103,24 @@ library(distory)
 # Read in the tree files for the single gene and mix models
 # Select 20 taxas from the fungi dataset
 # The provided data was aa alignment so I backtransed them to DNA sequence
+tree_path_single <- paste(prefix_single,".treefile", sep = "")
+tree_path_mix <- paste(prefix_mix,".treefile", sep = "")
 
-tree_single <- read.tree(file = "./test/onemodel.treefile")
-tree_mix <- read.tree(file = "./test/mixmodel.treefile")
+tree_single <- read.tree(file = tree_path_single)
+tree_mix <- read.tree(file = tree_path_mix)
 ```
 
-## Plot the two trees side by side
-```{r fig.height=12, fig.width=20}
-p1 <- ggtree(tree_single) + geom_tiplab(size=2, color="purple")
-p2 <- ggtree(tree_mix) + geom_tiplab(size=2, color="purple")
+### Plot the two trees side by side
+```{r fig.height=10, fig.width=16}
+p1 <- ggtree(tree_single) + geom_tiplab(size=2.5, color="purple")
+p2 <- ggtree(tree_mix) + geom_tiplab(size=2.5, color="purple")
 multiplot(p1, p2, ncol=2)
 ```
-## Statictics and parameters
+### Statictics and parameters
 ```{r}
 source("./iqtree_info.r")
-sum_one <- summarise_iqtree("./test/onemodel.iqtree")
-sum_mix <- summarise_iqtree("./test/mixmodel.iqtree")
+sum_one <- summarise_iqtree(paste(prefix_single,".iqtree", sep = ""))
+sum_mix <- summarise_iqtree(paste(prefix_mix,".iqtree", sep = ""))
 cat("The phylogenic acnalysis result for one model:\n")
 short_description(sum_one)
 cat("--------------------------------------------- 
@@ -70,12 +128,14 @@ The phylogenic analysis result for mix model:\n")
 short_description(sum_mix)
 ```
 
-## Calculate and compare the cophenetic matrices and tree distances
+### Calculate and compare the cophenetic matrices and tree distances
 ```{r}
 tree_single_coph <- as.data.frame(cophenetic(tree_single))
 tree_mix_coph <- as.data.frame(cophenetic(tree_mix))
 tree_single_coph <- tree_single_coph[order(rownames(tree_single_coph)), order(colnames(tree_single_coph))]
 tree_mix_coph <- tree_mix_coph[order(rownames(tree_mix_coph)), order(colnames(tree_mix_coph))]
+
+# R interpreter: one tree has a different number of tips
 branch_diff <- sum((tree_single_coph - tree_mix_coph)^2)
 cat("Branch length difference for two trees: ", branch_diff)
 
@@ -89,15 +149,11 @@ cat("\nBranch length score for two trees: ", branch_score[[1]])
 
 ```
 
-## Create a cophylogram of the two trees
+### Create a cophylogram of the two trees
 ```{r fig.height=10, fig.width=16}
 cophylo.trees <- cophylo(tree_single, tree_mix)
 par(mar=c(5.1,1,1.1,1))
 plot(cophylo.trees, link.lwd= 1, fsize = 0.8)
-```
-```{r}
-mypath <- readLines("./mypath.txt")
-Sys.setenv(PATH = mypath)
 ```
 
 
