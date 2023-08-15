@@ -1,0 +1,772 @@
+IQ-TREE multicore version 2.2.2.9 COVID-edition for Linux 64-bit built Aug  6 2023
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
+
+Host:    TimMu-Laptop (AVX2, FMA3, 6 GB RAM)
+Command: iqtree -s ../datasets/Myrtales/supercontig/g4471_Supercontig_Th_Al_Tr_Cl.fas -B 1000 -T AUTO --prefix ./test/Single_1
+Seed:    473405 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Tue Aug 15 14:00:09 2023
+Kernel:  AVX+FMA - auto-detect threads (16 CPU cores detected)
+
+Reading alignment file ../datasets/Myrtales/supercontig/g4471_Supercontig_Th_Al_Tr_Cl.fas ... Fasta format detected
+Reading fasta file: done in 0.00499866 secs using 92.86% CPU
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.00351455 secs using 202.6% CPU
+Alignment has 461 sequences with 421 columns, 408 distinct patterns
+363 parsimony-informative, 31 singleton sites, 27 constant sites
+                    Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 0.000753814 secs using 903.8% CPU
+   1  07100_L001            0.00%    passed     56.87%
+   2  06250_L001            0.48%    passed     95.58%
+   3  PAFTOL_008598_L001    7.84%    passed     98.01%
+   4  05541_L001            8.55%    passed     56.90%
+   5  04845_L001            0.48%    passed     54.55%
+   6  03886_L001            3.80%    passed     47.48%
+   7  PAFTOL_006432_L001    1.90%    passed     76.65%
+   8  07094_L001           41.57%    passed     32.11%
+   9  07141_L001           44.89%    passed     19.57%
+  10  05864_L001            4.04%    passed     50.68%
+  11  04847_L001            0.48%    passed     63.24%
+  12  PAFTOL_008728_L001   55.11%    passed     56.15%
+  13  08510_L001            0.48%    passed     95.49%
+  14  07075_L001           46.08%    passed     97.14%
+  15  07109_L001           55.11%    passed     40.02%
+  16  06294_L001            0.71%    passed     80.72%
+  17  04117_L001            1.19%    passed     77.50%
+  18  05869_L001            6.65%    passed     32.81%
+  19  06331_L001           46.56%    passed     91.11%
+  20  04317_L001            1.66%    passed     54.76%
+  21  06267_L001            5.23%    passed     92.22%
+  22  07491_L001            0.95%    passed     66.74%
+  23  PAFTOL_008730_L001   55.11%    passed     58.40%
+  24  03925_L001            0.48%    passed     59.17%
+  25  07116_L001            0.48%    passed     69.82%
+  26  06304_L001            0.24%    passed     80.88%
+  27  05488_L001           16.15%    failed      3.77%
+  28  05520_L001            0.00%    passed     76.45%
+  29  06780_L001           55.82%    passed     82.48%
+  30  09039_L001            0.24%    passed     85.89%
+  31  06221_L001           11.40%    passed     84.92%
+  32  06302_L001            0.71%    passed     64.61%
+  33  06246_L001            2.14%    passed     87.36%
+  34  05511_L001           55.58%    passed     90.02%
+  35  06774_L001           10.21%    passed     98.14%
+  36  07089_L001            3.33%    passed     83.92%
+  37  07097_L001           20.67%    passed     91.95%
+  38  06328_L001            1.66%    passed     69.09%
+  39  06314_L001            0.95%    passed     69.51%
+  40  04843_L001            0.48%    passed     49.47%
+  41  06769_L001           46.56%    passed     53.57%
+  42  05531_L001            0.24%    passed     99.35%
+  43  PAFTOL_008574_L001    0.48%    passed     73.71%
+  44  06335_L001            3.80%    passed     60.37%
+  45  07857_L001            3.33%    passed     93.13%
+  46  04323_L001            0.71%    passed     96.06%
+  47  06329_L001           25.89%    passed     52.29%
+  48  09021_L001            1.19%    passed     59.16%
+  49  00822_L001            1.66%    passed     78.06%
+  50  07087_L001           53.68%    passed     75.57%
+  51  PAFTOL_008723_L001   58.19%    passed     48.25%
+  52  07108_L001            4.04%    passed     50.94%
+  53  07546_L001            0.48%    passed     98.05%
+  54  07543_L001           52.97%    passed     92.45%
+  55  06307_L001            0.24%    passed     58.69%
+  56  05502_L001            0.00%    passed     97.44%
+  57  06266_L001            0.48%    passed     98.53%
+  58  06293_L001            0.71%    passed     76.33%
+  59  05516_L001            1.43%    passed     97.89%
+  60  04844_L001            0.48%    passed     49.47%
+  61  07111_L001           50.12%    passed     58.89%
+  62  PAFTOL_008520_L001    3.80%    passed     84.39%
+  63  06238_L001            0.71%    passed     99.45%
+  64  07456_L001            5.23%    passed     29.56%
+  65  06264_L001            0.71%    passed     94.62%
+  66  07470_L001            2.14%    passed     99.34%
+  67  04322_L001           16.39%    passed     79.89%
+  68  07481_L001            0.00%    passed     96.38%
+  69  05487_L001            0.00%    passed     95.33%
+  70  07468_L001            0.00%    passed     99.84%
+  71  07060_L001            8.55%    passed     88.71%
+  72  PAFTOL_011329_L001    1.19%    passed     72.58%
+  73  07103_L001           52.97%    passed     29.35%
+  74  08506_L001            0.48%    passed     96.87%
+  75  07101_L001            0.48%    passed     87.39%
+  76  06763_L001           44.42%    passed     84.33%
+  77  06320_L001            0.71%    passed     74.20%
+  78  05507_L001            0.00%    passed     97.58%
+  79  06243_L001            2.38%    passed     94.39%
+  80  05867_L001            3.33%    passed     35.15%
+  81  PAFTOL_008597_L001   59.38%    passed     72.47%
+  82  07541_L001            3.80%    passed     43.49%
+  83  06244_L001            1.90%    passed     95.21%
+  84  06276_L001           48.69%    passed     63.69%
+  85  06220_L001            9.26%    passed     97.18%
+  86  07499_L001            0.00%    passed     99.59%
+  87  PAFTOL_011449_L001   66.27%    passed     50.76%
+  88  07460_L001           59.14%    passed     86.40%
+  89  PAFTOL_008577_L001    0.48%    passed     49.38%
+  90  07469_L001            0.00%    passed     99.64%
+  91  06261_L001            6.89%    passed     94.93%
+  92  GuiSen_L001           9.98%    passed     91.79%
+  93  04908_L001            0.48%    passed     59.33%
+  94  03868_L001            1.43%    passed     93.07%
+  95  09041_L001           13.30%    passed     99.69%
+  96  04846_L001           27.08%    passed     31.07%
+  97  05547_L001            2.38%    passed     45.62%
+  98  05483_L001            0.00%    passed     76.03%
+  99  07062_L001           53.21%    passed     85.65%
+ 100  04850_L001            0.48%    passed     77.38%
+ 101  PAFTOL_008576_L001    1.66%    passed     97.53%
+ 102  08456_L001            0.48%    passed     47.23%
+ 103  07065_L001            0.00%    passed     99.19%
+ 104  06776_L001           14.25%    passed     82.59%
+ 105  08505_L001            1.90%    passed     94.18%
+ 106  05501_L001            6.65%    passed     95.33%
+ 107  PAFTOL_006442_L001    1.66%    passed     59.72%
+ 108  07099_L001            0.24%    passed     68.68%
+ 109  07474_L001            0.00%    passed     99.89%
+ 110  05543_L001            0.00%    passed     80.33%
+ 111  05477_L001            0.00%    passed     96.68%
+ 112  05412_L001            1.66%    passed     77.22%
+ 113  04289_L001            1.19%    passed     70.89%
+ 114  04853_L001            0.48%    passed     49.47%
+ 115  07105_L001            3.33%    passed     95.62%
+ 116  06251_L001            0.48%    passed     96.92%
+ 117  06280_L001            3.56%    passed     95.68%
+ 118  07544_L001            9.74%    passed     75.84%
+ 119  06312_L001            3.33%    passed     58.22%
+ 120  09045_L001            1.90%    passed     87.09%
+ 121  06283_L001            0.00%    passed     99.59%
+ 122  04332_L001            4.28%    passed     68.09%
+ 123  07471_L001            0.00%    passed     99.97%
+ 124  07542_L001            1.43%    passed     87.29%
+ 125  07115_L001           54.39%    passed     77.69%
+ 126  04307_L001            5.46%    passed     84.06%
+ 127  06255_L001           30.40%    passed     83.49%
+ 128  05498_L001            1.66%    passed     55.21%
+ 129  PAFTOL_009009_L001    2.38%    passed     79.84%
+ 130  06231_L001            9.26%    passed     51.25%
+ 131  05471_L001            0.24%    passed     98.61%
+ 132  04312_L001            6.89%    passed     40.92%
+ 133  08855_L001           41.57%    passed     34.36%
+ 134  07808_L001            0.00%    passed     88.36%
+ 135  06772_L001           43.94%    passed     48.48%
+ 136  PAFTOL_008521_L001    2.85%    passed     54.06%
+ 137  06225_L001            1.90%    passed     98.87%
+ 138  05210_L001            1.43%    passed     86.54%
+ 139  PAFTOL_008729_L001   35.87%    passed     94.78%
+ 140  08851_L001           54.16%    passed     18.88%
+ 141  PAFTOL_008724_L001   59.14%    passed     52.43%
+ 142  07784_L001           16.15%    passed     57.34%
+ 143  03885_L001            0.48%    passed     68.13%
+ 144  06319_L001            0.48%    passed     82.97%
+ 145  06249_L001            1.90%    passed     97.93%
+ 146  08501_L001            1.43%    passed     80.78%
+ 147  06269_L001           22.80%    passed     60.46%
+ 148  07135_L001           45.13%    passed     73.88%
+ 149  PAFTOL_006437_L001    0.00%    passed     99.95%
+ 150  04314_L001            0.00%    passed     99.51%
+ 151  07476_L001            0.24%    passed     97.88%
+ 152  08528_L001            0.48%    passed     89.32%
+ 153  05478_L001            1.43%    passed     46.59%
+ 154  05870_L001            5.23%    passed     95.61%
+ 155  06291_L001            0.24%    passed     67.76%
+ 156  05485_L001            0.00%    passed     91.89%
+ 157  04854_L001            0.71%    passed     62.38%
+ 158  05526_L001            0.00%    passed     97.37%
+ 159  05489_L001            0.00%    passed     81.17%
+ 160  05854_L001           54.87%    passed     49.39%
+ 161  06227_L001            0.00%    passed     91.95%
+ 162  06258_L001            0.95%    passed     94.01%
+ 163  06318_L001            2.14%    passed     73.85%
+ 164  06792_L001            1.19%    passed     84.68%
+ 165  06782_L001            1.90%    passed     92.63%
+ 166  04320_L001            5.23%    passed     81.59%
+ 167  07085_L001           43.23%    passed     24.31%
+ 168  05530_L001            0.00%    passed     98.92%
+ 169  06262_L001            0.71%    passed     57.82%
+ 170  PAFTOL_008583_L001    3.33%    passed     96.86%
+ 171  05868_L001            4.51%    passed     47.84%
+ 172  05490_L001            3.56%    passed     63.54%
+ 173  06229_L001           22.33%    passed     48.05%
+ 174  06234_L001            6.65%    passed     91.21%
+ 175  06218_L001            7.84%    passed     85.10%
+ 176  03924_L001            1.90%    passed     52.79%
+ 177  07113_L001            2.14%    passed     89.18%
+ 178  07093_L001            2.38%    passed     98.06%
+ 179  06339_L001            2.38%    passed     84.18%
+ 180  07862_L001            1.19%    passed     70.37%
+ 181  07475_L001            0.00%    passed     92.27%
+ 182  06224_L001            1.90%    passed     93.12%
+ 183  07807_L001           19.48%    passed     89.16%
+ 184  05503_L001            0.00%    passed     97.29%
+ 185  07536_L001            4.51%    passed     84.38%
+ 186  08504_L001            1.43%    passed     41.14%
+ 187  07850_L001           41.33%    passed     53.79%
+ 188  04333_L001            6.65%    passed     53.54%
+ 189  07473_L001            0.24%    passed     99.91%
+ 190  06324_L001            6.89%    passed     75.09%
+ 191  07124_L001            8.55%    passed     93.30%
+ 192  07533_L001            1.66%    passed     56.28%
+ 193  05545_L001            0.71%    passed     54.64%
+ 194  06268_L001            0.95%    passed     86.61%
+ 195  StrMan_L001           0.71%    passed     56.55%
+ 196  PAFTOL_009163_L001    0.00%    passed     99.78%
+ 197  07472_L001            0.00%    passed     96.59%
+ 198  LumRac_L001           1.66%    passed     58.01%
+ 199  05467_L001            3.33%    passed     96.73%
+ 200  07130_L001           54.16%    passed     29.37%
+ 201  05524_L001           44.89%    passed     61.46%
+ 202  06771_L001           32.07%    passed     66.42%
+ 203  06295_L001            0.24%    passed     89.33%
+ 204  07771_L001           55.82%    passed     34.24%
+ 205  00248_L001           30.88%    passed     44.20%
+ 206  05475_L001            1.19%    passed     76.47%
+ 207  06232_L001            0.71%    passed     98.49%
+ 208  PAFTOL_008523_L001    1.19%    passed     44.22%
+ 209  06784_L001           12.35%    passed     85.15%
+ 210  06254_L001            0.71%    passed     97.34%
+ 211  07129_L001            8.55%    passed     51.54%
+ 212  06316_L001            0.24%    passed     88.74%
+ 213  07056_L001           17.58%    passed     53.43%
+ 214  05544_L001            0.24%    passed     87.31%
+ 215  06217_L001            9.26%    passed     86.15%
+ 216  PAFTOL_006446_L001    0.00%    passed     96.71%
+ 217  06271_L001            1.19%    passed     86.70%
+ 218  06333_L001            1.19%    passed     98.07%
+ 219  06639_L001           48.93%    passed     84.19%
+ 220  06257_L001            7.84%    passed     99.38%
+ 221  06236_L001            0.48%    passed     99.76%
+ 222  06297_L001            0.24%    passed     84.12%
+ 223  07538_L001            1.66%    passed     56.22%
+ 224  06303_L001            0.48%    passed     65.83%
+ 225  06226_L001            0.00%    passed     92.96%
+ 226  06332_L001            0.71%    passed     80.16%
+ 227  PAFTOL_008524_L001    1.19%    passed     59.83%
+ 228  00739_L001            3.56%    passed     27.23%
+ 229  06786_L001            0.24%    passed     69.01%
+ 230  PAFTOL_008518_L001    4.75%    passed     95.87%
+ 231  05479_L001           44.89%    passed     68.31%
+ 232  PAFTOL_008722_L001   55.11%    passed     76.31%
+ 233  05517_L001            1.19%    passed     90.64%
+ 234  07076_L001            1.90%    passed     95.22%
+ 235  07084_L001           58.19%    passed     80.08%
+ 236  07860_L001           44.18%    passed     75.43%
+ 237  09027_L001            3.09%    passed     54.21%
+ 238  05536_L001            0.00%    passed     99.78%
+ 239  06326_L001            0.24%    passed     95.03%
+ 240  05486_L001           37.05%    passed     73.07%
+ 241  09033_L001            6.65%    passed     90.51%
+ 242  PAFTOL_008460_L001    0.24%    passed     91.12%
+ 243  05549_L001            0.00%    passed     99.87%
+ 244  06263_L001            0.95%    passed     97.59%
+ 245  06327_L001           14.01%    passed     63.21%
+ 246  05521_L001           13.78%    passed     92.82%
+ 247  06336_L001            0.48%    passed     74.90%
+ 248  08503_L001            6.41%    passed     81.38%
+ 249  01187_L001            1.66%    passed     64.58%
+ 250  04842_L001           45.37%    passed     96.64%
+ 251  06219_L001           56.77%    passed     91.70%
+ 252  05470_L001            0.00%    passed     99.89%
+ 253  PAFTOL_013019_L001    0.00%    passed     88.85%
+ 254  07540_L001            1.90%    passed     75.07%
+ 255  06252_L001           14.73%    passed     92.93%
+ 256  07480_L001            0.00%    passed     98.44%
+ 257  06761_L001            6.65%    passed     20.37%
+ 258  07127_L001            2.14%    passed     60.28%
+ 259  04907_L001            0.71%    passed     51.32%
+ 260  00908_L001            6.65%    passed     82.79%
+ 261  05512_L001            3.33%    passed     99.92%
+ 262  06273_L001            3.56%    passed     98.82%
+ 263  05513_L001            1.19%    passed     91.97%
+ 264  06300_L001            0.24%    passed     90.75%
+ 265  06277_L001           49.88%    passed     73.02%
+ 266  PAFTOL_011339_L001    1.43%    passed     79.21%
+ 267  06783_L001           46.08%    passed     70.88%
+ 268  07137_L001            0.00%    passed     99.90%
+ 269  05509_L001            0.00%    passed     99.80%
+ 270  06334_L001            2.85%    passed     99.94%
+ 271  05529_L001            0.00%    passed     89.54%
+ 272  07478_L001            0.00%    passed     99.64%
+ 273  07071_L001            5.23%    passed     63.47%
+ 274  ComWat_L001           0.95%    passed     29.70%
+ 275  07092_L001            0.95%    passed     66.39%
+ 276  PAFTOL_008519_L001    3.33%    passed     82.54%
+ 277  09023_L001            2.61%    passed     44.11%
+ 278  07535_L001           30.40%    passed     80.58%
+ 279  07788_L001           53.44%    passed     67.17%
+ 280  06260_L001            1.43%    passed     80.20%
+ 281  06279_L001            3.80%    passed     96.23%
+ 282  06272_L001            3.33%    passed     94.24%
+ 283  07131_L001           52.73%    passed     83.06%
+ 284  PAFTOL_008602_L001    3.33%    passed     53.98%
+ 285  06292_L001            0.24%    passed     85.32%
+ 286  06286_L001            0.48%    passed     81.04%
+ 287  05476_L001            0.00%    passed     96.59%
+ 288  05491_L001            0.24%    passed     94.57%
+ 289  06309_L001            0.48%    passed     78.30%
+ 290  07083_L001            1.66%    passed     79.32%
+ 291  PAFTOL_009013_L001    0.48%    passed     98.09%
+ 292  PAFTOL_006435_L001    1.66%    passed     91.63%
+ 293  07082_L001           43.47%    passed     70.53%
+ 294  09165_L001            4.75%    passed     95.22%
+ 295  06311_L001            0.48%    passed     73.86%
+ 296  PAFTOL_008525_L001    3.09%    passed     95.02%
+ 297  DanEli_L001           4.28%    passed     72.59%
+ 298  06245_L001            0.95%    passed     95.66%
+ 299  Getflo_L001           2.85%    passed     84.19%
+ 300  08516_L001            1.43%    passed     98.73%
+ 301  07096_L001            0.00%    passed     78.66%
+ 302  07120_L001            4.28%    passed     62.47%
+ 303  PAFTOL_006626_L001    3.80%    passed     84.57%
+ 304  PAFTOL_006633_L001    0.00%    passed     81.72%
+ 305  07102_L001            0.00%    passed     53.30%
+ 306  05542_L001            0.00%    passed     80.37%
+ 307  PAFTOL_008579_L001    0.71%    passed     88.67%
+ 308  07132_L001           36.82%    passed     35.50%
+ 309  PAFTOL_006445_L001    0.00%    passed     91.41%
+ 310  05523_L001           44.89%    passed     70.33%
+ 311  04310_L001            1.66%    passed     50.66%
+ 312  08509_L001            0.24%    passed     98.75%
+ 313  06317_L001            0.24%    passed     71.64%
+ 314  04299_L001            6.41%    passed     51.68%
+ 315  06342_L001            1.43%    passed     99.99%
+ 316  06265_L001            0.95%    passed     97.25%
+ 317  06765_L001           22.80%    passed     93.49%
+ 318  08502_L001            2.85%    passed     62.17%
+ 319  AlzVer_L001           1.66%    passed     73.41%
+ 320  05510_L001           46.56%    passed     70.57%
+ 321  06256_L001            2.61%    passed     94.50%
+ 322  PAFTOL_008514_L001    1.19%    passed     83.60%
+ 323  06344_L001            3.33%    passed     93.19%
+ 324  06253_L001            0.00%    passed     99.44%
+ 325  PAFTOL_006444_L001    1.90%    passed     97.21%
+ 326  TerMan_L001           1.43%    passed     85.46%
+ 327  05508_L001            0.00%    passed     99.17%
+ 328  07122_L001            0.71%    passed     72.37%
+ 329  ComApi_L001           0.48%    passed     67.39%
+ 330  04313_L001            3.09%    passed     67.20%
+ 331  PAFTOL_008513_L001    0.00%    passed     99.51%
+ 332  PAFTOL_008600_L001   46.56%    passed     68.38%
+ 333  06325_L001           47.03%    passed     80.88%
+ 334  06345_L001            1.90%    passed     96.72%
+ 335  05208_L001            0.95%    passed     46.79%
+ 336  06322_L001           13.30%    passed     82.49%
+ 337  06305_L001            0.24%    passed     65.34%
+ 338  04297_L001            5.23%    passed     62.90%
+ 339  06767_L001           46.08%    passed     75.93%
+ 340  07482_L001            1.19%    passed     61.87%
+ 341  06321_L001            0.24%    passed     99.73%
+ 342  06274_L001            3.80%    passed     88.13%
+ 343  06239_L001            0.24%    passed     96.93%
+ 344  06340_L001            1.19%    passed     75.43%
+ 345  06796_L001            1.43%    passed     66.87%
+ 346  09029_L001            1.66%    passed     63.03%
+ 347  05866_L001           10.93%    passed     44.96%
+ 348  07503_L001           52.97%    passed     49.61%
+ 349  07090_L001            6.65%    passed     75.65%
+ 350  06770_L001           47.74%    passed     50.77%
+ 351  07107_L001            0.95%    passed     45.14%
+ 352  06222_L001            1.90%    passed     99.06%
+ 353  RinCar_L001          53.21%    passed     62.26%
+ 354  07464_L001            1.90%    passed     21.50%
+ 355  05518_L001            4.28%    passed     48.75%
+ 356  06777_L001            6.89%    passed     83.76%
+ 357  07477_L001           44.89%    passed     61.46%
+ 358  06289_L001            0.71%    passed     61.86%
+ 359  09025_L001            1.19%    passed     52.77%
+ 360  06287_L001            0.71%    passed     67.77%
+ 361  06775_L001            0.71%    passed     60.90%
+ 362  05863_L001           55.11%    passed     20.86%
+ 363  07086_L001            0.24%    passed     65.15%
+ 364  06259_L001            4.99%    passed     66.94%
+ 365  06773_L001           20.67%    passed     94.41%
+ 366  08526_L001           44.18%    passed     99.93%
+ 367  ComGra_L001           0.48%    passed     52.07%
+ 368  07106_L001            9.03%    passed     88.94%
+ 369  09043_L001            0.00%    passed     98.75%
+ 370  06306_L001            0.24%    passed     80.54%
+ 371  06275_L001            3.33%    passed     97.23%
+ 372  07128_L001            3.09%    passed     63.32%
+ 373  PAFTOL_009157_L001    9.74%    passed     65.31%
+ 374  05468_L001            0.00%    passed     99.51%
+ 375  04910_L001            0.24%    passed     71.78%
+ 376  PAFTOL_006436_L001    0.24%    passed     99.96%
+ 377  04329_L001            4.28%    passed     43.15%
+ 378  07081_L001           44.89%    passed     54.55%
+ 379  07104_L001            0.00%    passed     59.34%
+ 380  08512_L001            4.28%    passed     94.25%
+ 381  06341_L001            0.00%    passed     94.54%
+ 382  06308_L001            0.24%    passed     84.12%
+ 383  06215_L001            2.38%    passed     94.41%
+ 384  07117_L001            0.00%    passed     98.33%
+ 385  ComInd_L001           1.90%    passed     61.21%
+ 386  PAFTOL_005535_L001    0.00%    passed     96.71%
+ 387  06235_L001            0.00%    passed     93.00%
+ 388  07467_L001            0.00%    passed     99.95%
+ 389  PAFTOL_008601_L001   49.17%    passed     79.18%
+ 390  06027_L001            0.00%    passed     93.23%
+ 391  04316_L001            1.43%    passed     60.55%
+ 392  ConEre_L001           3.33%    passed     42.58%
+ 393  07121_L001            2.14%    passed     90.56%
+ 394  06346_L001            0.95%    passed     98.67%
+ 395  07534_L001            4.28%    passed     51.94%
+ 396  PAFTOL_008580_L001   15.44%    passed     94.27%
+ 397  06787_L001            1.19%    passed     77.52%
+ 398  06296_L001            0.71%    passed     78.47%
+ 399  09035_L001            1.43%    passed     38.58%
+ 400  06313_L001            0.71%    passed     76.33%
+ 401  PAFTOL_008575_L001    0.00%    passed     98.15%
+ 402  07459_L001            3.80%    passed     74.60%
+ 403  PAFTOL_008727_L001    1.90%    passed     98.62%
+ 404  06768_L001            3.80%    passed     97.32%
+ 405  05859_L001            2.38%    passed     93.87%
+ 406  06282_L001            3.80%    passed     95.93%
+ 407  09037_L001            7.60%    passed     41.36%
+ 408  06290_L001            3.33%    passed     69.85%
+ 409  06281_L001            3.80%    passed     99.04%
+ 410  06299_L001            0.24%    passed     82.52%
+ 411  04309_L001            3.33%    passed     69.15%
+ 412  04909_L001            0.48%    passed     35.72%
+ 413  07126_L001            0.24%    passed     34.79%
+ 414  PAFTOL_008725_L001   47.03%    passed     61.83%
+ 415  07457_L001           28.03%    passed     68.46%
+ 416  07462_L001            9.03%    passed     78.14%
+ 417  06228_L001            8.31%    passed     63.11%
+ 418  07119_L001            0.24%    passed     64.80%
+ 419  06778_L001            0.71%    passed     22.35%
+ 420  04319_L001            1.66%    passed     81.23%
+ 421  05550_L001           10.45%    passed     74.49%
+ 422  08527_L001            0.48%    passed     93.20%
+ 423  01319_L001            2.14%    passed     49.56%
+ 424  PAFTOL_008522_L001   28.50%    passed     65.18%
+ 425  04315_L001            7.13%    passed     49.40%
+ 426  06298_L001            0.24%    passed     54.38%
+ 427  PAFTOL_009153_L001    0.00%    passed     88.36%
+ 428  06213_L001            1.43%    passed     83.06%
+ 429  06323_L001            1.43%    passed     99.09%
+ 430  06285_L001            0.48%    passed     81.04%
+ 431  TerMyr_L001          55.34%    passed     89.94%
+ 432  06240_L001           10.93%    passed     99.90%
+ 433  07502_L001           34.92%    passed     18.98%
+ 434  07110_L001           57.48%    passed     85.96%
+ 435  PAFTOL_006439_L001    3.56%    passed     81.75%
+ 436  06233_L001            0.48%    passed     99.31%
+ 437  PAFTOL_008578_L001    1.43%    passed     70.08%
+ 438  09017_L001            1.19%    passed     90.62%
+ 439  06791_L001           11.40%    passed     85.92%
+ 440  05482_L001            0.95%    passed     96.92%
+ 441  05481_L001           36.34%    passed     79.94%
+ 442  05522_L001            0.00%    passed     91.80%
+ 443  04305_L001            1.66%    passed     81.23%
+ 444  07140_L001           43.94%    passed     49.78%
+ 445  05537_L001            0.71%    passed     97.36%
+ 446  05546_L001            0.00%    passed     97.15%
+ 447  06789_L001            1.19%    passed     53.79%
+ 448  04328_L001            2.14%    passed     39.56%
+ 449  05528_L001            4.51%    passed     87.57%
+ 450  05493_L001            3.09%    passed     99.21%
+ 451  04848_L001            0.48%    passed     67.39%
+ 452  07545_L001           15.68%    passed     75.34%
+ 453  06214_L001            2.38%    passed     99.33%
+ 454  06781_L001           46.79%    passed     73.31%
+ 455  06247_L001            9.26%    passed     98.91%
+ 456  06762_L001            2.85%    passed     82.93%
+ 457  07138_L001            4.04%    passed     99.03%
+ 458  04306_L001            3.33%    passed     84.38%
+ 459  05500_L001            1.19%    passed     78.49%
+ 460  09031_L001            6.41%    passed     96.96%
+ 461  06284_L001            0.24%    passed     76.61%
+WARNING: 30 sequences contain more than 50% gaps/ambiguity
+****  TOTAL                10.18%  1 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: 04844_L001 is identical to 04843_L001 but kept for subsequent analysis
+NOTE: 06313_L001 is identical to 06293_L001 but kept for subsequent analysis
+NOTE: PAFTOL_009153_L001 is identical to 07808_L001 but kept for subsequent analysis
+NOTE: PAFTOL_005535_L001 is identical to PAFTOL_006446_L001 but kept for subsequent analysis
+NOTE: 06285_L001 is identical to 06286_L001 but kept for subsequent analysis
+NOTE: 04848_L001 is identical to ComApi_L001 but kept for subsequent analysis
+NOTE: 04305_L001 is identical to 04319_L001 but kept for subsequent analysis
+Checking for duplicate sequences: done in 0.0018346 secs using 291.7% CPU
+Identifying sites to remove: done in 0.0032541 secs using 95.85% CPU
+NOTE: 1 identical sequences (see below) will be ignored for subsequent analysis
+NOTE: 04853_L001 (identical to 04843_L001) is ignored but added at the end
+Alignment was printed to ./test/Single_1.uniqueseq.phy
+
+For your convenience alignment with unique sequences printed to ./test/Single_1.uniqueseq.phy
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.109 seconds
+Measuring multi-threading efficiency up to 16 CPU cores
+Increase to 10 rounds for branch lengths
+38 trees examined
+Threads: 1 / Time: 16.111 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -79135
+Threads: 2 / Time: 14.343 sec / Speedup: 1.123 / Efficiency: 56% / LogL: -79135
+Threads: 3 / Time: 13.988 sec / Speedup: 1.152 / Efficiency: 38% / LogL: -79135
+Determining AUTO threadcount: done in 44.4437 secs using 193.8% CPU
+BEST NUMBER OF THREADS: 2
+
+Perform fast likelihood tree search using GTR+I+G model...
+Estimate model parameters (epsilon = 5.000)
+Perform nearest neighbor interchange...
+Optimizing NNI: done in 1.00858 secs using 197.2% CPU
+Estimate model parameters (epsilon = 1.000)
+1. Initial log-likelihood: -30724.478
+Optimal log-likelihood: -30724.338
+Rate parameters:  A-C: 1.67398  A-G: 3.35393  A-T: 1.12011  C-G: 1.40722  C-T: 4.02692  G-T: 1.00000
+Base frequencies:  A: 0.266  C: 0.167  G: 0.225  T: 0.343
+Proportion of invariable sites: 0.056
+Gamma shape alpha: 1.290
+Parameters optimization took 1 rounds (0.159 sec)
+Time for fast ML tree search: 2.077 seconds
+
+NOTE: ModelFinder requires 63 MB RAM!
+ModelFinder will test up to 484 DNA models (sample size: 421) ...
+ No. Model         -LnL         df  AIC          AICc         BIC
+  1  GTR+F         32404.686    925 66659.371    1779759.371  70398.807
+  2  GTR+F+I       32030.006    926 65912.011    1782716.011  69655.489
+  3  GTR+F+G4      30747.108    926 63346.216    1780150.216  67089.694
+  4  GTR+F+I+G4    30724.326    927 63302.653    1783814.653  67050.173
+  5  GTR+F+R2      30901.083    927 63656.165    1784168.165  67403.686
+  6  GTR+F+R3      30746.948    929 63351.896    1791291.896  67107.502
+  7  GTR+F+R4      30697.714    931 63257.428    1798641.428  67021.119
+  8  GTR+F+R5      30693.529    933 63253.058    1806097.058  67024.834
+ 14  GTR+F+I+R2    30834.541    928 63525.082    1787749.082  67276.645
+ 15  GTR+F+I+R3    30723.863    930 63307.726    1794967.726  67067.375
+ 16  GTR+F+I+R4    30686.122    932 63236.243    1802348.243  67003.977
+ 17  GTR+F+I+R5    30685.698    934 63239.396    1809819.396  67015.215
+ 38  SYM+I+R4      30886.012    929 63630.023    1791570.023  67385.629
+ 60  TVM+F+I+R4    30693.302    931 63248.604    1798632.604  67012.295
+ 82  TVMe+I+R4     30887.783    928 63631.567    1787855.567  67383.130
+104  TIM3+F+I+R4   30690.286    930 63240.573    1794900.573  67000.221
+126  TIM3e+I+R4    30904.815    927 63663.630    1784175.630  67411.151
+148  TIM2+F+I+R4   30722.026    930 63304.051    1794964.051  67063.700
+170  TIM2e+I+R4    30891.004    927 63636.007    1784148.007  67383.528
+192  TIM+F+I+R4    30725.784    930 63311.567    1794971.567  67071.216
+214  TIMe+I+R4     30906.807    927 63667.614    1784179.614  67415.134
+236  TPM3u+F+I+R4  30697.451    929 63252.901    1791192.901  67008.507
+258  TPM3+I+R4     30906.720    926 63665.440    1780469.440  67408.918
+280  TPM2u+F+I+R4  30729.487    929 63316.974    1791256.974  67072.579
+302  TPM2+I+R4     30892.431    926 63636.861    1780440.861  67380.339
+324  K3Pu+F+I+R4   30733.236    929 63324.472    1791264.472  67080.077
+346  K3P+I+R4      30908.353    926 63668.706    1780472.706  67412.184
+368  TN+F+I+R4     30726.297    929 63310.594    1791250.594  67066.200
+390  TNe+I+R4      30909.310    926 63670.619    1780474.619  67414.097
+412  HKY+F+I+R4    30733.761    928 63323.521    1787547.521  67075.084
+434  K2P+I+R4      30910.862    925 63671.724    1776771.724  67411.159
+456  F81+F+I+R4    31538.154    927 64930.307    1785442.307  68677.828
+478  JC+I+R4       31573.518    924 64995.037    1774395.037  68730.429
+Akaike Information Criterion:           GTR+F+I+R4
+Corrected Akaike Information Criterion: JC+I+R4
+Bayesian Information Criterion:         TIM3+F+I+R4
+Best-fit model: TIM3+F+I+R4 chosen according to BIC
+
+All model information printed to ./test/Single_1.model.gz
+CPU time for ModelFinder: 159.880 seconds (0h:2m:39s)
+Wall-clock time for ModelFinder: 81.289 seconds (0h:1m:21s)
+Generating 1000 samples for ultrafast bootstrap (seed: 473405)...
+
+NOTE: 26 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -30690.286
+Optimal log-likelihood: -30690.285
+Rate parameters:  A-C: 1.48977  A-G: 3.20654  A-T: 1.00000  C-G: 1.48977  C-T: 3.77190  G-T: 1.00000
+Base frequencies:  A: 0.266  C: 0.167  G: 0.225  T: 0.343
+Proportion of invariable sites: 0.049
+Site proportion and rates:  (0.236,0.144) (0.188,0.509) (0.321,1.293) (0.206,2.205)
+Parameters optimization took 1 rounds (0.234 sec)
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 0.285072 secs using 200% CPU
+Computing ML distances took 0.285702 sec (of wall-clock time) 0.570788 sec (of CPU time)
+WARNING: Some pairwise ML distances are too long (saturated)
+Setting up auxiliary I and S matrices: done in 0.00297333 secs using 173.2% CPU
+Constructing RapidNJ tree: done in 0.224159 secs using 67.74% CPU
+Computing RapidNJ tree took 0.227211 sec (of wall-clock time) 0.157009 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -32334.221
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 7.171 second
+Computing log-likelihood of 98 initial trees ... 5.065 seconds
+Current best score: -30690.285
+
+Do NNI search on 20 best initial trees
+Optimizing NNI: done in 0.881678 secs using 199.8% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -30689.378
+Optimizing NNI: done in 2.31886 secs using 199.6% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 2: -30636.110
+Optimizing NNI: done in 2.83914 secs using 199% CPU
+Optimizing NNI: done in 3.94096 secs using 199% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 4: -30633.702
+Optimizing NNI: done in 3.24685 secs using 199.5% CPU
+Optimizing NNI: done in 3.17281 secs using 199.3% CPU
+Optimizing NNI: done in 2.70312 secs using 198.8% CPU
+Optimizing NNI: done in 2.67932 secs using 200% CPU
+Optimizing NNI: done in 2.50908 secs using 198.8% CPU
+Optimizing NNI: done in 2.47755 secs using 199.3% CPU
+Iteration 10 / LogL: -30643.330 / Time: 0h:0m:42s
+Optimizing NNI: done in 2.33932 secs using 199.2% CPU
+Optimizing NNI: done in 3.01696 secs using 199.4% CPU
+Optimizing NNI: done in 2.44411 secs using 198.6% CPU
+Optimizing NNI: done in 2.33635 secs using 199.7% CPU
+Optimizing NNI: done in 2.69887 secs using 199.7% CPU
+Optimizing NNI: done in 2.44485 secs using 199.4% CPU
+Optimizing NNI: done in 2.60924 secs using 197.3% CPU
+Optimizing NNI: done in 2.67769 secs using 199.3% CPU
+Optimizing NNI: done in 2.38514 secs using 199.4% CPU
+Optimizing NNI: done in 2.48478 secs using 199.4% CPU
+Iteration 20 / LogL: -30653.060 / Time: 0h:1m:7s
+Finish initializing candidate tree set (20)
+Current best tree score: -30633.702 / CPU time: 66.110
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Optimizing NNI: done in 2.02724 secs using 196.4% CPU
+Optimizing NNI: done in 1.55769 secs using 199.5% CPU
+Optimizing NNI: done in 2.24519 secs using 197.1% CPU
+Optimizing NNI: done in 1.43779 secs using 198.8% CPU
+Optimizing NNI: done in 2.1551 secs using 197.3% CPU
+Optimizing NNI: done in 1.39632 secs using 199.4% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 26: -30628.580
+Optimizing NNI: done in 1.45748 secs using 198.1% CPU
+Optimizing NNI: done in 1.54325 secs using 199.1% CPU
+Optimizing NNI: done in 2.11229 secs using 197.5% CPU
+Optimizing NNI: done in 1.46597 secs using 199.6% CPU
+Iteration 30 / LogL: -30650.107 / Time: 0h:1m:25s (0h:4m:43s left)
+Optimizing NNI: done in 1.75736 secs using 200.1% CPU
+Optimizing NNI: done in 1.79374 secs using 199.5% CPU
+Optimizing NNI: done in 2.03371 secs using 197.4% CPU
+Optimizing NNI: done in 1.70062 secs using 199.4% CPU
+Optimizing NNI: done in 2.26496 secs using 198.2% CPU
+Optimizing NNI: done in 1.73302 secs using 195.8% CPU
+Optimizing NNI: done in 1.58731 secs using 198.5% CPU
+Optimizing NNI: done in 1.56611 secs using 197.7% CPU
+Optimizing NNI: done in 1.61785 secs using 198.2% CPU
+Optimizing NNI: done in 1.47415 secs using 198% CPU
+Iteration 40 / LogL: -30659.106 / Time: 0h:1m:43s (0h:3m:47s left)
+Optimizing NNI: done in 1.70777 secs using 198.1% CPU
+Optimizing NNI: done in 1.45284 secs using 195.7% CPU
+Optimizing NNI: done in 2.15176 secs using 198.1% CPU
+Optimizing NNI: done in 1.16136 secs using 197.7% CPU
+Optimizing NNI: done in 2.42409 secs using 199.3% CPU
+Optimizing NNI: done in 1.79052 secs using 198.3% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 46: -30618.373
+Optimizing NNI: done in 1.85577 secs using 199.5% CPU
+Optimizing NNI: done in 1.62587 secs using 198.8% CPU
+Optimizing NNI: done in 2.03308 secs using 199.7% CPU
+Optimizing NNI: done in 1.99409 secs using 198.8% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 50: -30614.387
+Iteration 50 / LogL: -30614.387 / Time: 0h:2m:2s (0h:4m:9s left)
+Log-likelihood cutoff on original alignment: -30692.279
+Optimizing NNI: done in 1.75797 secs using 199.8% CPU
+Optimizing NNI: done in 1.82353 secs using 198% CPU
+Optimizing NNI: done in 1.42044 secs using 200.3% CPU
+Optimizing NNI: done in 2.05399 secs using 199.1% CPU
+Optimizing NNI: done in 1.78115 secs using 199.7% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 55: -30614.121
+Optimizing NNI: done in 1.66148 secs using 198.7% CPU
+Optimizing NNI: done in 1.33254 secs using 194.9% CPU
+Optimizing NNI: done in 1.15811 secs using 199.6% CPU
+Optimizing NNI: done in 1.80859 secs using 198.2% CPU
+Optimizing NNI: done in 1.67786 secs using 198.3% CPU
+Iteration 60 / LogL: -30614.449 / Time: 0h:2m:21s (0h:3m:47s left)
+Optimizing NNI: done in 1.92925 secs using 198.8% CPU
+Optimizing NNI: done in 2.17425 secs using 198.9% CPU
+Optimizing NNI: done in 2.27872 secs using 198.5% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 63: -30608.860
+Optimizing NNI: done in 1.86913 secs using 198.8% CPU
+Optimizing NNI: done in 1.66125 secs using 198.6% CPU
+Optimizing NNI: done in 1.92302 secs using 198.8% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 66: -30599.383
+Optimizing NNI: done in 2.02722 secs using 198.5% CPU
+Optimizing NNI: done in 1.47764 secs using 198.8% CPU
+Optimizing NNI: done in 2.14024 secs using 199.3% CPU
+Optimizing NNI: done in 2.01496 secs using 199.3% CPU
+Iteration 70 / LogL: -30637.451 / Time: 0h:2m:41s (0h:3m:44s left)
+Optimizing NNI: done in 1.44268 secs using 198.2% CPU
+Optimizing NNI: done in 1.74797 secs using 198.2% CPU
+Optimizing NNI: done in 3.09565 secs using 197.6% CPU
+Optimizing NNI: done in 1.52712 secs using 198.6% CPU
+Optimizing NNI: done in 1.20727 secs using 197.7% CPU
+Optimizing NNI: done in 2.16824 secs using 199.1% CPU
+Optimizing NNI: done in 2.08075 secs using 199.9% CPU
+Optimizing NNI: done in 3.42851 secs using 199.2% CPU
+Optimizing NNI: done in 1.61711 secs using 198.9% CPU
+Optimizing NNI: done in 2.11758 secs using 198% CPU
+Iteration 80 / LogL: -30635.901 / Time: 0h:3m:2s (0h:3m:18s left)
+Optimizing NNI: done in 1.72552 secs using 198.4% CPU
+Optimizing NNI: done in 1.94849 secs using 198.8% CPU
+Optimizing NNI: done in 2.31541 secs using 198.9% CPU
+Optimizing NNI: done in 1.61609 secs using 195.6% CPU
+Optimizing NNI: done in 1.71226 secs using 198.6% CPU
+Optimizing NNI: done in 1.86288 secs using 198.6% CPU
+Optimizing NNI: done in 2.20288 secs using 199.2% CPU
+Optimizing NNI: done in 2.13626 secs using 199.1% CPU
+Optimizing NNI: done in 1.88112 secs using 198.2% CPU
+Optimizing NNI: done in 2.17928 secs using 199.4% CPU
+Iteration 90 / LogL: -30604.428 / Time: 0h:3m:22s (0h:2m:52s left)
+Optimizing NNI: done in 2.27777 secs using 199.1% CPU
+Optimizing NNI: done in 2.10162 secs using 198.5% CPU
+Optimizing NNI: done in 1.89169 secs using 197.3% CPU
+Optimizing NNI: done in 2.29287 secs using 197.9% CPU
+Optimizing NNI: done in 2.36048 secs using 198.7% CPU
+Optimizing NNI: done in 2.88259 secs using 197.3% CPU
+Optimizing NNI: done in 2.03776 secs using 196.2% CPU
+Optimizing NNI: done in 2.26327 secs using 198.5% CPU
+Optimizing NNI: done in 2.25452 secs using 197.6% CPU
+Optimizing NNI: done in 2.53905 secs using 199.2% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 100: -30597.630
+Iteration 100 / LogL: -30597.630 / Time: 0h:3m:45s (0h:3m:48s left)
+Log-likelihood cutoff on original alignment: -30687.412
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.967
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+Optimizing NNI: done in 3.44578 secs using 199.4% CPU
+Optimizing NNI: done in 1.49061 secs using 199.1% CPU
+Optimizing NNI: done in 1.70045 secs using 199.8% CPU
+Optimizing NNI: done in 2.24062 secs using 198% CPU
+Optimizing NNI: done in 2.40065 secs using 199.1% CPU
+Optimizing NNI: done in 2.41399 secs using 198.9% CPU
+Optimizing NNI: done in 2.20453 secs using 199.3% CPU
+Optimizing NNI: done in 2.6129 secs using 199.1% CPU
+Optimizing NNI: done in 2.23338 secs using 197.5% CPU
+Optimizing NNI: done in 2.39202 secs using 199.8% CPU
+Iteration 110 / LogL: -30613.405 / Time: 0h:4m:10s (0h:3m:27s left)
+Optimizing NNI: done in 2.67798 secs using 199.3% CPU
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 111: -30595.207
+Optimizing NNI: done in 2.36613 secs using 199.5% CPU
+Optimizing NNI: done in 2.33825 secs using 199% CPU
+Optimizing NNI: done in 1.65288 secs using 199.2% CPU
+Optimizing NNI: done in 1.40514 secs using 196.8% CPU
+Optimizing NNI: done in 2.21667 secs using 199.7% CPU
+Optimizing NNI: done in 2.00284 secs using 197.9% CPU
+Optimizing NNI: done in 1.95019 secs using 198.1% CPU
+Optimizing NNI: done in 1.98817 secs using 200.1% CPU
+Optimizing NNI: done in 2.15886 secs using 197% CPU
+Iteration 120 / LogL: -30609.550 / Time: 0h:4m:32s (0h:3m:28s left)
+Optimizing NNI: done in 2.15957 secs using 198.5% CPU
+Optimizing NNI: done in 2.23477 secs using 199.7% CPU
+Optimizing NNI: done in 2.04631 secs using 199.2% CPU
+Optimizing NNI: done in 2.1171 secs using 198.2% CPU
+Optimizing NNI: done in 1.86339 secs using 198.6% CPU
+Optimizing NNI: done in 2.24522 secs using 198.4% CPU
+Optimizing NNI: done in 1.79295 secs using 199.3% CPU
+Optimizing NNI: done in 2.48915 secs using 199.6% CPU
+Optimizing NNI: done in 1.94121 secs using 197.2% CPU
+Optimizing NNI: done in 1.97253 secs using 198.9% CPU
+Iteration 130 / LogL: -30630.973 / Time: 0h:4m:54s (0h:3m:4s left)
+Optimizing NNI: done in 2.47313 secs using 199.1% CPU
+Optimizing NNI: done in 2.35953 secs using 199.8% CPU
+Optimizing NNI: done in 2.65278 secs using 196.7% CPU
+Optimizing NNI: done in 2.54065 secs using 199.2% CPU

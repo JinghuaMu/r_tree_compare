@@ -6,28 +6,68 @@ date: "2023-08-09"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+#####################
+# Dataset usage: Mammal dataset with 66 species
 ```
 
-### Comparison of trees
+## Set system environment and file location
+```{r}
+mypath <- readLines("./mypath.txt")
+Sys.setenv(PATH = mypath)
+
+geneset_loc <- "../datasets/Myrtales/supercontig/"
+gene_sets <- system2(command = "ls", args = geneset_loc, stdout = TRUE)
+cat("Current gene file location:", geneset_loc, "\n")
+cat("Number of gene:", length(gene_sets),"\n")
+gene_file <- gene_sets[1]
+gene_path <-  paste(geneset_loc,gene_file, sep = "")
+
+prefix_single <- paste("./test/","Single_","1", sep = "")
+prefix_mix <- paste("./test/","Mix_","1", sep = "")
+
+arg_single <- c("-s", gene_path, "-B", "1000", "-T", "AUTO", "--prefix", prefix_single)
+arg_mix <- c("-s", gene_path, "-m", "ESTMIXNUM", "-mrate", "E,I,G,I+G,R,I+R", "-opt_qmix_criteria", "1", "-T", "AUTO", "--prefix", prefix_single)
+```
+## Run iqtree command in R
+```{r}
+# system2(command = "iqtree", args = arg_single, stdout = FALSE)
+# system2(command = "iqtree2", args = arg_mix, stdout = FALSE)
+```
+
+
+# Comparison of trees
 
 ## Load the necessary libraries
 ```{r message=FALSE}
 library(ape)
 library(phytools)
 library(ggtree)
+library(distory)
 
 # Read in the tree files for the single gene and mix models
 # Select 20 taxas from the fungi dataset
 # The provided data was aa alignment so I backtransed them to DNA sequence
-tree_single <- read.tree(file = "./single_gene_20/one_EOG092C580G.treefile")
-tree_mix <- read.tree(file = "./single_gene_20/mix_EOG092C580G.treefile")
+
+tree_single <- read.tree(file = "./test/onemodel.treefile")
+tree_mix <- read.tree(file = "./test/mixmodel.treefile")
 ```
 
 ## Plot the two trees side by side
+```{r fig.height=12, fig.width=20}
+p1 <- ggtree(tree_single) + geom_tiplab(size=2, color="purple")
+p2 <- ggtree(tree_mix) + geom_tiplab(size=2, color="purple")
+multiplot(p1, p2, ncol=2)
+```
+## Statictics and parameters
 ```{r}
-par(mfrow=c(1,2), mar = c(5,1,4,0))
-plot(tree_single, main="Tree with single model", cex = 0.85)
-plot(tree_mix, main="Tree with mix model",cex = 0.85)
+source("./iqtree_info.r")
+sum_one <- summarise_iqtree("./test/onemodel.iqtree")
+sum_mix <- summarise_iqtree("./test/mixmodel.iqtree")
+cat("The phylogenic acnalysis result for one model:\n")
+short_description(sum_one)
+cat("--------------------------------------------- 
+The phylogenic analysis result for mix model:\n")
+short_description(sum_mix)
 ```
 
 ## Calculate and compare the cophenetic matrices and tree distances
@@ -44,11 +84,22 @@ cat("\nRF distance for two trees: ", rf_distance[[1]])
 branch_score <- dist.topo(tree_single, tree_mix, method = "score")
 cat("\nBranch length score for two trees: ", branch_score[[1]])
 
+# Under development
+# dist.multiPhylo(list(tree_single, tree_mix), method ="geodesic", outgroup = c(sum_one$outgroup, sum_mix$outgroup))
+
 ```
 
 ## Create a cophylogram of the two trees
-```{r}
+```{r fig.height=10, fig.width=16}
 cophylo.trees <- cophylo(tree_single, tree_mix)
 par(mar=c(5.1,1,1.1,1))
-plot(cophylo.trees, link.lwd= 1, fsize = 0.7)
+plot(cophylo.trees, link.lwd= 1, fsize = 0.8)
 ```
+```{r}
+mypath <- readLines("./mypath.txt")
+Sys.setenv(PATH = mypath)
+```
+
+
+
+
