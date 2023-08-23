@@ -1,0 +1,229 @@
+IQ-TREE 2.2.2.7.modelmix COVID-edition built Jul 13 2023
+
+Input file name: ../datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gappyout/UCE-1021_single_taxon_Adjusted_MAFFT_Aligned_relabeled_trimmed.phy
+Type of analysis: tree reconstruction
+Random seed number: 471886
+
+REFERENCES
+----------
+
+To cite IQ-TREE please use:
+
+Bui Quang Minh, Heiko A. Schmidt, Olga Chernomor, Dominik Schrempf,
+Michael D. Woodhams, Arndt von Haeseler, and Robert Lanfear (2020)
+IQ-TREE 2: New models and efficient methods for phylogenetic inference
+in the genomic era. Mol. Biol. Evol., in press.
+https://doi.org/10.1093/molbev/msaa015
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 52 sequences with 354 nucleotide sites
+Number of constant sites: 290 (= 81.9209% of all sites)
+Number of invariant (constant or ambiguous constant) sites: 290 (= 81.9209% of all sites)
+Number of parsimony informative sites: 18
+Number of distinct site patterns: 126
+
+ModelFinder
+-----------
+
+Best-fit model according to BIC: TNe+R2
+
+List of models sorted by BIC scores: 
+
+Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC
+TNe+R2            -1019.295    2248.589 +    0.456    2338.347 +    0.739    2654.865 +    0.871
+TNe+I+R2          -1018.384    2248.769 +    0.417    2340.607 +    0.239    2658.914 +    0.115
+TNe+G4            -1026.846    2261.692 - 0.000651    2349.403 -  0.00294    2664.099 -  0.00861
+TNe+R3            -1019.174    2252.347 +   0.0696    2346.299 -   0.0139    2666.362 -  0.00278
+TNe+I             -1028.709    2265.419 - 0.000101    2353.130 - 0.000456    2667.826 -  0.00134
+TNe+I+G4          -1025.895    2261.790 -  0.00062    2351.548 -  0.00101    2668.066 -  0.00118
+TNe+I+R3          -1018.374    2252.749 +   0.0569    2348.847 -  0.00388    2670.633 - 0.000328
+TNe               -1040.663    2287.325 - 1.77e-09    2373.021 - 2.18e-08    2685.863 - 1.62e-07
+
+AIC, w-AIC   : Akaike information criterion scores and weights.
+AICc, w-AICc : Corrected AIC scores and weights.
+BIC, w-BIC   : Bayesian information criterion scores and weights.
+
+Plus signs denote the 95% confidence sets.
+Minus signs denote significant exclusion.
+
+SUBSTITUTION PROCESS
+--------------------
+
+Model of substitution: TNe+R2
+
+Rate parameter R:
+
+  A-C: 1.0000
+  A-G: 9.8028
+  A-T: 1.0000
+  C-G: 1.0000
+  C-T: 4.2320
+  G-T: 1.0000
+
+State frequencies: (equal frequencies)
+
+Rate matrix Q:
+
+  A    -1.309    0.1109     1.087    0.1109
+  C    0.1109   -0.6911    0.1109    0.4693
+  G     1.087    0.1109    -1.309    0.1109
+  T    0.1109    0.4693    0.1109   -0.6911
+
+Model of rate heterogeneity: FreeRate with 2 categories
+Site proportion and rates:  (0.9792,0.6904) (0.02075,15.61)
+
+ Category  Relative_rate  Proportion
+  1         0.6904         0.9792
+  2         15.61          0.02075
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -1013.5174 (s.e. 59.5405)
+Unconstrained log-likelihood (without tree): -1494.2588
+Number of free parameters (#branches + #model parameters): 105
+Akaike information criterion (AIC) score: 2237.0349
+Corrected Akaike information criterion (AICc) score: 2326.7929
+Bayesian information criterion (BIC) score: 2643.3110
+
+Total tree length (sum of branch lengths): 0.2711
+Sum of internal branch lengths: 0.0406 (14.9832% of tree length)
+
+WARNING: 48 near-zero internal branches (<0.0028) should be treated with caution
+         Such branches are denoted by '**' in the figure below
+
+NOTE: Tree is UNROOTED although outgroup taxon 'Acrochordus_granulatus' is drawn at root
+
++----------Acrochordus_granulatus
+|
+|                                +--------------------------------------Alligator_mississippiensis
+|                             +**|
+|                             |  +**Varanus_exanthematicus
+|                          +**|
+|                          |  +**Xenopeltis_unicolor
+|                       +**|
+|                       |  |  +**Dopasia_gracilis
+|                       |  +**|
+|                       |     +**Shinisaurus_crocodilurus
+|                    +**|
+|                    |  +---------Pareas_hamptoni
+|                 +**|
+|                 |  +-------Casarea_dussumieri
+|              +**|
+|              |  +----------Tupinambis_teguixin
+|           +**|
+|           |  |     +**Boaedon_fuliginosus
+|           |  |  +**|
+|           |  |  |  |     +----Thamnophis_sirtalis
+|           |  |  |  |  +**|
+|           |  |  |  |  |  +-----Xenodermus_javanicus
+|           |  |  |  +**|
+|           |  |  |     +----Tropidophis_haetianus
+|           |  +**|
+|           |     +-----------Pogona_vitticeps
+|        +**|
+|        |  |        +**Aspidites_melanocephalus
+|        |  |     +**|
+|        |  |     |  |                    +**Calabaria_reinhardtii
+|        |  |     |  |                 +**|
+|        |  |     |  |                 |  +**Diadophis_punctatus
+|        |  |     |  |              +**|
+|        |  |     |  |              |  |        +**Coleonyx_variegatus
+|        |  |     |  |              |  |     +**|
+|        |  |     |  |              |  |     |  +-------Saltuarius_cornutus
+|        |  |     |  |              |  |  +**|
+|        |  |     |  |              |  |  |  +**Gekko_japonicus
+|        |  |     |  |              |  +**|
+|        |  |     |  |              |     +**Paroedura_picta
+|        |  |     |  |           +**|
+|        |  |     |  |           |  +--Lepidophyma_flavimaculatum
+|        |  |     |  |        +**|
+|        |  |     |  |        |  +**Smaug_mossambicus
+|        |  |     |  |     +**|
+|        |  |     |  |     |  +**Eublepharis_macularius
+|        |  |     |  |  +**|
+|        |  |     |  |  |  +**Lacerta_bilineata
+|        |  |     |  +**|
+|        |  |     |     +----------Rhineura_floridana
+|        |  |  +**|
+|        |  |  |  +**Lichanura_trivirgata
+|        |  +**|
+|        |     +**Micrurus_fulvius
+|     +**|
+|     |  +**Chilabothrus_striatus
+|  +**|
+|  |  |                             +-------Anolis_carolinensis
+|  |  |                          +**|
+|  |  |                          |  |  +**Leiocephalus_personatus
+|  |  |                          |  +**|
+|  |  |                          |     +-----Phymaturus_palluma
+|  |  |                       +**|
+|  |  |                       |  +**Morunasaurus_annularis
+|  |  |                    +**|
+|  |  |                    |  +**Leiosaurus_catamarcensis
+|  |  |                 +**|
+|  |  |                 |  |        +--------------------------------------------------Gallus_gallus
+|  |  |                 |  |     +**|
+|  |  |                 |  |     |  +**Gambelia_wislizenii
+|  |  |                 |  |  +**|
+|  |  |                 |  |  |  +**Homalopsis_buccata
+|  |  |                 |  +**|
+|  |  |                 |     |      +**Plica_plica
+|  |  |                 |     +------|
+|  |  |                 |            +------Uranoscodon_superciliosus
+|  |  |              +**|
+|  |  |              |  +**Phrynosoma_platyrhinos
+|  |  |           +**|
+|  |  |           |  +**Crotaphytus_collaris
+|  |  |        +**|
+|  |  |        |  |  +**Rena_humilis
+|  |  |        |  +**|
+|  |  |        |     +**Sauromalus_ater
+|  |  |     +**|
+|  |  |     |  +**Basiliscus_basiliscus
+|  |  |  +**|
+|  |  |  |  +**Cordylosaurus_subtessellatus
+|  |  +**|
+|  |     +**Lampropeltis_getula
++**|
+|  |           +**Bothrops_asper
+|  |        +**|
+|  |        |  +**Crotalus_horridus
+|  |     +**|
+|  |     |  +**Deinagkistrodon_acutus
+|  |  +**|
+|  |  |  +**Protobothrops_mucrosquamatus
+|  +**|
+|     +**Ophiophagus_hannah
+|
++**Hydrosaurus_pustulatus
+
+Tree in newick format:
+
+(Acrochordus_granulatus:0.0115194169,(((((((((((Alligator_mississippiensis:0.0386331237,Varanus_exanthematicus:0.0000022795):0.0000442859,Xenopeltis_unicolor:0.0000009997):0.0027255393,(Dopasia_gracilis:0.0000009997,Shinisaurus_crocodilurus:0.0000009997):0.0000023558):0.0000023433,Pareas_hamptoni:0.0098798910):0.0000027727,Casarea_dussumieri:0.0086114906):0.0027654620,Tupinambis_teguixin:0.0112946972):0.0000023436,((Boaedon_fuliginosus:0.0000020292,((Thamnophis_sirtalis:0.0057447635,Xenodermus_javanicus:0.0059033951):0.0027951276,Tropidophis_haetianus:0.0057609234):0.0000021514):0.0027710009,Pogona_vitticeps:0.0125512873):0.0000022376):0.0000021379,(((Aspidites_melanocephalus:0.0000009997,(((((((Calabaria_reinhardtii:0.0027735999,Diadophis_punctatus:0.0000009997):0.0027759114,(((Coleonyx_variegatus:0.0000009997,Saltuarius_cornutus:0.0085381528):0.0027810673,Gekko_japonicus:0.0027732777):0.0000021144,Paroedura_picta:0.0000009997):0.0000022556):0.0027688045,Lepidophyma_flavimaculatum:0.0038491710):0.0000023466,Smaug_mossambicus:0.0000009997):0.0000024226,Eublepharis_macularius:0.0027736167):0.0000020501,Lacerta_bilineata:0.0000009997):0.0000009998,Rhineura_floridana:0.0114442016):0.0027737233):0.0000022662,Lichanura_trivirgata:0.0000009997):0.0000009998,Micrurus_fulvius:0.0000009997):0.0000009998):0.0000009998,Chilabothrus_striatus:0.0000009997):0.0000009998,((((((((((Anolis_carolinensis:0.0085028365,(Leiocephalus_personatus:0.0000009997,Phymaturus_palluma:0.0062779987):0.0000009998):0.0027135558,Morunasaurus_annularis:0.0000009997):0.0000275849,Leiosaurus_catamarcensis:0.0000009997):0.0000342233,(((Gallus_gallus:0.0496383790,Gambelia_wislizenii:0.0000021127):0.0000022106,Homalopsis_buccata:0.0000009997):0.0027722922,(Plica_plica:0.0000020446,Uranoscodon_superciliosus:0.0072795326):0.0072592062):0.0000023903):0.0027813242,Phrynosoma_platyrhinos:0.0000009997):0.0000029013,Crotaphytus_collaris:0.0000009997):0.0000022184,(Rena_humilis:0.0000009997,Sauromalus_ater:0.0000009997):0.0000009998):0.0000023453,Basiliscus_basiliscus:0.0000009997):0.0000023184,Cordylosaurus_subtessellatus:0.0000009997):0.0027672284,Lampropeltis_getula:0.0000009997):0.0000024480):0.0000009998,((((Bothrops_asper:0.0000009997,Crotalus_horridus:0.0000022515):0.0027786367,Deinagkistrodon_acutus:0.0027808829):0.0000023947,Protobothrops_mucrosquamatus:0.0028104075):0.0027807776,Ophiophagus_hannah:0.0027744997):0.0000022289):0.0000026783,Hydrosaurus_pustulatus:0.0027739153);
+
+ALISIM COMMAND
+--------------
+To simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis, you can use the following command:
+
+--alisim simulated_MSA -t ./test/dm_Mix_12.treefile -m "TNe{9.80283,4.23203}+FQ+R2{0.979246,0.690432,0.0207544,15.6062}" --length 354
+
+To mimic the alignment used to produce this analysis, i.e. simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis *and* copying the same gap positions as the original alignment, you can use the following command:
+
+iqtree -s ../datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gappyout/UCE-1021_single_taxon_Adjusted_MAFFT_Aligned_relabeled_trimmed.phy --alisim mimicked_MSA
+
+To simulate any number of alignments in either of the two commandlines above, use the --num-alignments options, for example mimic 100 alignments you would use the command line:
+
+iqtree -s ../datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gappyout/UCE-1021_single_taxon_Adjusted_MAFFT_Aligned_relabeled_trimmed.phy --alisim mimicked_MSA --num-alignments 100
+
+For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
+
+TIME STAMP
+----------
+
+Date and time: Wed Aug 23 04:21:51 2023
+Total CPU time used: 24.41684 seconds (0h:0m:24s)
+Total wall-clock time used: 24.85739 seconds (0h:0m:24s)
+

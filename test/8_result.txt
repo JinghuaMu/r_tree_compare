@@ -1,0 +1,27 @@
+The phylogenic analysis result for one model: 
+Best model:  K3Pu+F+G4 
+Tree length: 2.4100(inner: 0.8977)
+Log-likelihood:  -7703.7776 
+Number of free parameters:  125 
+AIC, AICc, BIC:  15657.5551 15689.5673 16284.0695 
+Model parameters:  
+Model parameters: 
+"x"
+"K3Pu{1,2.9349,0.6907,0.6907,2.9349,1}+F{0.3183,0.1791,0.1861,0.3164}"
+Rate heterogeneity:  
+    Rate: 0.01432 0.1689 0.7121 3.105 
+    Prop: 0.25 0.25 0.25 0.25 
+--------------------------------------------- 
+The phylogenic analysis result for mix model: 
+Best model:  K3Pu+FO+G4 
+Tree length: 2.3992(inner: 0.8554)
+Log-likelihood:  -7701.3965 
+Number of free parameters:  125 
+AIC, AICc, BIC:  15652.7931 15684.8053 16279.3075 
+Model parameters:  
+Model parameters: 
+"x"
+"K3Pu{1,2.9378,0.7231,0.7231,2.9378,1}+FO{0.3161,0.1904,0.1974,0.2961}"
+Rate heterogeneity:  
+    Rate: 0.01435 0.169 0.7123 3.104 
+    Prop: 0.25 0.25 0.25 0.25 

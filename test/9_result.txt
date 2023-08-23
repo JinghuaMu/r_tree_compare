@@ -1,0 +1,30 @@
+The phylogenic analysis result for one model: 
+Best model:  TIM3e+G4 
+Tree length: 6.2684(inner: 1.4628)
+Log-likelihood:  -10222.1235 
+Number of free parameters:  127 
+AIC, AICc, BIC:  20698.2471 20732.7976 21330.0059 
+Model parameters:  
+Model parameters: 
+"x"
+"TIM3e{1.378,4.1984,1,1.378,2.7972,1}+G4{0.25,0.25,0.25,0.25}"
+Rate heterogeneity:  
+    Rate: 0.07654 0.3687 0.9289 2.626 
+    Prop: 0.25 0.25 0.25 0.25 
+--------------------------------------------- 
+The phylogenic analysis result for mix model: 
+Best model:  MIX{HKY+FO,F81+FO,HKY+FO,TPM2+FO}+R3 
+Tree length: 14.6017(inner: 2.6257)
+Log-likelihood:  -10095.0983 
+Number of free parameters:  143 
+AIC, AICc, BIC:  20476.1966 20520.7199 21187.5471 
+Model parameters:  
+Model parameters: 
+"x"
+"HKY{0.144041}+FO{0.0213314,0.627299,0.0232524,0.328118}"
+"F81+FO{0.329685,0.076542,0.543659,0.0501143}"
+"HKY{2.65409}+FO{0.32092,0.408461,0.137898,0.132721}"
+"TPM2{0.443809,1.30024}+FQ"
+Rate heterogeneity:  
+    Rate: 0.0555 1.1827 3.2835 
+    Prop: 0.3792 0.5043 0.1165 

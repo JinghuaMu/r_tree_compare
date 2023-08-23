@@ -1,0 +1,27 @@
+The phylogenic analysis result for one model: 
+Best model:  TPM2u+F+G4 
+Tree length: 3.4695(inner: 0.9638)
+Log-likelihood:  -6845.2137 
+Number of free parameters:  137 
+AIC, AICc, BIC:  13964.4275 14010.2602 14631.6248 
+Model parameters:  
+Model parameters: 
+"x"
+"TPM2u{0.6872,3.3461,0.6872,1,3.3461,1}+F{0.3087,0.2307,0.1706,0.29}"
+Rate heterogeneity:  
+    Rate: 0.01539 0.1748 0.721 3.089 
+    Prop: 0.25 0.25 0.25 0.25 
+--------------------------------------------- 
+The phylogenic analysis result for mix model: 
+Best model:  TPM2u+FO+G4 
+Tree length: 3.4475(inner: 0.8202)
+Log-likelihood:  -6841.0428 
+Number of free parameters:  137 
+AIC, AICc, BIC:  13956.0855 14001.9183 14623.2829 
+Model parameters:  
+Model parameters: 
+"x"
+"TPM2u{0.6818,3.3581,0.6818,1,3.3581,1}+FO{0.3286,0.208,0.1801,0.2833}"
+Rate heterogeneity:  
+    Rate: 0.01564 0.1761 0.723 3.085 
+    Prop: 0.25 0.25 0.25 0.25 

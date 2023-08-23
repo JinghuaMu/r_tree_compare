@@ -1,0 +1,27 @@
+The phylogenic analysis result for one model: 
+Best model:  TIM2+F+I+G4 
+Tree length: 4.3235(inner: 1.6874)
+Log-likelihood:  -8631.5392 
+Number of free parameters:  119 
+AIC, AICc, BIC:  17501.0785 17535.1596 18079.9954 
+Model parameters:  
+Model parameters: 
+"x"
+"TIM2{0.6722,3.1532,0.6722,1,2.3434,1}+F{0.3014,0.2265,0.1616,0.3105}"
+Rate heterogeneity:  
+    Rate: 0 0.2969 0.7634 1.351 2.721 
+    Prop: 0.2206 0.1948 0.1948 0.1948 0.1948 
+--------------------------------------------- 
+The phylogenic analysis result for mix model: 
+Best model:  HKY+FO+I+G4 
+Tree length: 4.3565(inner: 1.6985)
+Log-likelihood:  -8630.0452 
+Number of free parameters:  117 
+AIC, AICc, BIC:  17494.0903 17526.9618 18063.2775 
+Model parameters:  
+Model parameters: 
+"x"
+"HKY{1,3.3543,1,1,3.3543,1}+FO{0.2846,0.2131,0.1968,0.3056}"
+Rate heterogeneity:  
+    Rate: 0 0.3133 0.7857 1.37 2.721 
+    Prop: 0.2293 0.1927 0.1927 0.1927 0.1927 

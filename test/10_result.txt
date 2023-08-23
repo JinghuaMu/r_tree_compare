@@ -1,0 +1,27 @@
+The phylogenic analysis result for one model: 
+Best model:  TVM+F+I+G4 
+Tree length: 3.3951(inner: 1.2437)
+Log-likelihood:  -9445.4414 
+Number of free parameters:  114 
+AIC, AICc, BIC:  19118.8828 19145.1028 19690.7763 
+Model parameters:  
+Model parameters: 
+"x"
+"TVM{0.9927,2.5747,0.3633,1.211,2.5747,1}+F{0.3117,0.17,0.2076,0.3106}"
+Rate heterogeneity:  
+    Rate: 0 0.3 0.8045 1.457 3.008 
+    Prop: 0.2817 0.1796 0.1796 0.1796 0.1796 
+--------------------------------------------- 
+The phylogenic analysis result for mix model: 
+Best model:  GTR+FO+I+G4 
+Tree length: 3.3784(inner: 1.1710)
+Log-likelihood:  -9434.8835 
+Number of free parameters:  115 
+AIC, AICc, BIC:  19099.7670 19126.4737 19676.6771 
+Model parameters:  
+Model parameters: 
+"x"
+"GTR{0.927,2.1224,0.4139,0.9849,2.9018,1}+FO{0.3099,0.1876,0.2273,0.2753}"
+Rate heterogeneity:  
+    Rate: 0 0.3318 0.8473 1.493 2.996 
+    Prop: 0.2943 0.1764 0.1764 0.1764 0.1764 
