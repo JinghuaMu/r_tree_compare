@@ -11,9 +11,9 @@ output:
 ---
 ---
 ## Gene information
-Reference:  Portik, D.M. and Wiens, J.J. (2021) Do Alignment and Trimming Methods Matter for Phylogenomic (UCE) Analyses? Systematic Biology, 70 (3), pp. 440–462.
-Alignment name: Squamates-UCE-MAFFT-Auto-gt
-Alignment type: UCE(Ultra Conserved Element)
+**Reference**:  Portik, D.M. and Wiens, J.J. (2021) Do Alignment and Trimming Methods Matter for Phylogenomic (UCE) Analyses? Systematic Biology, 70 (3), pp. 440–462.  
+**Alignment name**: Squamates-UCE-MAFFT-Auto-gt  
+**Alignment type**: UCE(Ultra Conserved Element)  
 
 ## Package requirement
 Multi-alignment reading: Biostrings  
@@ -98,6 +98,19 @@ output <- paste(
   sep = ""
 )
 cat(output)
+
+# Create a data frame for the alignment summary
+
+alignment_summary <- data.frame(
+  "Locus name" = gene_name,
+  "Length" = algn_length,
+  "Ntax" = taxa_num,
+  "percent_constant" = constant_site_ratio * 100,
+  "percent_parsimony_informative" = 100 - constant_site_ratio,
+  "site_patterns" = "DNA")
+
+# Print the alignment summary
+knitr::kable(alignment_summary, digit = 2, caption = "Alignment Summary")
 
 
 # Visualization
@@ -207,7 +220,7 @@ model_summary_table <- rbind(summary_table(sum_one),summary_table(sum_mix))
 model_summary_table <- cbind(Model = c("One_class","Mixture"), model_summary_table)
 best_model <- model_summary_table$Model[[which.min(model_summary_table$BIC)]]
 model_summary_table <- cbind(model_summary_table, Best = rep(best_model, 2))
-knitr::kable(model_summary_table, digits = 4)
+knitr::kable(model_summary_table, digits = 4, , caption = "Model Summary")
 ```
 
 ### Calculate and compare the tree distances
@@ -327,7 +340,7 @@ for (comb in tree_combinations) {
 }
 
 # Print the resulting data frame
-knitr::kable(result_df, digits = 4)
+knitr::kable(result_df, digits = 4, , caption = "Tree distance Summary")
 
 ```
 

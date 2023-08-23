@@ -1562,9 +1562,9 @@ border-radius: 0px;
 <hr />
 <div id="gene-information" class="section level2">
 <h2>Gene information</h2>
-<p>Reference: Portik, D.M. and Wiens, J.J. (2021) Do Alignment and Trimming Methods Matter for Phylogenomic (UCE) Analyses? Systematic Biology, 70 (3), pp. 440–462.
-Alignment name: Squamates-UCE-MAFFT-Auto-gt
-Alignment type: UCE(Ultra Conserved Element)</p>
+<p><strong>Reference</strong>: Portik, D.M. and Wiens, J.J. (2021) Do Alignment and Trimming Methods Matter for Phylogenomic (UCE) Analyses? Systematic Biology, 70 (3), pp. 440–462.<br />
+<strong>Alignment name</strong>: Squamates-UCE-MAFFT-Auto-gt<br />
+<strong>Alignment type</strong>: UCE(Ultra Conserved Element)</p>
 </div>
 <div id="package-requirement" class="section level2">
 <h2>Package requirement</h2>
@@ -1656,6 +1656,49 @@ cat(output)</code></pre>
 ## Proportion of identical seq pairs: 0
 ## Base frequency: A:0.16 ,C:0.08 ,G:0.1 , T:0.15 , Other:0.51
 ## GC content (without &#39;other&#39;): 0.35</code></pre>
+<pre class="r"><code># Create a data frame for the alignment summary
+
+alignment_summary &lt;- data.frame(
+  &quot;Locus name&quot; = gene_name,
+  &quot;Length&quot; = algn_length,
+  &quot;Ntax&quot; = taxa_num,
+  &quot;percent_constant&quot; = constant_site_ratio * 100,
+  &quot;percent_parsimony_informative&quot; = 100 - constant_site_ratio,
+  &quot;site_patterns&quot; = &quot;DNA&quot;)
+
+# Print the alignment summary
+knitr::kable(alignment_summary, digit = 2, caption = &quot;Alignment Summary&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-2">Table 1: </span>Alignment Summary</caption>
+<colgroup>
+<col width="13%" />
+<col width="8%" />
+<col width="5%" />
+<col width="20%" />
+<col width="35%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Locus.name</th>
+<th align="right">Length</th>
+<th align="right">Ntax</th>
+<th align="right">percent_constant</th>
+<th align="right">percent_parsimony_informative</th>
+<th align="left">site_patterns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">UCE-1048</td>
+<td align="right">1128</td>
+<td align="right">61</td>
+<td align="right">40.69</td>
+<td align="right">99.59</td>
+<td align="left">DNA</td>
+</tr>
+</tbody>
+</table>
 <pre class="r"><code># Visualization
 # Extract a 100-bp window with lowest dominant base ratio
 window_size &lt;- 100
@@ -1780,8 +1823,9 @@ The phylogenic analysis result for mix model:\n&quot;)</code></pre>
 model_summary_table &lt;- cbind(Model = c(&quot;One_class&quot;,&quot;Mixture&quot;), model_summary_table)
 best_model &lt;- model_summary_table$Model[[which.min(model_summary_table$BIC)]]
 model_summary_table &lt;- cbind(model_summary_table, Best = rep(best_model, 2))
-knitr::kable(model_summary_table, digits = 4)</code></pre>
+knitr::kable(model_summary_table, digits = 4, , caption = &quot;Model Summary&quot;)</code></pre>
 <table>
+<caption><span id="tab:unnamed-chunk-6">Table 2: </span>Model Summary</caption>
 <colgroup>
 <col width="5%" />
 <col width="13%" />
@@ -1954,8 +1998,9 @@ for (comb in tree_combinations) {
 <pre><code>## one tree is unrooted, unrooted both
 ## one tree is unrooted, unrooted both</code></pre>
 <pre class="r"><code># Print the resulting data frame
-knitr::kable(result_df, digits = 4)</code></pre>
+knitr::kable(result_df, digits = 4, , caption = &quot;Tree distance Summary&quot;)</code></pre>
 <table>
+<caption><span id="tab:unnamed-chunk-7">Table 3: </span>Tree distance Summary</caption>
 <colgroup>
 <col width="8%" />
 <col width="8%" />
