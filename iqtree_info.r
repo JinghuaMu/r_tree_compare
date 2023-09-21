@@ -144,7 +144,7 @@ short_description <- function(summarise_list) {
   cat("Model parameters: \n")
   print(summarise_list$model_info$Parameters)
   cat("Rate heterogeneity: \n")
-  if (nrow(summarise_list$RHAS) > 0) {
+  if (!is.null(summarise_list$RHAS)){
     cat("    Rate:", summarise_list$RHAS$Relative_rate, "\n")
     cat("    Prop:", summarise_list$RHAS$Proportion, "\n")
   } else {

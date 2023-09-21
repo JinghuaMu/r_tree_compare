@@ -33,7 +33,14 @@ knitr::opts_chunk$set(echo = TRUE,message = FALSE, warning = FALSE)
 **Type:** Aligned DNA BUSCO loci
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-load(paste(params$workingdict,"path_info.RData", sep = ""))
+# Read path data
+path_data <- readLines(paste(params$workingdict,"path_info.txt", sep = ""))
+path_data_list <- gsub(".*=", "", path_data)
+names(path_data_list) <- gsub("=.*", "", path_data)
+for (i in seq_along(path_data_list)) {
+  assign(names(path_data_list)[i], path_data_list[i])
+}
+
 library(Biostrings)
 
 if (tools::file_ext(gene_file) == "fasta") {
@@ -43,16 +50,6 @@ if (tools::file_ext(gene_file) == "fasta") {
 } else {
   stop("Unknown file format!")
 }
-
-```
-
-## Command of model
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-# Command of run one class model iq-tree
-system2(command = iqtree_loc, args = arg_single, stdout = FALSE)
-# Command of run mixture class model iq-tree
-system2(command = iqtree_loc, args = arg_mix, stdout = FALSE)
 
 ```
 
