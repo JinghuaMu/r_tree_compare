@@ -1,0 +1,426 @@
+IQ-TREE 2.2.2.7.modelmix COVID-edition built Jul 13 2023
+
+Input file name: ../datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gt/UCE-1018_single_taxon_Adjusted_MAFFT_Aligned_relabeled_trimmed.phy
+Type of analysis: ModelFinder + tree reconstruction + ultrafast bootstrap (1000 replicates)
+Random seed number: 652259
+
+REFERENCES
+----------
+
+To cite IQ-TREE please use:
+
+Bui Quang Minh, Heiko A. Schmidt, Olga Chernomor, Dominik Schrempf,
+Michael D. Woodhams, Arndt von Haeseler, and Robert Lanfear (2020)
+IQ-TREE 2: New models and efficient methods for phylogenetic inference
+in the genomic era. Mol. Biol. Evol., in press.
+https://doi.org/10.1093/molbev/msaa015
+
+To cite ModelFinder please use: 
+
+Subha Kalyaanamoorthy, Bui Quang Minh, Thomas KF Wong, Arndt von Haeseler,
+and Lars S Jermiin (2017) ModelFinder: Fast model selection for
+accurate phylogenetic estimates. Nature Methods, 14:587–589.
+https://doi.org/10.1038/nmeth.4285
+
+Since you used ultrafast bootstrap (UFBoot) please also cite: 
+
+Diep Thi Hoang, Olga Chernomor, Arndt von Haeseler, Bui Quang Minh,
+and Le Sy Vinh (2018) UFBoot2: Improving the ultrafast bootstrap
+approximation. Mol. Biol. Evol., 35:518–522.
+https://doi.org/10.1093/molbev/msx281
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 54 sequences with 1115 nucleotide sites
+Number of constant sites: 435 (= 39.0135% of all sites)
+Number of invariant (constant or ambiguous constant) sites: 435 (= 39.0135% of all sites)
+Number of parsimony informative sites: 515
+Number of distinct site patterns: 746
+
+ModelFinder
+-----------
+
+Best-fit model according to BIC: TVM+F+I+G4
+
+List of models sorted by BIC scores: 
+
+Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC
+TVM+F+I+G4        -9458.964   19145.929 -   0.0248   19172.149 -   0.0443   19717.822 +    0.585
+GTR+F+I+G4        -9456.095   19142.190 +    0.161   19168.897 +    0.225   19719.100 +    0.309
+GTR+F+I+R2        -9454.129   19140.257 +    0.422   19167.455 +    0.463   19722.184 +   0.0661
+TVM+F+I+R2        -9458.160   19146.321 -   0.0204   19173.028 -   0.0285   19723.231 -   0.0392
+GTR+F+I+R3        -9452.337   19140.674 +    0.343   19168.870 +    0.228   19732.633 - 0.000356
+GTR+F+G4          -9466.684   19161.367 -  1.1e-05   19187.587 - 1.97e-05   19733.261 -  0.00026
+K3P+I+G4          -9488.400   19194.800 - 6.05e-13   19218.661 - 3.52e-12   19741.611 -    4e-06
+GTR+F+R4          -9454.960   19147.921 -  0.00915   19176.624 -  0.00473   19744.897 - 7.73e-07
+K3P+I+R2          -9486.779   19193.559 - 1.13e-12   19217.882 -  5.2e-12   19745.386 - 6.05e-07
+GTR+F+R3          -9462.824   19159.647 -  2.6e-05   19187.342 - 2.22e-05   19746.591 - 3.31e-07
+TIMe+I+G4         -9487.904   19195.807 - 3.66e-13   19220.130 - 1.69e-12   19747.634 - 1.97e-07
+K2P+I+G4          -9495.194   19206.389 - 1.84e-15   19229.792 - 1.35e-14   19748.183 - 1.49e-07
+TPM2u+F+I+G4      -9481.820   19187.640 - 2.17e-11   19212.902 - 6.27e-11   19749.501 - 7.73e-08
+TPM3u+F+I+G4      -9482.303   19188.605 - 1.34e-11   19213.867 - 3.87e-11   19750.466 - 4.77e-08
+TIM3+F+I+G4       -9478.864   19183.728 - 1.53e-10   19209.466 - 3.49e-10   19750.605 - 4.45e-08
+TIMe+I+R2         -9486.051   19194.103 - 8.58e-13   19218.892 - 3.13e-12   19750.946 - 3.75e-08
+TPM2+I+G4         -9493.268   19204.536 - 4.65e-15   19228.396 - 2.71e-14   19751.346 - 3.07e-08
+TIM2+F+I+G4       -9479.433   19184.866 - 8.69e-11   19210.604 - 1.98e-10   19751.743 - 2.52e-08
+K2P+I+R2          -9493.610   19205.220 -  3.3e-15   19229.081 - 1.92e-14   19752.031 - 2.18e-08
+TIM3+F+I+R2       -9476.174   19180.347 - 8.32e-10   19206.567 - 1.49e-09   19752.241 - 1.97e-08
+TVMe+I+G4         -9486.992   19195.984 - 3.35e-13   19220.774 - 1.22e-12   19752.828 - 1.47e-08
+GTR+F+R5          -9452.198   19146.397 -   0.0196   19176.129 -  0.00605   19753.407 -  1.1e-08
+TPM2u+F+I+R2      -9480.429   19186.858 - 3.21e-11   19212.596 -  7.3e-11   19753.734 - 9.31e-09
+TNe+I+G4          -9494.692   19207.385 - 1.12e-15   19231.246 - 6.51e-15   19754.195 - 7.39e-09
+TIM2+F+I+R2       -9477.164   19182.327 - 3.09e-10   19208.547 - 5.53e-10   19754.221 -  7.3e-09
+TPM3u+F+I+R2      -9480.784   19187.569 - 2.25e-11   19213.307 - 5.12e-11   19754.446 - 6.53e-09
+TPM2+I+R2         -9491.414   19202.827 - 1.09e-14   19227.150 - 5.05e-14   19754.654 - 5.88e-09
+TPM3+I+G4         -9495.228   19208.456 - 6.55e-16   19232.316 - 3.81e-15   19755.266 - 4.33e-09
+TVMe+I+R2         -9485.041   19194.082 - 8.66e-13   19219.344 -  2.5e-12   19755.943 - 3.09e-09
+K3Pu+F+I+G4       -9485.358   19194.716 - 6.31e-13   19219.977 - 1.82e-12   19756.576 - 2.25e-09
+TIM2e+I+G4        -9492.726   19205.453 - 2.94e-15   19229.775 - 1.36e-14   19757.280 - 1.58e-09
+TNe+I+R2          -9492.843   19205.686 - 2.62e-15   19230.009 - 1.21e-14   19757.513 - 1.41e-09
+TIM+F+I+G4        -9482.505   19191.011 - 4.02e-12   19216.749 - 9.15e-12   19757.888 - 1.17e-09
+SYM+I+G4          -9486.455   19196.911 - 2.11e-13   19222.172 - 6.08e-13   19758.771 - 7.51e-10
+TPM3+I+R2         -9493.498   19206.996 - 1.36e-15   19231.319 - 6.28e-15   19758.823 - 7.31e-10
+TIM+F+I+R2        -9480.070   19188.140 - 1.69e-11   19214.360 - 3.02e-11   19760.033 - 3.99e-10
+TIM2e+I+R2        -9490.596   19203.192 - 9.11e-15   19227.982 - 3.33e-14   19760.036 - 3.99e-10
+K3Pu+F+I+R2       -9483.853   19193.705 - 1.05e-12   19219.444 - 2.38e-12   19760.582 - 3.03e-10
+TIM3e+I+G4        -9494.685   19209.370 - 4.15e-16   19233.692 - 1.92e-15   19761.197 - 2.23e-10
+SYM+I+R2          -9484.250   19194.501 - 7.03e-13   19220.239 -  1.6e-12   19761.378 - 2.04e-10
+TIM3e+I+R2        -9492.732   19207.464 - 1.08e-15   19232.254 - 3.93e-15   19764.308 - 4.71e-11
+HKY+F+I+G4        -9498.725   19219.451 - 2.69e-18   19244.240 - 9.81e-18   19776.295 - 1.18e-13
+TN+F+I+G4         -9495.943   19215.887 -  1.6e-17   19241.148 - 4.61e-17   19777.747 - 5.69e-14
+TN+F+I+R2         -9493.369   19212.739 -  7.7e-17   19238.477 - 1.75e-16   19779.615 - 2.23e-14
+HKY+F+I+R2        -9497.039   19218.079 - 5.33e-18   19243.340 - 1.54e-17   19779.939 -  1.9e-14
+GTR+F+R2          -9493.112   19216.223 - 1.35e-17   19242.930 - 1.89e-17   19793.133 - 2.59e-17
+GTR+F+I           -9529.114   19286.228 - 8.48e-33   19312.448 - 1.52e-32   19858.122 -    2e-31
+JC+I+G4           -9699.435   19612.869 - 9.98e-104   19635.821 - 9.15e-103   20149.646 - 9.95e-95
+JC+I+R2           -9696.831   19609.661 - 4.96e-103   19633.065 - 3.63e-102   20151.455 - 4.03e-95
+F81+F+I+G4        -9717.708   19655.415 - 5.76e-113   19679.738 - 2.66e-112   20207.242 - 3.1e-107
+F81+F+I+R2        -9714.593   19651.187 - 4.77e-112   19675.976 - 1.74e-111   20208.030 - 2.09e-107
+GTR+F             -9927.625   20081.250 - 1.96e-205   20106.988 - 4.45e-205   20648.127 - 5.68e-203
+
+AIC, w-AIC   : Akaike information criterion scores and weights.
+AICc, w-AICc : Corrected AIC scores and weights.
+BIC, w-BIC   : Bayesian information criterion scores and weights.
+
+Plus signs denote the 95% confidence sets.
+Minus signs denote significant exclusion.
+
+SUBSTITUTION PROCESS
+--------------------
+
+Model of substitution: TVM+F+I+G4
+
+Rate parameter R:
+
+  A-C: 1.0036
+  A-G: 2.5822
+  A-T: 0.3601
+  C-G: 1.2080
+  C-T: 2.5822
+  G-T: 1.0000
+
+State frequencies: (empirical counts from alignment)
+
+  pi(A) = 0.3117
+  pi(C) = 0.17
+  pi(G) = 0.2076
+  pi(T) = 0.3106
+
+Rate matrix Q:
+
+  A   -0.8207    0.1711    0.5375    0.1121
+  C    0.3137    -1.369    0.2515    0.8041
+  G     0.807    0.2059    -1.324    0.3114
+  T    0.1125    0.4402    0.2082   -0.7609
+
+Model of rate heterogeneity: Invar+Gamma with 4 categories
+Proportion of invariable sites: 0.279
+Gamma shape alpha: 1.392
+
+ Category  Relative_rate  Proportion
+  0         0              0.279
+  1         0.2886         0.1803
+  2         0.7898         0.1803
+  3         1.447          0.1803
+  4         3.022          0.1803
+Relative rates are computed as MEAN of the portion of the Gamma distribution falling in the category.
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -9445.3374 (s.e. 202.5332)
+Unconstrained log-likelihood (without tree): -6672.1833
+Number of free parameters (#branches + #model parameters): 114
+Akaike information criterion (AIC) score: 19118.6748
+Corrected Akaike information criterion (AICc) score: 19144.8948
+Bayesian information criterion (BIC) score: 19690.5683
+
+Total tree length (sum of branch lengths): 3.4443
+Sum of internal branch lengths: 1.1738 (34.0812% of tree length)
+
+WARNING: 25 near-zero internal branches (<0.0009) should be treated with caution
+         Such branches are denoted by '**' in the figure below
+
+NOTE: Tree is UNROOTED although outgroup taxon 'Alligator_mississippiensis' is drawn at root
+Numbers in parentheses are  ultrafast bootstrap support (%)
+
++--Alligator_mississippiensis
+|
+|                                                       +----------Anolis_carolinensis
+|                                                    +**| (33)
+|                                                    |  +**Sauromalus_ater
+|                                                 +**| (32)
+|                                                 |  +--Oplurus_cyclurus
+|                                              +**| (31)
+|                                              |  +--Basiliscus_basiliscus
+|                                           +**| (5)
+|                                           |  +--Gambelia_wislizenii
+|                                        +**| (5)
+|                                        |  |  +--Phrynosoma_platyrhinos
+|                                        |  +--| (68)
+|                                        |     +--Polychrus_acutirostris
+|                                     +**| (5)
+|                                     |  +**Leiosaurus_catamarcensis
+|                                  +**| (8)
+|                                  |  +**Uma_scoparia
+|                               +**| (9)
+|                               |  +**Pristidactylus_torquatus
+|                            +**| (16)
+|                            |  +**Leiocephalus_personatus
+|                         +--| (66)
+|                         |  |     +**Plestiodon_fasciatus
+|                         |  |  +--| (96)
+|                         |  |  |  +**Uta_stansburiana
+|                         |  +--| (64)
+|                         |     +--Tropidophis_haetianus
+|                      +**| (40)
+|                      |  +**Corytophanes_cristatus
+|                   +--| (44)
+|                   |  +-----------Trapelus_agilis
+|                +--| (78)
+|                |  |               +----------------Brookesia_brygooi
+|                |  |           +---| (36)
+|                |  |           |   |       +--Lacerta_bilineata
+|                |  |           |   +-------| (100)
+|                |  |           |           +**Rhineura_floridana
+|                |  |        +--| (29)
+|                |  |        |  |  +-----Dopasia_gracilis
+|                |  |        |  +--| (53)
+|                |  |        |     |   +**Homalopsis_buccata
+|                |  |        |     +---| (100)
+|                |  |        |         +**Shinisaurus_crocodilurus
+|                |  |     +--| (21)
+|                |  |     |  |                 +**Calabaria_reinhardtii
+|                |  |     |  |              +**| (6)
+|                |  |     |  |              |  |  +**Chilabothrus_striatus
+|                |  |     |  |              |  +**| (3)
+|                |  |     |  |              |     |              +--Crotalus_horridus
+|                |  |     |  |              |     |           +**| (31)
+|                |  |     |  |              |     |           |  |  +--Deinagkistrodon_acutus
+|                |  |     |  |              |     |           |  +**| (20)
+|                |  |     |  |              |     |           |     |  +**Lichanura_trivirgata
+|                |  |     |  |              |     |           |     +**| (20)
+|                |  |     |  |              |     |           |        +--Protobothrops_mucrosquamatus
+|                |  |     |  |              |     |        +--| (38)
+|                |  |     |  |              |     |        |  +--Vipera_berus
+|                |  |     |  |              |     |     +--| (50)
+|                |  |     |  |              |     |     |  |           +**Diadophis_punctatus
+|                |  |     |  |              |     |     |  |        +**| (17)
+|                |  |     |  |              |     |     |  |        |  |     +--Pantherophis_guttatus
+|                |  |     |  |              |     |     |  |        |  |  +--| (76)
+|                |  |     |  |              |     |     |  |        |  |  |  +--Thamnophis_sirtalis
+|                |  |     |  |              |     |     |  |        |  +**| (17)
+|                |  |     |  |              |     |     |  |        |     +**Pareas_hamptoni
+|                |  |     |  |              |     |     |  |     +**| (22)
+|                |  |     |  |              |     |     |  |     |  +**Lampropeltis_getula
+|                |  |     |  |              |     |     |  |  +**| (31)
+|                |  |     |  |              |     |     |  |  |  +--Micrurus_fulvius
+|                |  |     |  |              |     |     |  +--| (65)
+|                |  |     |  |              |     |     |     +--Ophiophagus_hannah
+|                |  |     |  |              |     |  +**| (9)
+|                |  |     |  |              |     |  |  +--Hydrosaurus_pustulatus
+|                |  |     |  |              |     +**| (6)
+|                |  |     |  |              |        |  +--Loxocemus_bicolor
+|                |  |     |  |              |        +--| (96)
+|                |  |     |  |              |           |  +**Python_molurus
+|                |  |     |  |              |           +**| (65)
+|                |  |     |  |              |              +--Xenopeltis_unicolor
+|                |  |     |  |           +**| (9)
+|                |  |     |  |           |  +--Liotyphlops_albirostris
+|                |  |     |  |        +**| (34)
+|                |  |     |  |        |  +**Stenocercus_guentheri
+|                |  |     |  +--------| (61)
+|                |  |     |           +-----Rena_humilis
+|                |  |  +**| (12)
+|                |  |  |  +**Xenosaurus_platyceps
+|                |  +--| (16)
+|                |     |  +--Cricosaura_typica
+|                |     +--| (40)
+|                |        +----------Pogona_vitticeps
+|             +--| (81)
+|             |  |        +-------------Eublepharis_macularius
+|             |  |     +--| (95)
+|             |  |     |  |             +--Gekko_japonicus
+|             |  |     |  +-------------| (100)
+|             |  |     |                +---------------------Paroedura_picta
+|             |  +-----| (98)
+|             |        +---Lialis_burtonis
+|  +----------| (100)
+|  |          +--Tiliqua_scincoides
++--| (93)
+|  +---Gallus_gallus
+|
++------Chrysemys_picta
+
+Tree in newick format:
+
+(Alligator_mississippiensis:0.0262620561,((((((((((((((((Anolis_carolinensis:0.1568704944,Sauromalus_ater:0.0000010084)33:0.0000029853,Oplurus_cyclurus:0.0366176183)32:0.0000022953,Basiliscus_basiliscus:0.0514586412)31:0.0000020957,Gambelia_wislizenii:0.0254397755)5:0.0000022402,(Phrynosoma_platyrhinos:0.0117811144,Polychrus_acutirostris:0.0239324260)68:0.0116034770)5:0.0000022697,Leiosaurus_catamarcensis:0.0000010084)5:0.0000023325,Uma_scoparia:0.0000010084)8:0.0000027299,Pristidactylus_torquatus:0.0000010084)9:0.0000027789,Leiocephalus_personatus:0.0000010084)16:0.0000021728,((Plestiodon_fasciatus:0.0000010084,Uta_stansburiana:0.0000010084)96:0.0113915362,Tropidophis_haetianus:0.0117539294)64:0.0112869451)66:0.0301296667,Corytophanes_cristatus:0.0000023934)40:0.0000027525,Trapelus_agilis:0.1690520893)44:0.0430171183,(((((Brookesia_brygooi:0.2444057266,(Lacerta_bilineata:0.0220614312,Rhineura_floridana:0.0000028421)100:0.1133468633)36:0.0557095866,(Dopasia_gracilis:0.0862300196,(Homalopsis_buccata:0.0000010084,Shinisaurus_crocodilurus:0.0000021711)100:0.0636156674)53:0.0243887747)29:0.0064739208,((((Calabaria_reinhardtii:0.0000010084,(Chilabothrus_striatus:0.0000025883,(((((Crotalus_horridus:0.0100019829,(Deinagkistrodon_acutus:0.0066998102,(Lichanura_trivirgata:0.0000029305,Protobothrops_mucrosquamatus:0.0019394576)20:0.0000020327)20:0.0000010085)31:0.0007398146,Vipera_berus:0.0149211902)38:0.0341039024,((((Diadophis_punctatus:0.0000010084,((Pantherophis_guttatus:0.0171919915,Thamnophis_sirtalis:0.0367599566)76:0.0040336266,Pareas_hamptoni:0.0000010084)17:0.0000029640)17:0.0000280546,Lampropeltis_getula:0.0000010084)22:0.0000023557,Micrurus_fulvius:0.0234853342)31:0.0000021596,Ophiophagus_hannah:0.0236740560)65:0.0034660680)50:0.0381649218,Hydrosaurus_pustulatus:0.0406991014)9:0.0000028098,(Loxocemus_bicolor:0.0233881640,(Python_molurus:0.0000025155,Xenopeltis_unicolor:0.0117982059)65:0.0000025174)96:0.0453264093)6:0.0000022604)3:0.0000020565)6:0.0000029849,Liotyphlops_albirostris:0.0463834439)9:0.0000024159,Stenocercus_guentheri:0.0000020454)34:0.0000025250,Rena_humilis:0.0860167987)61:0.1310542374)21:0.0200642289,Xenosaurus_platyceps:0.0000021779)12:0.0000024457,(Cricosaura_typica:0.0127670749,Pogona_vitticeps:0.1521751215)40:0.0144309775)16:0.0280383899)78:0.0374089110,((Eublepharis_macularius:0.1953683260,(Gekko_japonicus:0.0524496516,Paroedura_picta:0.3066234859)100:0.1974084194)95:0.0267424479,Lialis_burtonis:0.0639190625)98:0.0965142595)81:0.0254143154,Tiliqua_scincoides:0.0312094197)100:0.1575548015,Gallus_gallus:0.0662239245)93:0.0173427750,Chrysemys_picta:0.1058219443);
+
+CONSENSUS TREE
+--------------
+
+Consensus tree is constructed from 1000 bootstrap trees
+Log-likelihood of consensus tree: -9455.061446
+Robinson-Foulds distance between ML tree and consensus tree: 42
+
+Branches with support >0.000000% are kept (extended consensus)
+Branch lengths are optimized by maximum likelihood on original alignment
+Numbers in parentheses are bootstrap supports (%)
+
++--Alligator_mississippiensis
+|
+|                                                       +-------------Anolis_carolinensis
+|                                                    +--| (33)
+|                                                    |  +--Sauromalus_ater
+|                                                 +--| (32)
+|                                                 |  +--Oplurus_cyclurus
+|                                              +--| (31)
+|                                              |  +--Basiliscus_basiliscus
+|                                           +--| (12)
+|                                           |  +--Leiocephalus_personatus
+|                                        +--| (8)
+|                                        |  |  +--Leiosaurus_catamarcensis
+|                                        |  +--| (5)
+|                                        |     |  +--Pristidactylus_torquatus
+|                                        |     +--| (10)
+|                                        |        +--Uma_scoparia
+|                                     +--| (6)
+|                                     |  |  +--Phrynosoma_platyrhinos
+|                                     |  +--| (68)
+|                                     |     +--Polychrus_acutirostris
+|                                  +--| (16)
+|                                  |  +--Gambelia_wislizenii
+|                               +--| (66)
+|                               |  |     +--Plestiodon_fasciatus
+|                               |  |  +--| (96)
+|                               |  |  |  +--Uta_stansburiana
+|                               |  +--| (64)
+|                               |     +--Tropidophis_haetianus
+|                            +--| (40)
+|                            |  +--Corytophanes_cristatus
+|                         +--| (10)
+|                         |  |        +-------------Brookesia_brygooi
+|                         |  |     +--| (52)
+|                         |  |     |  +-------Trapelus_agilis
+|                         |  |  +--| (22)
+|                         |  |  |  |  +-----Dopasia_gracilis
+|                         |  |  |  +--| (53)
+|                         |  |  |     |   +--Homalopsis_buccata
+|                         |  |  |     +---| (100)
+|                         |  |  |         +--Shinisaurus_crocodilurus
+|                         |  +--| (16)
+|                         |     |          +--Lacerta_bilineata
+|                         |     +----------| (100)
+|                         |                +--Rhineura_floridana
+|                      +--| (10)
+|                      |  +--Xenosaurus_platyceps
+|                   +--| (10)
+|                   |  |                 +--Calabaria_reinhardtii
+|                   |  |              +--| (10)
+|                   |  |              |  |  +--Chilabothrus_striatus
+|                   |  |              |  +--| (10)
+|                   |  |              |     |              +--Crotalus_horridus
+|                   |  |              |     |           +--| (66)
+|                   |  |              |     |           |  |  +--Deinagkistrodon_acutus
+|                   |  |              |     |           |  +--| (50)
+|                   |  |              |     |           |     +--Protobothrops_mucrosquamatus
+|                   |  |              |     |        +--| (64)
+|                   |  |              |     |        |  +--Vipera_berus
+|                   |  |              |     |     +--| (56)
+|                   |  |              |     |     |  |              +--Diadophis_punctatus
+|                   |  |              |     |     |  |           +**| (21)
+|                   |  |              |     |     |  |           |  |  +--Pantherophis_guttatus
+|                   |  |              |     |     |  |           |  +--| (76)
+|                   |  |              |     |     |  |           |     +--Thamnophis_sirtalis
+|                   |  |              |     |     |  |        +**| (17)
+|                   |  |              |     |     |  |        |  +--Pareas_hamptoni
+|                   |  |              |     |     |  |     +--| (22)
+|                   |  |              |     |     |  |     |  +--Lampropeltis_getula
+|                   |  |              |     |     |  |  +--| (31)
+|                   |  |              |     |     |  |  |  +--Micrurus_fulvius
+|                   |  |              |     |     |  +--| (65)
+|                   |  |              |     |     |     +--Ophiophagus_hannah
+|                   |  |              |     |  +--| (50)
+|                   |  |              |     |  |  +--Lichanura_trivirgata
+|                   |  |              |     +--| (14)
+|                   |  |              |        |  +--Loxocemus_bicolor
+|                   |  |              |        +--| (96)
+|                   |  |              |           |  +--Python_molurus
+|                   |  |              |           +--| (65)
+|                   |  |              |              +--Xenopeltis_unicolor
+|                   |  |           +--| (14)
+|                   |  |           |  |  +--Hydrosaurus_pustulatus
+|                   |  |           |  +--| (40)
+|                   |  |           |     +--Stenocercus_guentheri
+|                   |  |        +--| (34)
+|                   |  |        |  +--Liotyphlops_albirostris
+|                   |  +--------| (61)
+|                   |           +-----Rena_humilis
+|                +--| (78)
+|                |  |  +--Cricosaura_typica
+|                |  +--| (40)
+|                |     +----------Pogona_vitticeps
+|             +--| (81)
+|             |  |         +-------------Eublepharis_macularius
+|             |  |      +--| (95)
+|             |  |      |  |             +--Gekko_japonicus
+|             |  |      |  +-------------| (100)
+|             |  |      |                +--------------------Paroedura_picta
+|             |  +------| (98)
+|             |         +---Lialis_burtonis
+|  +----------| (100)
+|  |          +--Tiliqua_scincoides
++--| (93)
+|  +---Gallus_gallus
+|
++------Chrysemys_picta
+
+
+Consensus tree in newick format: 
+
+(Alligator_mississippiensis:0.0266174653,((((((((((((((((Anolis_carolinensis:0.2003224001,Sauromalus_ater:0.0000027516)33:0.0000027719,Oplurus_cyclurus:0.0371677264)32:0.0000028188,Basiliscus_basiliscus:0.0524873392)31:0.0000024294,Leiocephalus_personatus:0.0000027516)12:0.0000024294,(Leiosaurus_catamarcensis:0.0000027516,(Pristidactylus_torquatus:0.0000027516,Uma_scoparia:0.0000027516)10:0.0000027516)5:0.0000027516)8:0.0000024192,(Phrynosoma_platyrhinos:0.0119821969,Polychrus_acutirostris:0.0243428536)68:0.0117996687)6:0.0000024192,Gambelia_wislizenii:0.0258821579)16:0.0000024192,((Plestiodon_fasciatus:0.0000027516,Uta_stansburiana:0.0000027516)96:0.0116644155,Tropidophis_haetianus:0.0119549132)64:0.0115558165)66:0.0345391854,Corytophanes_cristatus:0.0000027516)40:0.0343810731,(((Brookesia_brygooi:0.2086536778,Trapelus_agilis:0.1238677007)52:0.0543596718,(Dopasia_gracilis:0.0865924478,(Homalopsis_buccata:0.0000027516,Shinisaurus_crocodilurus:0.0000027884)100:0.0633016739)53:0.0000021062)22:0.0251577107,(Lacerta_bilineata:0.0233472186,Rhineura_floridana:0.0000027516)100:0.1672885081)16:0.0080657348)10:0.0000021468,Xenosaurus_platyceps:0.0000027516)10:0.0063947247,((((Calabaria_reinhardtii:0.0000027516,(Chilabothrus_striatus:0.0000027516,(((((Crotalus_horridus:0.0100377775,(Deinagkistrodon_acutus:0.0067215897,Protobothrops_mucrosquamatus:0.0019479211)50:0.0000027516)66:0.0007384046,Vipera_berus:0.0149750499)64:0.0344011177,(((((Diadophis_punctatus:0.0000027516,(Pantherophis_guttatus:0.0172134090,Thamnophis_sirtalis:0.0368920889)76:0.0000649682)21:0.0000011810,Pareas_hamptoni:0.0000027516)17:0.0000011593,Lampropeltis_getula:0.0000027516)22:0.0000024428,Micrurus_fulvius:0.0240316279)31:0.0040272528,Ophiophagus_hannah:0.0237602046)65:0.0032873851)56:0.0233595600,Lichanura_trivirgata:0.0000027516)50:0.0155048005,(Loxocemus_bicolor:0.0239333185,(Python_molurus:0.0000025860,Xenopeltis_unicolor:0.0120773904)65:0.0000022751)96:0.0450810614)14:0.0000020194)10:0.0000028808)10:0.0000028808,(Hydrosaurus_pustulatus:0.0417183677,Stenocercus_guentheri:0.0000027516)40:0.0000026469)14:0.0000028988,Liotyphlops_albirostris:0.0471678071)34:0.0000020677,Rena_humilis:0.0877933810)61:0.1296467217)10:0.0147428905,(Cricosaura_typica:0.0124972272,Pogona_vitticeps:0.1675026523)40:0.0000027410)78:0.0497343223,((Eublepharis_macularius:0.1971875706,(Gekko_japonicus:0.0537334743,Paroedura_picta:0.3066699272)100:0.1974412995)95:0.0321012853,Lialis_burtonis:0.0631877697)98:0.0993080444)81:0.0254329387,Tiliqua_scincoides:0.0309035785)100:0.1648316752,Gallus_gallus:0.0655206969)93:0.0178175125,Chrysemys_picta:0.1054710221);
+
+ALISIM COMMAND
+--------------
+To simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis, you can use the following command:
+
+--alisim simulated_MSA -t ./test/UCE-1018/Single_UCE-1018.treefile -m "TVM{1.00361,2.58217,0.360108,1.20804}+F{0.311736,0.170041,0.207626,0.310597}+I{0.278991}+G4{1.39175}" --length 1115
+
+To mimic the alignment used to produce this analysis, i.e. simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis *and* copying the same gap positions as the original alignment, you can use the following command:
+
+iqtree -s ../datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gt/UCE-1018_single_taxon_Adjusted_MAFFT_Aligned_relabeled_trimmed.phy --alisim mimicked_MSA
+
+To simulate any number of alignments in either of the two commandlines above, use the --num-alignments options, for example mimic 100 alignments you would use the command line:
+
+iqtree -s ../datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gt/UCE-1018_single_taxon_Adjusted_MAFFT_Aligned_relabeled_trimmed.phy --alisim mimicked_MSA --num-alignments 100
+
+For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
+
+TIME STAMP
+----------
+
+Date and time: Thu Sep 21 08:52:29 2023
+Total CPU time used: 135.336871 seconds (0h:2m:15s)
+Total wall-clock time used: 136.3514642 seconds (0h:2m:16s)
+

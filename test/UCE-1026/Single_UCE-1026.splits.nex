@@ -1,0 +1,67 @@
+#nexus
+
+BEGIN Taxa;
+DIMENSIONS ntax=11;
+TAXLABELS
+[1] 'Alligator_mississippiensis'
+[2] 'Anolis_carolinensis'
+[3] 'Chrysemys_picta'
+[4] 'Dopasia_gracilis'
+[5] 'Eublepharis_macularius'
+[6] 'Gallus_gallus'
+[7] 'Gekko_japonicus'
+[8] 'Lacerta_bilineata'
+[9] 'Paroedura_picta'
+[10] 'Pogona_vitticeps'
+[11] 'Shinisaurus_crocodilurus'
+;
+END; [Taxa]
+
+BEGIN Splits;
+DIMENSIONS ntax=11 nsplits=41;
+FORMAT labels=no weights=yes confidences=no intervals=no;
+MATRIX
+	100	 2,
+	100	 10,
+	81	 2 10,
+	100	 8,
+	8	 2 8 10,
+	100	 4,
+	100	 11,
+	99	 4 11,
+	95	 2 4 8 10 11,
+	100	 5,
+	100	 7,
+	100	 9,
+	96	 7 9,
+	100	 5 7 9,
+	100	 1 3 6,
+	100	 3,
+	63	 1 6,
+	100	 6,
+	100	 1,
+	73	 4 8 11,
+	35	 1 3,
+	1	 2 5 7 9 10,
+	5	 4 8 10 11,
+	2	 3 6,
+	11	 2 4 10 11,
+	1	 4 8,
+	13	 2 4 8 11,
+	2	 5 7,
+	5	 2 4 11,
+	1	 2 8,
+	2	 1 2 3 6 10,
+	2	 5 9,
+	1	 4 5 7 9 11,
+	1	 5 7 9 10,
+	2	 8 10,
+	1	 5 7 8 9,
+	1	 1 3 6 10,
+	1	 8 11,
+	0	 1 3 6 8,
+	0	 4 10 11,
+	0	 2 5 7 9,
+;
+END; [Splits]
+

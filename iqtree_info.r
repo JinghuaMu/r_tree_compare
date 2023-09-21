@@ -24,12 +24,12 @@ summarise_iqtree <- function(file_path) {
   para_num <- length(model_components)
   iqtree_summarise$rate_type <- "None"
   if (grepl("R|G", model_components[para_num])){
-    if ((grepl("I", model_components[para_num - 1]))){
+    if (startsWith(model_components[para_num - 1], "I")){
       iqtree_summarise$rate_type <- paste(model_components[(para_num - 1):para_num], collapse = "+")
     } else {
       iqtree_summarise$rate_type <- model_components[para_num]
     }
-  } else if ((grepl("I", model_components[para_num]))){
+  } else if (startsWith(model_components[para_num], "I")){
     iqtree_summarise$rate_type <- model_components[para_num]
   }
   

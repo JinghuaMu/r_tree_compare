@@ -1,0 +1,141 @@
+IQ-TREE 2.2.2.7.modelmix COVID-edition built Jul 13 2023
+
+Input file name: ../datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gt/UCE-1025_single_taxon_Adjusted_MAFFT_Aligned_relabeled_trimmed.phy
+Type of analysis: tree reconstruction
+Random seed number: 494826
+
+REFERENCES
+----------
+
+To cite IQ-TREE please use:
+
+Bui Quang Minh, Heiko A. Schmidt, Olga Chernomor, Dominik Schrempf,
+Michael D. Woodhams, Arndt von Haeseler, and Robert Lanfear (2020)
+IQ-TREE 2: New models and efficient methods for phylogenetic inference
+in the genomic era. Mol. Biol. Evol., in press.
+https://doi.org/10.1093/molbev/msaa015
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 19 sequences with 1247 nucleotide sites
+Number of constant sites: 287 (= 23.0152% of all sites)
+Number of invariant (constant or ambiguous constant) sites: 287 (= 23.0152% of all sites)
+Number of parsimony informative sites: 640
+Number of distinct site patterns: 943
+
+ModelFinder
+-----------
+
+Best-fit model according to BIC: MIX{TPM3u+FO,TPM3+FO,JC+FO}+G
+
+List of models sorted by BIC scores: 
+
+Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC
+MIX{TPM3u+FO,TPM3+FO,JC+FO}+G  -11416.953   22923.907 +   0.0681   22927.354 +   0.0815   23154.689 +    0.735
+MIX{TPM3u+FO,TPM3+FO,JC+FO}+I+G  -11414.428   22920.857 +    0.313   22924.460 +    0.347   23156.767 +     0.26
+MIX{TPM3u+FO,TPM3+FO,JC+FO}+I+R2  -11415.441   22924.882 -   0.0418   22928.646 -   0.0427   23165.922 -  0.00267
+MIX{TPM3u+FO,TPM3+FO,JC+FO}+R3  -11412.073   22920.146 +    0.446   22924.072 +    0.421   23166.313 -   0.0022
+MIX{TPM3u+FO,TPM3+FO,JC+FO}+I+R3  -11413.060   22924.120 +   0.0612   22928.213 +   0.0531   23175.416 - 2.32e-05
+MIX{TPM3u+FO,TPM3+FO,JC+FO}+R4  -11411.931   22923.863 +   0.0696   22928.127 +   0.0554   23180.287 - 2.03e-06
+MIX{TPM3u+FO,TPM3+FO,JC+FO}+R2  -11426.831   22945.663 - 1.28e-06   22949.266 - 1.42e-06   23181.573 - 1.07e-06
+MIX{TPM3u+FO,TPM3+FO,JC+FO}+I  -11462.050   23014.099 - 1.77e-21   23017.547 - 2.12e-21   23244.882 - 1.91e-20
+MIX{TPM3u+FO,TPM3+FO,JC+FO}  -11569.242   23226.484 - 1.35e-67   23229.778 - 1.74e-67   23452.138 - 1.89e-65
+
+AIC, w-AIC   : Akaike information criterion scores and weights.
+AICc, w-AICc : Corrected AIC scores and weights.
+BIC, w-BIC   : Bayesian information criterion scores and weights.
+
+Plus signs denote the 95% confidence sets.
+Minus signs denote significant exclusion.
+
+SUBSTITUTION PROCESS
+--------------------
+
+Mixture model of substitution: MIX{TPM3u+FO,TPM3,JC}+G4
+
+  No  Component      Rate    Weight   Parameters
+   1  TPM3u         1.0000   0.5751   TPM3u{5.16848,5.92777}+FO{0.344846,0.140617,0.14338,0.371158}
+   2  TPM3          1.0000   0.3771   TPM3{0.263869,3.08403}+FQ
+   3  JC            1.0000   0.0478   JC
+
+Model of rate heterogeneity: Gamma with 4 categories
+Gamma shape alpha: 1.0666
+
+ Category  Relative_rate  Proportion
+  1         0.1501         0.2500
+  2         0.4959         0.2500
+  3         1.0102         0.2500
+  4         2.3438         0.2500
+Relative rates are computed as MEAN of the portion of the Gamma distribution falling in the category.
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -11416.1095 (s.e. 186.5721)
+Unconstrained log-likelihood (without tree): -7886.6358
+Number of free parameters (#branches + #model parameters): 45
+Akaike information criterion (AIC) score: 22922.2190
+Corrected Akaike information criterion (AICc) score: 22925.6662
+Bayesian information criterion (BIC) score: 23153.0013
+
+Total tree length (sum of branch lengths): 3.7642
+Sum of internal branch lengths: 1.0247 (27.2211% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'Alligator_mississippiensis' is drawn at root
+
++------------Alligator_mississippiensis
+|
+|                       +--------------------------------------Anolis_carolinensis
+|                    +--|
+|                    |  |                    +--Crotalus_horridus
+|                    |  |                 +--|
+|                    |  |                 |  |  +--Deinagkistrodon_acutus
+|                    |  |                 |  +--|
+|                    |  |                 |     +--Protobothrops_mucrosquamatus
+|                    |  |              +--|
+|                    |  |              |  +--Vipera_berus
+|                    |  |           +--|
+|                    |  |           |  |  +--Ophiophagus_hannah
+|                    |  |           |  +--|
+|                    |  |           |     |  +--Pantherophis_guttatus
+|                    |  |           |     +--|
+|                    |  |           |        +--Thamnophis_sirtalis
+|                    |  |  +--------|
+|                    |  |  |        +--Python_molurus
+|                    |  +--|
+|                    |     |  +-----Dopasia_gracilis
+|                    |     +--|
+|                    |        +--Shinisaurus_crocodilurus
+|                 +--|
+|                 |  |  +-----------Lacerta_bilineata
+|                 |  +--|
+|                 |     +------Pogona_vitticeps
+|  +--------------|
+|  |              |  +----Eublepharis_macularius
+|  |              +--|
+|  |                 |  +--Gekko_japonicus
+|  |                 +--|
+|  |                    +--Paroedura_picta
++--|
+|  +--------------Gallus_gallus
+|
++------Chrysemys_picta
+
+Tree in newick format:
+
+(Alligator_mississippiensis:0.2902246273,((((Anolis_carolinensis:0.8513979063,(((((Crotalus_horridus:0.0268655025,(Deinagkistrodon_acutus:0.0166968777,Protobothrops_mucrosquamatus:0.0176210255):0.0072498411):0.0124959251,Vipera_berus:0.0215246885):0.0362989172,(Ophiophagus_hannah:0.0329836262,(Pantherophis_guttatus:0.0339946939,Thamnophis_sirtalis:0.0499935197):0.0268351554):0.0336120564):0.0564144867,Python_molurus:0.0521410241):0.2083214105,(Dopasia_gracilis:0.1378118623,Shinisaurus_crocodilurus:0.0507439956):0.0303073736):0.0172975968):0.0030997703,(Lacerta_bilineata:0.2594428425,Pogona_vitticeps:0.1651964856):0.0278284213):0.0311558971,(Eublepharis_macularius:0.1225705096,(Gekko_japonicus:0.0443903062,Paroedura_picta:0.0714972512):0.0530047001):0.0791967640):0.3302629340,Gallus_gallus:0.3254396943):0.0712794826,Chrysemys_picta:0.1690230801);
+
+ALISIM COMMAND
+--------------
+Currently, we only support exporting AliSim commands automatically from the analysis for common models of DNA, Protein, Binary, and Morphological data. To simulate data from other models (mixture, lie-markov, etc), please refer to the User Manual of AliSim. Thanks!
+
+For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
+
+TIME STAMP
+----------
+
+Date and time: Thu Sep 21 09:00:17 2023
+Total CPU time used: 68.65865 seconds (0h:1m:8s)
+Total wall-clock time used: 68.82773 seconds (0h:1m:8s)
+
