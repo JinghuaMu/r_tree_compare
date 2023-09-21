@@ -9,6 +9,9 @@ output:
     toc: yes
     toc_depth: 6
     toc_float: yes
+params:
+  workingdict: "./"
+  
 ---
 
 ```{r setup, include=FALSE}
@@ -30,53 +33,44 @@ knitr::opts_chunk$set(echo = TRUE,message = FALSE, warning = FALSE)
 **Type:** Aligned DNA BUSCO loci
 
 ```{r}
+load(paste(params$workingdict,"path_info.RData", sep = ""))
 library(Biostrings)
 
+if (tools::file_ext(gene_file) == "fasta") {
+  alignment <- readDNAStringSet(gene_path)
+} else if (tools::file_ext(gene_file) == "phy") {
+  alignment <- readDNAMultipleAlignment(filepath = gene_path, format = "phylip")
+} else {
+  stop("Unknown file format!")
+}
 
-candidate <- 30
-id <- as.character(candidate)
-# "geneset_loc" is the folder where you save a set of multi-alignments
-geneset_loc <- "../datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gt/"
-gene_sets <- system2(command = "ls", args = geneset_loc, stdout = TRUE)
-cat("Current gene file location:", geneset_loc, "\n")
-cat("Number of gene:", length(gene_sets), "\n")
-gene_file <- gene_sets[candidate]
-gene_name <- gsub("(UCE-\\d+).*", "\\1", gene_file)
-gene_path <- paste(geneset_loc, gene_file, sep = "")
-
-# Set the path and filename for iqtree running result
-prefix_single <- paste("./test/", "dmg_Single_", id, sep = "")
-prefix_mix <- paste("./test/", "dmg_Mix_", id, sep = "")
-# Set the command for both single and mix model
-arg_single <- c("-s", gene_path, "-B", "1000", "--prefix", prefix_single)
-arg_mix <- c("-s", gene_path, "-m", "ESTMIXNUM", "-mrate", "E,I,G,I+G,R,I+R", "-opt_qmix_criteria", "1", "--prefix", prefix_mix)
-
-# The species tree file should be assigned manually
-tree_path_species <- "../datasets/different_method/phylogenic_tree/Squamates/Rooted_MAFFT_Auto_GappyOut_Species_Tree_Scored.tre"
-outgroup <- readLines("../datasets/different_method/Squamates-Final_Alns/Squamates-Taxon-Outgroup.txt")
-
-cat("Current gene name:", gene_sets[candidate], "\n")
-alignment <- readDNAMultipleAlignment(filepath = gene_path, format = "phylip")
 ```
 
 ## Command of model
 
 ```{r}
 # Command of run one class model iq-tree
-system2(command = "iqtree2", args = arg_single, stdout = FALSE)
+system2(command = iqtree_loc, args = arg_single, stdout = FALSE)
 # Command of run mixture class model iq-tree
-system2(command = "iqtree2", args = arg_mix, stdout = FALSE)
+system2(command = iqtree_loc, args = arg_mix, stdout = FALSE)
 
 ```
 
 
 ## Alignment summary
 
-```{r}
+```{r fig.height=16, fig.width=16}
 # plot 
 # Visualization
 # Extract a 100-bp window with lowest dominant base ratio
+
+library("ggmsa")
 window_size <- 100
+algn_length <- ncol(alignment)
+A <- consensusMatrix(alignment, baseOnly = TRUE)
+A_base <- A[1:4, ]
+maxmum_base_num <- apply(A_base, 2, max)
+maxmum_base_ratio <- maxmum_base_num / colSums(A_base)
 
 if (algn_length > window_size) {
   window_mean_dominant_base_ratio <- sapply(
@@ -87,7 +81,7 @@ if (algn_length > window_size) {
   )
   start <- which.min(window_mean_dominant_base_ratio)
   end <- start + window_size - 1
-  cat(paste("[Plot 1] Selected the window with the most sequence variation(", window_size, "bp) ，", start, "-", end, "\n", sep = ""))
+  cat(paste("[Plot 1] Selected the window with the most sequence variation(", window_size, "bp), ", start, "-", end, "\n", sep = ""))
   alignment_fig <- ggmsa(
     start = start, end = end, alignment,
     char_width = 0.5, seq_name = F
@@ -122,7 +116,6 @@ Length <- as.integer(Length_numbers[2])
 
 percent_constant_line <- grep("Number of constant sites: ", one_line, value = TRUE)
 percent_constant <- sprintf("%.5s%%", regmatches(percent_constant_line, regexpr("\\d+\\.\\d+%\\s+", percent_constant_line)))
-                            
 percent_constant
 
 parsimony_informative <- as.numeric(sub("Number of parsimony informative sites: ","\\1",grep("Number of parsimony informative sites: ", one_line, value = TRUE))) 
@@ -134,16 +127,38 @@ site_patterns
 ```
 
 ```{r}
+library(kableExtra)
 # Create the data frame
 alignment_data <- data.frame(
-  "Locus_name" = "EOG09150AOE",
+  "Locus_name" = gene_name,
   "Length" = Length,
   "Ntaxa" = Ntaxa,
   "Percent_constant" = percent_constant,
   "Percent_parsimony_informative" = percent_parsimony_informative,
   "Site_patterns" = site_patterns
 )
-alignment_data
+
+kable_styling(knitr::kable(alignment_data, digits = 4, caption = "Alignment Summary"), bootstrap_options = c("striped", "hover", "condensed"))
+```
+
+## Models
+
+### Description
+```{r}
+source("./iqtree_info.r")
+sum_one <- summarise_iqtree(paste(prefix_single, ".iqtree", sep = ""))
+sum_mix <- summarise_iqtree(paste(prefix_mix, ".iqtree", sep = ""))
+cat("The phylogenic acnalysis result for one model:\n")
+short_description(sum_one)
+cat("---------------------------------------------
+The phylogenic analysis result for mix model:\n")
+short_description(sum_mix)
+
+model_summary_table <- rbind(summary_table(sum_one),summary_table(sum_mix))
+model_summary_table <- cbind(Model = c("One_class","Mixture"), model_summary_table)
+best_model <- model_summary_table$Model[[which.min(model_summary_table$BIC)]]
+model_summary_table <- cbind(model_summary_table, Best = rep(best_model, 2))
+kable_styling(knitr::kable(model_summary_table, digits = 4, caption = "Model Summary"), bootstrap_options = c("striped", "hover", "condensed"))
 ```
 
 
@@ -155,26 +170,13 @@ library(phytools)
 # Read the tree files
 Mixture_tree <- read.tree(paste(prefix_single, ".treefile", sep = ""))
 One_class_tree <- read.tree(paste(prefix_mix, ".treefile", sep = ""))
-Species_tree <- read.tree("Data/mixture_class_single_gene/EOG09150A0E.fna.aln.tr.treefile")
 
 ```
 
 ### Phylograms plot
 ```{r fig.height=10, fig.width=16}
-cladograms <- function(tree, y_scale = -5, subtitle = "") {
-  ggtree(tree, cex = 0.8, layout = "slanted", branch.length = "none") +
-    geom_tiplab(align = TRUE, size = 2) +
-    geom_treescale(y = y_scale, color = "black", fontsize = 4) +
-    labs(subtitle = subtitle) + 
-    theme(legend.position = "bottom")
-}
-
-p1 <- cladograms(One_class_tree, subtitle = "Single Model")
-p2 <- cladograms(Mixture_tree, subtitle = "Mix Model")
-
-multiplot(p1, p2, ncol = 2)
-
-
+library("ggtree")
+library("ggplot2")
 
 phylograms <- function(tree, y_scale = -5, subtitle = "") {
   ggtree(tree, cex = 0.8, aes(color = branch.length - mean(branch.length))) +
@@ -217,6 +219,7 @@ par(mar=c(5.1,4.1,4.1,2.1))
 
 ### Table of topological distance metrics
 ```{r}
+# Load required packages
 library(ape)
 library(phangorn)
 
@@ -232,20 +235,20 @@ if (!taxa_equal_model){
 }
 
 
-taxa_species <- Species_tree$tip.label
+taxa_species <- tree_species$tip.label
 taxa_subset <- intersect(taxa_single, taxa_species)
 outgroup_subset <- intersect(taxa_subset, outgroup)
 drop_taxa <- setdiff(taxa_species, taxa_subset)
-tree_species_trimed <- drop.tip(tree_species, drop_taxa)
+tree_species_trimed <- drop.tip(Species_tree, drop_taxa)
 
 
 # Find the intersection of taxa
-taxa_intersect <- intersect(One_class_tree$tip.label, Mixture_tree$tip.label)
-taxa_subset <- intersect(taxa_intersect, tree_species$tip.label)
+taxa_intersect <- intersect(One_class_tree$tip.label, Species_tree$tip.label)
+taxa_subset <- intersect(taxa_intersect, Species_tree$tip.label)
 outgroup_subset <- intersect(taxa_subset, outgroup)
 
 # Trim the species tree
-tree_species_trimed <- drop.tip(tree_species, setdiff(tree_species$tip.label, taxa_subset))
+tree_species_trimed <- drop.tip(Species_tree, setdiff(Species_tree$tip.label, taxa_subset))
 
 # Root the trees if possible
 rootable <- length(outgroup_subset) > 0
@@ -262,14 +265,14 @@ if (rootable) {
 }
 
 # Check if all trees are rooted
-all_rooted <- rootable && is.rooted(One_class_tree) && is.rooted(Mixture_tree) && is.rooted(tree_species)
+all_rooted <- rootable && is.rooted(tree_single) && is.rooted(tree_mix) && is.rooted(tree_species)
 
 
 # Placeholder data (replace these with your actual data)
 tree_names <- c("One_class", "Mixture", "Species")
 tree_files <- list(
-  One_class = One_class_tree,
   Mixture = Mixture_tree,
+  One_class = One_class_tree,
   Species = tree_species_trimed
 )
 
@@ -332,7 +335,7 @@ for (comb in tree_combinations) {
 }
 
 # Print the resulting data frame
-knitr::kable(result_df, digits = 4, caption = "Tree distance Summary")
+kable_styling(knitr::kable(result_df, digits = 4, caption = "Tree distance Summary"), bootstrap_options = c("striped", "hover", "condensed"))
 
 ```
 
@@ -341,60 +344,44 @@ knitr::kable(result_df, digits = 4, caption = "Tree distance Summary")
 ### Summary parameters table
 
 ```{r}
-# tree length & Sum_int & prop_int
-one_length <- sub("Total tree length \\(sum of branch lengths\\): ","\\1",grep("Total tree length \\(sum of branch lengths\\): ", one_line, value = TRUE))
-mix_length <- sub("Total tree length \\(sum of branch lengths\\): ","\\1",grep("Total tree length \\(sum of branch lengths\\): ", mix_line, value = TRUE))
+# Calculate tree statistics
+tree_stats <- function(model_sum, tree, model_name) {
+  total_length <- model_sum$total_tree_length
+  internal_lengths <- model_sum$internal_tree_length
+  prop_internal <- internal_lengths/total_length
+  summary_stats <- summary(tree$edge.length)
+  c(Model = model_name,
+    Tree_Length = total_length,
+    Sum_int = internal_lengths,
+    prop_int = prop_internal,
+    summary_stats)
+}
 
-one_sum_int <- sub("Sum of internal branch lengths: ([0-9.]+).*","\\1",grep("Sum of internal branch lengths: ([0-9.]+).*", one_line, value = TRUE))
-mix_sum_int <- sub("Sum of internal branch lengths: ([0-9.]+).*","\\1",grep("Sum of internal branch lengths: ([0-9.]+).*", mix_line, value = TRUE))
+# Calculate stats for both trees
+stats_single <- tree_stats(model_sum = sum_one, tree = One_class_tree, model_name = "One-class")
+stats_mix <- tree_stats(model_sum = sum_mix, tree = Mixture_tree, model_name = "Mixture")
 
-one_prop_int <- sub(" of tree length", "", sub(".*\\(([^)]+)\\).*","\\1",grep("Sum of internal branch lengths: ([0-9.]+).*", one_line, value = TRUE)))
-mix_prop_int <- sub(" of tree length", "", sub(".*\\(([^)]+)\\).*","\\1",grep("Sum of internal branch lengths: ([0-9.]+).*", mix_line, value = TRUE)))
-```
+# Combine into a data frame
+tree_summary <- rbind(stats_single, stats_mix)
+tree_summary <- cbind(Gene_name = rep(gene_name,2), tree_summary)
 
-```{r}
-# Provided Newick tree string
-Mixture_txt <- readLines("Data/mixture_class_single_gene/mix_class_EOG09150A0E.treefile")
-One_class_txt <- readLines("Data/one_class_single_gene/one_class_EOG09150A0E.treefile")
+kable_styling(knitr::kable(tree_summary, digits = 4, caption = "Branch length Summary"), bootstrap_options = c("striped", "hover", "condensed"))
 
-branch_len_mix <- as.numeric(gsub("([0-9.]+).*", "\\1", strsplit(Mixture_txt, ":")[[1]])[-1])
-branch_len_one <- as.numeric(gsub("([0-9.]+).*", "\\1", strsplit(One_class_txt, ":")[[1]])[-1])
 
-sum_branch_len_one <- summary(branch_len_one)
-sum_branch_len_mix <- summary(branch_len_mix)
-```
-
-```{r}
-# Create a dataframe with the provided summary statistics
-df <- data.frame(
-  Tree_Length = c(one_length, mix_length),
-  Sum_int = c(one_sum_int, mix_sum_int),
-  prop_int = c(one_prop_int, mix_prop_int),
-  min = c(sum_branch_len_one[1], sum_branch_len_mix[1]),
-  Qu_1st = c(sum_branch_len_one[2], sum_branch_len_mix[2]),
-  Median = c(sum_branch_len_one[3], sum_branch_len_mix[3]),
-  Mean = c(sum_branch_len_one[4], sum_branch_len_mix[4]),
-  Qu_3rd = c(sum_branch_len_one[5], sum_branch_len_mix[5]),
-  Max = c(sum_branch_len_one[6], sum_branch_len_mix[6]),
-  gene_name = rep(gene_names,2),
-  row.names = c("One model", "Mixture model"))
-# Print the dataframe
-print(df)
 ```
 
 ### Faceted histogram
 
 ```{r}
-# Assuming you have loaded the 'ggplot2' package and have the necessary data
-
-data <- data.frame(
-  model = rep(c("One class", "Mixture"), each = length(branch_len_one)),
-  branch_length = c(branch_len_one, branch_len_mix)
+# load branch length data
+branch_length_data <- data.frame(
+  model = rep(c("One class", "Mixture"), each = length(One_class_tree$edge.length)),
+  branch_length = c(One_class_tree$edge.length, Mixture_tree$edge.length)
 )
 
 # Create a faceted histogram
 library("ggplot2")
-ggplot(data, aes(x = branch_length)) +
+ggplot(branch_length_data, aes(x = branch_length)) +
   geom_histogram(binwidth = 0.1, fill = "blue", color = "black") +
   facet_grid(model ~ ., scales = "free_y") +  # Facet by 'model', free y-axis scales
   labs(x = "Branch Length", y = "Frequency") +
@@ -406,33 +393,13 @@ ggplot(data, aes(x = branch_length)) +
 
 ```{r}
 # Create an ECDF plot
-ggplot(data, aes(x = branch_length, color = model)) +
+ggplot(branch_length_data, aes(x = branch_length, color = model)) +
   stat_ecdf(geom = "step") +
   labs(x = "Branch Length", y = "ECDF") +
   scale_color_manual(values = c("One class" = "blue", "Mixture" = "red")) +
   theme_minimal() +
   theme(legend.position = "top")+
   scale_x_log10()
-```
-
-## Models
-
-### Description
-```{r}
-source("./iqtree_info.r")
-sum_one <- summarise_iqtree(one_line)
-sum_mix <- summarise_iqtree(mix_line)
-cat("The phylogenic acnalysis result for one model:\n")
-short_description(sum_one)
-cat("---------------------------------------------
-The phylogenic analysis result for mix model:\n")
-short_description(sum_mix)
-
-model_summary_table <- rbind(summary_table(sum_one),summary_table(sum_mix))
-model_summary_table <- cbind(Model = c("One_class","Mixture"), model_summary_table)
-best_model <- model_summary_table$Model[[which.min(model_summary_table$BIC)]]
-model_summary_table <- cbind(model_summary_table, Best = rep(best_model, 2))
-knitr::kable(model_summary_table, digits = 4, caption = "Model Summary")
 ```
 
 
