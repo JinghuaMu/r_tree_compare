@@ -43,8 +43,8 @@ for (i in seq_along(path_data_list)) {
 
 library(Biostrings)
 
-if (tools::file_ext(gene_file) == "fasta") {
-  alignment <- readDNAStringSet(gene_path)
+if (tools::file_ext(gene_file) == "aln") {
+  alignment <- readDNAMultipleAlignment(filepath = gene_path, format = "fasta")
 } else if (tools::file_ext(gene_file) == "phy") {
   alignment <- readDNAMultipleAlignment(filepath = gene_path, format = "phylip")
 } else {
@@ -128,8 +128,9 @@ alignment_data <- data.frame(
   "Percent_parsimony_informative" = percent_parsimony_informative,
   "Site_patterns" = site_patterns
 )
+rownames(alignment_data) <- NULL
 
-kable_styling(knitr::kable(alignment_data, digits = 4, caption = "Alignment Summary"), bootstrap_options = c("striped", "hover", "condensed"))
+kable_styling(knitr::kable(alignment_data, caption = "Alignment Summary"), bootstrap_options = c("striped", "hover", "condensed"))
 ```
 
 ## Models
@@ -273,7 +274,7 @@ result_df <- data.frame(
   metric = character(0),
   tree_1 = character(0),
   tree_2 = character(0),
-  gene_name = character(0),
+  Locus_name = character(0),
   RF_distance = numeric(0),
   nRF_distance = numeric(0),
   wRF_distance = numeric(0),
@@ -296,39 +297,39 @@ for (comb in tree_combinations) {
     tree2_name <- tree_names[j]
     
     # Calculate distances
-    RF_dist <- RF.dist(tree1, tree2, normalize = FALSE, check.labels = TRUE, rooted = all_rooted)
-    nRF_dist <- RF.dist(tree1, tree2, normalize = TRUE, check.labels = TRUE, rooted = all_rooted)
-    wRF_dist <- wRF.dist(tree1, tree2, normalize = FALSE, check.labels = TRUE, rooted = all_rooted)
-    KF_dist <- KF.dist(tree1, tree2, check.labels = TRUE, rooted = all_rooted)
-    PD_dist <- path.dist(tree1, tree2, check.labels = TRUE, use.weight = FALSE)
-    wPD_dist <- path.dist(tree1, tree2, check.labels = TRUE, use.weight = TRUE)
+    RF_dist <- round(RF.dist(tree1, tree2, normalize = FALSE, check.labels = TRUE, rooted = all_rooted), 4)
+    nRF_dist <- round(RF.dist(tree1, tree2, normalize = TRUE, check.labels = TRUE, rooted = all_rooted), 4)
+    wRF_dist <- round(wRF.dist(tree1, tree2, normalize = FALSE, check.labels = TRUE, rooted = all_rooted), 4)
+    KF_dist <- round(KF.dist(tree1, tree2, check.labels = TRUE, rooted = all_rooted), 4)
+    PD_dist <- round(path.dist(tree1, tree2, check.labels = TRUE, use.weight = FALSE), 4)
+    wPD_dist <- round(path.dist(tree1, tree2, check.labels = TRUE, use.weight = TRUE), 4)
     
     # If the trees are rooted calculate geodesic distance
     if (all_rooted) {
-      geodesic_dist <- dist.multiPhylo(c(tree1,tree2), method = "geodesic", outgroup = outgroup_subset)
+      geodesic_dist <- round(dist.multiPhylo(c(tree1,tree2), method = "geodesic", outgroup = outgroup_subset), 4)
     } else {
       geodesic_dist <- NA
     }
   
     # Add the results to the data frame
     result_df <- rbind(result_df, data.frame(
-    gene_name = gene_name,
-    tree_1 = tree1_name,
-    tree_2 = tree2_name,
-    RF_distance = RF_dist,
-    nRF_distance = nRF_dist,
-    wRF_distance = wRF_dist,
-    KF_distance = KF_dist,
-    PD_distance = PD_dist,
-    wPD_distance = wPD_dist,
-    geodesic_distance = geodesic_dist
-      ))
+      Locus_name = gene_name,
+      tree_1 = tree1_name,
+      tree_2 = tree2_name,
+      RF_distance = RF_dist,
+      nRF_distance = nRF_dist,
+      wRF_distance = wRF_dist,
+      KF_distance = KF_dist,
+      PD_distance = PD_dist,
+      wPD_distance = wPD_dist,
+      geodesic_distance = geodesic_dist
+    ))
+    rownames(result_df) <- NULL
 
 }
 
 # Print the resulting data frame
-kable_styling(knitr::kable(result_df, digits = 4, caption = "Tree distance Summary"), bootstrap_options = c("striped", "hover", "condensed"))
-
+kable_styling(knitr::kable(result_df, caption = "Tree distance Summary"), bootstrap_options = c("striped", "hover", "condensed"))
 ```
 
 ## Branch Lengths
@@ -343,21 +344,22 @@ tree_stats <- function(model_sum, tree, model_name) {
   prop_internal <- internal_lengths/total_length
   summary_stats <- summary(tree$edge.length)
   c(Model = model_name,
-    Tree_Length = total_length,
-    Sum_int = internal_lengths,
-    prop_int = prop_internal,
-    summary_stats)
+    Tree_Length = round(total_length,4),
+    Sum_int = round(internal_lengths,4),
+    prop_int = round(prop_internal,4),
+    round(summary_stats,4))
 }
 
 # Calculate stats for both trees
-stats_single <- tree_stats(model_sum = sum_one, tree = One_class_tree, model_name = "One-class")
+stats_single <-tree_stats(model_sum = sum_one, tree = One_class_tree, model_name = "One_class")
 stats_mix <- tree_stats(model_sum = sum_mix, tree = Mixture_tree, model_name = "Mixture")
 
 # Combine into a data frame
 tree_summary <- rbind(stats_single, stats_mix)
-tree_summary <- cbind(Gene_name = rep(gene_name,2), tree_summary)
+tree_summary <- cbind(Locus_name = rep(gene_name,2), tree_summary)
+rownames(tree_summary) <- NULL
 
-kable_styling(knitr::kable(tree_summary, digits = 4, caption = "Branch length Summary"), bootstrap_options = c("striped", "hover", "condensed"))
+kable_styling(knitr::kable(tree_summary, caption = "Branch length Summary"), bootstrap_options = c("striped", "hover", "condensed"))
 
 
 ```
@@ -392,6 +394,33 @@ ggplot(branch_length_data, aes(x = branch_length, color = model)) +
   theme_minimal() +
   theme(legend.position = "top")+
   scale_x_log10()
+```
+
+
+```{r echo=FALSE}
+combined_sheet <- cbind(model_summary_table, rbind(alignment_data, alignment_data))
+# Merge by Model and tree_1 columns
+combined_sheet <- merge(combined_sheet, result_df[-1, ], by.x = c("Model", "Locus_name"), by.y = c("tree_1", "Locus_name")) 
+ # Drop tree_2 column
+combined_sheet$tree_2 <- NULL
+ # Merge by Model column
+combined_sheet <- merge(combined_sheet, tree_summary, by = c("Model", "Locus_name"))
+
+# Check if the CSV file exists
+if (!file.exists("./summary.csv")) {
+  # If the file does not exist, write the combined data to a new CSV file
+  write.csv(combined_sheet, "./summary.csv", row.names = FALSE)
+} else {
+  # If the file exists, load the existing data
+  existing_data <- read.csv("./summary.csv")
+  
+  # Check if the gene_name already exists in the existing data
+  if (!(gene_name %in% existing_data$Locus_name)) {
+    # If gene_name does not exist, append the new data to the CSV file
+    write.table(combined_sheet, "./summary.csv", sep = ",", append = TRUE, row.names = FALSE, col.names = FALSE)
+  }
+}
+
 ```
 
 

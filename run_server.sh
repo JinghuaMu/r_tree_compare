@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Set the paths and variables
-iqtree_loc="/home/timmu/miniconda3/envs/phylo/bin/iqtree2"
-geneset_loc="../datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gt/"
-outgroup_file="../datasets/different_method/Squamates-Final_Alns/Squamates-Taxon-Outgroup.txt"
-Species_tree_path="/home/timmu/project/mixmodel/datasets/different_method/phylogenic_tree/Squamates/Rooted_MAFFT_Auto_GapThreshold_Species_Tree_Scored.tre"
+iqtree_loc="/home/tim/software/iqtree-2.2.2.7.modelmix-Linux/bin/iqtree2"
+geneset_loc="/home/tim/mixmodel/datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gt/"
+outgroup_file="/home/tim/mixmodel/datasets/different_method/Squamates-Final_Alns/Squamates-Taxon-Outgroup.txt"
+Species_tree_path="/home/tim/mixmodel/datasets/different_method/phylogenic_tree/Squamates/Rooted_MAFFT_Auto_GapThreshold_Species_Tree_Scored.tre"
 
 # Export the variables to be used by parallel
 export iqtree_loc geneset_loc outgroup_file Species_tree_path
@@ -46,7 +46,9 @@ process_gene_file() {
   gene_name=$(echo $gene_file | sed -E 's/(UCE-[0-9]+).*/\1/')
   gene_path="$geneset_loc$gene_file"
   store_path="./test/$gene_name/"
-
+  
+  # Display the current gene being processed
+  echo "Processing started for：$gene_name"
   # Create the store_path directory if it doesn't exist
   mkdir -p "$store_path"
 
@@ -94,3 +96,4 @@ export -f process_gene_file
 echo "Processing gene files..."
 parallel --env process_gene_file -j $num_threads process_gene_file ::: "${gene_sets[@]:0:$execution_count}" 
 echo "Processing completed."
+
