@@ -33,8 +33,7 @@ knitr::opts_chunk$set(echo = TRUE,message = FALSE, warning = FALSE)
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Read path data
-path_data <- readLines("./test/UCE-11/path_info.txt")
-# path_data <- readLines(paste(params$workingdict,"path_info.txt", sep = ""))
+path_data <- readLines(paste(params$workingdict,"path_info.txt", sep = ""))
 path_data_list <- gsub(".*=", "", path_data)
 names(path_data_list) <- gsub("=.*", "", path_data)
 for (i in seq_along(path_data_list)) {

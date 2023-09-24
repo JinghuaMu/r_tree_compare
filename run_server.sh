@@ -2,9 +2,9 @@
 
 # Set the paths and variables
 iqtree_loc="/home/tim/software/iqtree-2.2.2.7.modelmix-Linux/bin/iqtree2"
-geneset_loc="/home/tim/mixmodel/datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gt/"
+geneset_loc="/home/tim/mixmodel/datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gappyout/"
 outgroup_path="/home/tim/mixmodel/datasets/different_method/Squamates-Final_Alns/Squamates-Taxon-Outgroup.txt"
-Species_tree_path="/home/tim/mixmodel/datasets/different_method/phylogenic_tree/Squamates/Rooted_MAFFT_Auto_GapThreshold_Species_Tree_Scored.tre"
+Species_tree_path="/home/tim/mixmodel/datasets/different_method/phylogenic_tree/Squamates/Rooted_MAFFT_Auto_GappyOut_Species_Tree_Scored.tre"
 
 # Read the gene sets
 gene_sets=( $(ls $geneset_loc | sort) )
@@ -16,11 +16,11 @@ echo "Number of genes: ${#gene_sets[@]}"
 num_threads=10
 
 # Set the execution count (the number of files to process)
-execution_count=1000
+execution_count=1100
 
 # Set restart flag (True or False)
 restart=False
-skip_down=False
+skip_down=True
 
 # Export the variables to be used by parallel
 export iqtree_loc geneset_loc outgroup_file Species_tree_path restart skip_down
@@ -52,13 +52,13 @@ process_gene_file() {
   gene_file=$1
   gene_name=$(echo $gene_file | sed -E 's/(UCE-[0-9]+).*/\1/')
   gene_path="$geneset_loc$gene_file"
-  store_path="./MAFFT-Auto-gt/$gene_name/"
+  store_path="./result/$gene_name/"
   
   # Create the store_path directory if it doesn't exist
   mkdir -p "$store_path"
 
   # Check if HTML file exists and skip_down flag is False, then skip this gene file
-  if [[ -f "${store_path}${gene_name}_summary.html" && $skip_down = False ]]; then
+  if [[ -f "${store_path}${gene_name}_summary.html" && $skip_down = True ]]; then
     echo "HTML file for $gene_name already exists, skipping..."
     return
   fi
