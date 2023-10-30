@@ -1,0 +1,448 @@
+---
+title: "Single Gene Report V1.2"
+author: "Yinlin Bai, Jinghua Mu"
+date: "2023-08-21"
+output: 
+  bookdown::html_document2:
+    code_folding: show
+    number_sections: no
+    toc: yes
+    toc_depth: 6
+    toc_float: yes
+params:
+  workingdict: "./"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,message = FALSE, warning = FALSE)
+# Read path data
+#path_data <- readLines("./MAFFT-Auto-gt/result/UCE-1003/path_info.txt")
+path_data <- readLines(paste(params$workingdict,"path_info.txt", sep = ""))
+path_data_list <- gsub(".*=", "", path_data)
+names(path_data_list) <- gsub("=.*", "", path_data)
+for (i in seq_along(path_data_list)) {
+  assign(names(path_data_list)[i], path_data_list[i])
+}
+outgroup <- readLines(outgroup_path)
+```
+## Gene information
+**Reference**:  Portik, D.M. and Wiens, J.J. (2021) Do Alignment and Trimming Methods Matter for Phylogenomic (UCE) Analyses? Systematic Biology, 70 (3), pp. 440–462.  
+**Alignment name**: Squamates-UCE-MAFFT-Auto-untrimmed  
+**Alignment type**: UCE(Ultra Conserved Element)  
+
+## Target alignment
+**Name:** `r gene_name`  
+**Outgroup:** `r paste(outgroup, sep = ", ")`  
+  
+```{r read_alignment, echo=FALSE, message=FALSE, warning=FALSE}
+library(Biostrings)
+
+if (tools::file_ext(gene_file) %in% c("aln", "aln-cln")) {
+  alignment <- readDNAMultipleAlignment(filepath = gene_path, format = "fasta")
+} else if (tools::file_ext(gene_file) == "phy") {
+  alignment <- readDNAMultipleAlignment(filepath = gene_path, format = "phylip")
+} else {
+  if (grepl("aln", gene_file)) {
+    alignment <- readDNAMultipleAlignment(filepath = gene_path, format = "fasta")
+    } else if (tools::file_ext(gene_file) == "phy") {
+        alignment <- readDNAMultipleAlignment(filepath = gene_path, format = "phylip")
+    } else {
+        stop("Unknown file format!")
+  }
+}
+
+```
+
+
+## Alignment summary
+
+```{r echo=FALSE, fig.height=16, fig.width=16, message=FALSE, warning=FALSE}
+# plot 
+# Visualization
+# Extract a 100-bp window with lowest dominant base ratio
+
+library("ggmsa")
+window_size <- 100
+algn_length <- ncol(alignment)
+A <- consensusMatrix(alignment, baseOnly = TRUE)
+A_base <- A[1:4, ]
+maxmum_base_num <- apply(A_base, 2, max)
+maxmum_base_ratio <- maxmum_base_num / colSums(A_base)
+
+if (algn_length > window_size) {
+  window_mean_dominant_base_ratio <- sapply(
+    1:(algn_length - window_size + 1),
+    function(i) {
+      mean(maxmum_base_ratio[i:(i + window_size - 1)])
+    }
+  )
+  start <- which.min(window_mean_dominant_base_ratio)
+  end <- start + window_size - 1
+  cat(paste("[Plot 1] Selected the window with the most sequence variation(", window_size, "bp), ", start, "-", end, "\n", sep = ""))
+  alignment_fig <- ggmsa(
+    start = start, end = end, alignment,
+    char_width = 0.5, seq_name = F
+  ) +
+    geom_seqlogo()
+} else {
+  alignment_fig <- ggmsa(alignment, char_width = 0.5, seq_name = F) +
+    geom_seqlogo()
+}
+
+alignment_fig
+```
+
+```{r include=FALSE}
+# model
+one_line <- readLines(paste(prefix_single, ".iqtree", sep = ""))
+mix_line <- readLines(paste(prefix_mix, ".iqtree", sep = ""))
+
+# length and Ntax
+Length_line <- grep("Input data: ", one_line, value = TRUE)
+
+Length_matches <- gregexpr("\\d+", Length_line)
+Length_numbers <- regmatches(Length_line, Length_matches)[[1]]
+
+# Convert the extracted strings to integers
+Ntaxa <- as.integer(Length_numbers[1])
+Length <- as.integer(Length_numbers[2])
+
+# percent_constant & percent_parsimony_informative
+percent_constant_line <- grep("Number of constant sites: ", one_line, value = TRUE)
+percent_constant <- as.numeric(regmatches(percent_constant_line, regexpr("\\d+", percent_constant_line)))/Length
+
+parsimony_informative <- as.numeric(sub("Number of parsimony informative sites: ","\\1",grep("Number of parsimony informative sites: ", one_line, value = TRUE))) 
+percent_parsimony_informative <- sprintf("%.2f%%", parsimony_informative / Length * 100)
+
+site_patterns <- as.numeric(sub("Number of distinct site patterns: ","\\1",grep("Number of distinct site patterns: ", one_line, value = TRUE)))
+```
+
+```{r echo=FALSE}
+library(kableExtra)
+# Create the data frame
+alignment_data <- data.frame(
+  "Locus_name" = gene_name,
+  "Length" = Length,
+  "Ntaxa" = Ntaxa,
+  "Percent_constant" = percent_constant,
+  "Percent_parsimony_informative" = percent_parsimony_informative,
+  "Site_patterns" = site_patterns
+)
+rownames(alignment_data) <- NULL
+
+kable_styling(knitr::kable(alignment_data, caption = "Alignment Summary"), bootstrap_options = c("striped", "hover", "condensed"))
+```
+
+## Models
+
+### Description
+```{r echo=FALSE, warning=FALSE}
+source("./iqtree_info.r")
+sum_one <- summarise_iqtree(paste(prefix_single, ".iqtree", sep = ""))
+sum_mix <- summarise_iqtree(paste(prefix_mix, ".iqtree", sep = ""))
+cat("The phylogenic acnalysis result for one model:\n")
+short_description(sum_one)
+cat("---------------------------------------------
+The phylogenic analysis result for mix model:\n")
+short_description(sum_mix)
+
+model_summary_table <- rbind(summary_table(sum_one),summary_table(sum_mix))
+model_summary_table <- cbind(Model = c("One_class","Mixture"), model_summary_table)
+best_model <- model_summary_table$Model[[which.min(model_summary_table$BIC)]]
+model_summary_table <- cbind(model_summary_table, Best = rep(best_model, 2))
+kable_styling(knitr::kable(model_summary_table, digits = 4, caption = "Model Summary"), bootstrap_options = c("striped", "hover", "condensed"))
+```
+
+
+## Tree Topology
+
+```{r include=FALSE}
+library(ape)
+library(phytools)
+# Read the tree files
+Mixture_tree <- read.tree(paste(prefix_single, ".treefile", sep = ""))
+One_class_tree <- read.tree(paste(prefix_mix, ".treefile", sep = ""))
+Species_tree <- read.tree(Species_tree_path)
+
+```
+
+### Phylograms plot
+```{r echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE}
+library("ggtree")
+library("ggplot2")
+
+phylograms <- function(tree, y_scale = -5, subtitle = "") {
+  ggtree(tree, cex = 0.8, aes(color = branch.length - mean(branch.length))) +
+    scale_color_continuous(
+      high = "red", low = "black",
+      name = "centralized(Branch Length)",
+      guide = guide_colourbar(barwidth = 10)
+    ) +
+    geom_tiplab(align = TRUE, size = 2) +
+    geom_treescale(y = y_scale, color = "black", fontsize = 4) +
+    labs(subtitle = subtitle) +
+    theme(legend.position = "bottom")
+}
+
+p1 <- phylograms(One_class_tree, subtitle = "Single Model")
+p2 <- phylograms(Mixture_tree, subtitle = "Mix Model")
+
+multiplot(p1, p2, ncol = 2)
+```
+
+### Cophylogeny plot
+
+```{r echo=FALSE, fig.height=18, fig.width=10, message=FALSE, warning=FALSE}
+## create co-phylogenetic object
+wasp.cophylo<-cophylo(Mixture_tree, One_class_tree)
+## plot co-phylogenies
+plot(wasp.cophylo,link.type="curved",link.lwd=4,
+ link.lty="solid",link.col=make.transparent("red",
+ 0.25))
+par(mar=c(5.1,4.1,4.1,2.1))
+```
+
+**Phylogenies inferred using these 3 approaches only differed in 2 trees:**
+
+(1) D watanabei D punjabiensis was either have paraphyletic relationships to D. kikkawai and D. leontia or have paraphyletic relationships with D. seguy, D. nikananu, D. vulcana, D spaffchauvacae, D bocquet, D burlai, D. jambulina, D. bakoue
+
+(2) D wassermani form monophyletic lineage sister to the D. acanthoptera or have paraphyletic relationships where D pachea is sister to the D. acanthoptera
+
+(3) D paucipunta form monophyletic lineage sister to the D prolacticillia or have paraphyletic relationships with the D prolacticillia
+
+### Table of topological distance metrics
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Load required packages
+library(ape)
+library(phangorn)
+library(distory)
+
+taxa_single <- One_class_tree$tip.label
+taxa_mix <- Mixture_tree$tip.label
+# Check if there are any different elements between taxa_single and taxa_mix
+taxa_equal_model <- setequal(taxa_single, taxa_mix)
+if (!taxa_equal_model){
+  taxa_diff <- union(setdiff(taxa_single, taxa_mix),setdiff(taxa_mix, taxa_single))
+  One_class_tree <- drop.tip(One_class_tree, taxa_diff)
+  Mixture_tree <- drop.tip(Mixture_tree, taxa_diff)
+  cat("The taxa of the two model trees are not equal, the taxa of the two trees are unified.\n")
+}
+
+taxa_species <- Species_tree$tip.label
+taxa_subset <- intersect(taxa_single, taxa_species)
+outgroup_subset <- intersect(taxa_subset, outgroup)
+drop_taxa <- setdiff(taxa_species, taxa_subset)
+Species_tree_trimed <- drop.tip(Species_tree, drop_taxa)
+
+
+# Find the intersection of taxa
+taxa_intersect <- intersect(One_class_tree$tip.label, Species_tree$tip.label)
+taxa_subset <- intersect(taxa_intersect, Species_tree$tip.label)
+outgroup_subset <- intersect(taxa_subset, outgroup)
+
+# Trim the species tree
+Species_tree_trimed <- drop.tip(Species_tree, setdiff(Species_tree$tip.label, taxa_subset))
+
+# Root the trees if possible
+rootable <- length(outgroup_subset) > 0
+if (rootable) {
+  tryCatch({
+    One_class_tree <- root(One_class_tree, outgroup_subset, resolve.root = TRUE)
+    Mixture_tree <- root(Mixture_tree, outgroup_subset, resolve.root = TRUE)
+    Species_tree_trimed <- root(Species_tree_trimed, outgroup_subset, resolve.root = TRUE)
+  }, warning = function(w) {}, 
+  error = function(e) {
+    print("specified outgroup is not monophyletic")
+  })
+
+}
+
+# Check if all trees are rooted
+all_rooted <- rootable && is.rooted(One_class_tree) && is.rooted(Mixture_tree) && is.rooted(Species_tree_trimed)
+
+
+# Placeholder data (replace these with your actual data)
+tree_names <- c("One_class", "Mixture", "Species")
+tree_files <- list(
+  Mixture = Mixture_tree,
+  One_class = One_class_tree,
+  Species = Species_tree_trimed
+)
+
+# Create an empty data frame to store the results
+result_df <- data.frame(
+  metric = character(0),
+  tree_1 = character(0),
+  tree_2 = character(0),
+  Locus_name = character(0),
+  RF_distance = numeric(0),
+  nRF_distance = numeric(0),
+  wRF_distance = numeric(0),
+  KF_distance = numeric(0),
+  SPR_distance = numeric(0),
+  path_distance = numeric(0),
+  geodesic_distance = numeric(0)
+)
+
+# Loop through the combinations of gene names and tree pairs
+
+tree_combinations <- combn(length(tree_files), 2, simplify = FALSE)
+for (comb in tree_combinations) {
+    i <- comb[1]
+    j <- comb[2]
+    
+    tree1 <- tree_files[[i]]
+    tree2 <- tree_files[[j]]
+    tree1_name <- tree_names[i]
+    tree2_name <- tree_names[j]
+    
+    # Calculate distances
+    RF_dist <- round(RF.dist(tree1, tree2, normalize = FALSE, check.labels = TRUE, rooted = all_rooted), 4)
+    nRF_dist <- round(RF.dist(tree1, tree2, normalize = TRUE, check.labels = TRUE, rooted = all_rooted), 4)
+    wRF_dist <- round(wRF.dist(tree1, tree2, normalize = FALSE, check.labels = TRUE, rooted = all_rooted), 4)
+    KF_dist <- round(KF.dist(tree1, tree2, check.labels = TRUE, rooted = all_rooted), 4)
+    SPR_dist <- round(SPR.dist(tree1, tree2), 4)
+    path_dist <- round(path.dist(tree1, tree2, check.labels = TRUE, use.weight = TRUE), 4)
+    
+    # If the trees are rooted calculate geodesic distance
+    if (all_rooted) {
+	  geodesic_dist <- tryCatch({
+	    round(dist.multiPhylo(c(tree1,tree2), method = "geodesic", outgroup = outgroup_subset, force.multi2di = TRUE), 4)
+	  }, error = function(e) {
+	    NA
+	  })
+	} else {
+	  geodesic_dist <- NA
+	}
+    # Add the results to the data frame
+    result_df <- rbind(result_df, data.frame(
+      Locus_name = gene_name,
+      tree_1 = tree1_name,
+      tree_2 = tree2_name,
+      RF_distance = RF_dist,
+      nRF_distance = nRF_dist,
+      wRF_distance = wRF_dist,
+      KF_distance = KF_dist,
+      SPR_distance = SPR_dist,
+      path_distance = path_dist,
+      geodesic_distance = geodesic_dist
+    ))
+    rownames(result_df) <- NULL
+
+}
+
+# Print the resulting data frame
+kable_styling(knitr::kable(result_df, caption = "Tree distance Summary"), bootstrap_options = c("striped", "hover", "condensed"))
+```
+
+## Branch Lengths
+
+### Summary parameters table
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Calculate tree statistics
+tree_stats <- function(model_sum, tree, model_name) {
+  total_length <- model_sum$total_tree_length
+  internal_lengths <- model_sum$internal_tree_length
+  prop_internal <- internal_lengths/total_length
+  summary_stats <- summary(tree$edge.length)
+  c(Model = model_name,
+    Tree_Length = round(total_length,4),
+    Sum_int = round(internal_lengths,4),
+    prop_int = round(prop_internal,4),
+    round(summary_stats,4))
+}
+
+# Calculate stats for both trees
+stats_single <-tree_stats(model_sum = sum_one, tree = One_class_tree, model_name = "One_class")
+stats_mix <- tree_stats(model_sum = sum_mix, tree = Mixture_tree, model_name = "Mixture")
+
+# Combine into a data frame
+tree_summary <- rbind(stats_single, stats_mix)
+tree_summary <- cbind(Locus_name = rep(gene_name,2), tree_summary)
+rownames(tree_summary) <- NULL
+
+kable_styling(knitr::kable(tree_summary, caption = "Branch length Summary"), bootstrap_options = c("striped", "hover", "condensed"))
+
+
+```
+
+### Faceted histogram
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# load branch length data
+branch_length_data <- data.frame(
+  model = rep(c("One class", "Mixture"), each = length(One_class_tree$edge.length)),
+  branch_length = c(One_class_tree$edge.length, Mixture_tree$edge.length)
+)
+
+# Create a faceted histogram
+library("ggplot2")
+ggplot(branch_length_data, aes(x = branch_length)) +
+  geom_histogram(binwidth = 0.1, fill = "blue", color = "black") +
+  facet_grid(model ~ ., scales = "free_y") +  # Facet by 'model', free y-axis scales
+  labs(x = "Branch Length", y = "Frequency") +
+  theme_minimal()+
+  scale_x_log10()
+```
+
+### ECDF plot
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Create an ECDF plot
+ggplot(branch_length_data, aes(x = branch_length, color = model)) +
+  stat_ecdf(geom = "step") +
+  labs(x = "Branch Length", y = "ECDF") +
+  scale_color_manual(values = c("One class" = "blue", "Mixture" = "red")) +
+  theme_minimal() +
+  theme(legend.position = "top")+
+  scale_x_log10()
+```
+
+
+```{r echo=FALSE}
+combined_sheet <- cbind(model_summary_table, rbind(alignment_data, alignment_data))
+# Merge by Model and tree_1 columns
+combined_sheet <- merge(combined_sheet, result_df[-1, ], by.x = c("Model", "Locus_name"), by.y = c("tree_1", "Locus_name")) 
+ # Drop tree_2 column
+combined_sheet$tree_2 <- NULL
+ # Merge by Model column
+combined_sheet <- merge(combined_sheet, tree_summary, by = c("Model", "Locus_name"))
+
+# Check if the CSV file exists
+if (!file.exists("./summary.csv")) {
+  # If the file does not exist, write the combined data to a new CSV file
+  write.csv(combined_sheet, "./summary.csv", row.names = FALSE)
+} else {
+  # If the file exists, load the existing data
+  existing_data <- read.csv("./summary.csv")
+  
+  # Check if the gene_name already exists in the existing data
+  if (!(gene_name %in% existing_data$Locus_name)) {
+    # If gene_name does not exist, append the new data to the CSV file
+    write.table(combined_sheet, "./summary.csv", sep = ",", append = TRUE, row.names = FALSE, col.names = FALSE)
+  }
+}
+
+```
+
+```{r}
+tree_compare_sheet <- result_df[1, ]
+
+if (!file.exists("./summary_bt_trees.csv")) {
+  # If the file does not exist, write the combined data to a new CSV file
+  write.csv(tree_compare_sheet, "./summary_bt_trees.csv", row.names = FALSE)
+} else {
+  # If the file exists, load the existing data
+  existing_data <- read.csv("./summary_bt_trees.csv")
+  
+  # Check if the gene_name already exists in the existing data
+  if (!(gene_name %in% existing_data$Locus_name)) {
+    # If gene_name does not exist, append the new data to the CSV file
+    write.table(tree_compare_sheet, "./summary_bt_trees.csv", sep = ",", append = TRUE, row.names = FALSE, col.names = FALSE)
+  }
+}
+```
+
+
+

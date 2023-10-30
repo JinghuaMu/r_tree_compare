@@ -1,0 +1,259 @@
+#NEXUS
+[R-package APE, Wed Oct 25 03:25:16 2023]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 123;
+	TAXLABELS
+		Homalopsis_buccata
+		Boaedon_fuliginosus
+		Ophiophagus_hannah
+		Micrurus_fulvius
+		Pantherophis_guttatus
+		Lampropeltis_getula
+		Thamnophis_sirtalis
+		Diadophis_punctatus
+		Crotalus_horridus
+		Protobothrops_mucrosquamatus
+		Bothrops_asper
+		Deinagkistrodon_acutus
+		Vipera_berus
+		Pareas_hamptoni
+		Xenodermus_javanicus
+		Aspidites_melanocephalus
+		Python_molurus
+		Loxocemus_bicolor
+		Xenopeltis_unicolor
+		Casarea_dussumieri
+		Exiliboa_placata
+		Ungaliophis_continentalis
+		Lichanura_trivirgata
+		Eryx_colubrinus
+		Boa_constrictor
+		Chilabothrus_striatus
+		Calabaria_reinhardtii
+		Uropeltis_melanogaster
+		Cylindrophis_ruffus
+		Plica_plica
+		Stenocercus_guentheri
+		Uranoscodon_superciliosus
+		Laemanctus_serratus
+		Corytophanes_cristatus
+		Basiliscus_basiliscus
+		Gambelia_wislizenii
+		Crotaphytus_collaris
+		Anolis_carolinensis
+		Leiocephalus_personatus
+		Polychrus_acutirostris
+		Dipsosaurus_dorsalis
+		Sauromalus_ater
+		Phymaturus_palluma
+		Liolaemus_magellanicus
+		Chalarodon_madagascariensis
+		Oplurus_cyclurus
+		Urostrophus_vautieri
+		Leiosaurus_catamarcensis
+		Pristidactylus_torquatus
+		Morunasaurus_annularis
+		Enyalioides_laticeps
+		Cophosaurus_texanus
+		Holbrookia_maculata
+		Callisaurus_draconoides
+		Phrynosoma_platyrhinos
+		Uma_scoparia
+		Urosaurus_ornatus
+		Sceloporus_occidentalis
+		Uta_stansburiana
+		Petrosaurus_mearnsi
+		Brachylophus_fasciatus
+		Pogona_vitticeps
+		Physignathus_cocincinus
+		Trapelus_agilis
+		Draco_blanfordii
+		Calotes_emma
+		Hydrosaurus_pustulatus
+		Leiolepis_belliana
+		Brookesia_brygooi
+		Chamaeleo_calyptratus
+		Mesoscincus_managuae
+		Scincus_scincus
+		Eurylepis_taeniolata
+		Chalcides_ocellatus
+		Plestiodon_fasciatus
+		Ophiomorus_raithmai
+		Sphenomorphus_variegatus
+		Lobulia_elegans
+		Tytthoscincus_parvus
+		Tiliqua_scincoides
+		Emoia_caeruleocauda
+		Mochlus_brevicaudis
+		Marisora_unimarginata
+		Brachymeles_bonitae
+		Acontias_meleagris
+		Cricosaura_typica
+		Lepidophyma_flavimaculatum
+		Xantusia_vigilis
+		Smaug_mossambicus
+		Cordylosaurus_subtessellatus
+		Paroedura_picta
+		Gekko_japonicus
+		Coleonyx_variegatus
+		Eublepharis_macularius
+		Lialis_burtonis
+		Saltuarius_cornutus
+		Strophurus_ciliaris
+		Sphenodon_punctatus
+		Gallus_gallus
+		Alligator_mississippiensis
+		Chrysemys_picta
+		Dibamus_novaeguineae
+		Anelytropsis_papillosus
+		Aspidoscelis_tigris
+		Tupinambis_teguixin
+		Pholidobolus_macbrydei
+		Rhineura_floridana
+		Lacerta_bilineata
+		Bipes_biporus
+		Varanus_exanthematicus
+		Lanthanotus_borneensis
+		Anniella_pulchra
+		Dopasia_gracilis
+		Shinisaurus_crocodilurus
+		Xenosaurus_platyceps
+		Heloderma_suspectum
+		Typhlops_jamaicensis
+		Rena_humilis
+		Liotyphlops_albirostris
+		Anilius_scytale
+		Trachyboa_boulengeri
+		Tropidophis_haetianus
+		Acrochordus_granulatus
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	Homalopsis_buccata,
+		2	Boaedon_fuliginosus,
+		3	Ophiophagus_hannah,
+		4	Micrurus_fulvius,
+		5	Pantherophis_guttatus,
+		6	Lampropeltis_getula,
+		7	Thamnophis_sirtalis,
+		8	Diadophis_punctatus,
+		9	Crotalus_horridus,
+		10	Protobothrops_mucrosquamatus,
+		11	Bothrops_asper,
+		12	Deinagkistrodon_acutus,
+		13	Vipera_berus,
+		14	Pareas_hamptoni,
+		15	Xenodermus_javanicus,
+		16	Aspidites_melanocephalus,
+		17	Python_molurus,
+		18	Loxocemus_bicolor,
+		19	Xenopeltis_unicolor,
+		20	Casarea_dussumieri,
+		21	Exiliboa_placata,
+		22	Ungaliophis_continentalis,
+		23	Lichanura_trivirgata,
+		24	Eryx_colubrinus,
+		25	Boa_constrictor,
+		26	Chilabothrus_striatus,
+		27	Calabaria_reinhardtii,
+		28	Uropeltis_melanogaster,
+		29	Cylindrophis_ruffus,
+		30	Plica_plica,
+		31	Stenocercus_guentheri,
+		32	Uranoscodon_superciliosus,
+		33	Laemanctus_serratus,
+		34	Corytophanes_cristatus,
+		35	Basiliscus_basiliscus,
+		36	Gambelia_wislizenii,
+		37	Crotaphytus_collaris,
+		38	Anolis_carolinensis,
+		39	Leiocephalus_personatus,
+		40	Polychrus_acutirostris,
+		41	Dipsosaurus_dorsalis,
+		42	Sauromalus_ater,
+		43	Phymaturus_palluma,
+		44	Liolaemus_magellanicus,
+		45	Chalarodon_madagascariensis,
+		46	Oplurus_cyclurus,
+		47	Urostrophus_vautieri,
+		48	Leiosaurus_catamarcensis,
+		49	Pristidactylus_torquatus,
+		50	Morunasaurus_annularis,
+		51	Enyalioides_laticeps,
+		52	Cophosaurus_texanus,
+		53	Holbrookia_maculata,
+		54	Callisaurus_draconoides,
+		55	Phrynosoma_platyrhinos,
+		56	Uma_scoparia,
+		57	Urosaurus_ornatus,
+		58	Sceloporus_occidentalis,
+		59	Uta_stansburiana,
+		60	Petrosaurus_mearnsi,
+		61	Brachylophus_fasciatus,
+		62	Pogona_vitticeps,
+		63	Physignathus_cocincinus,
+		64	Trapelus_agilis,
+		65	Draco_blanfordii,
+		66	Calotes_emma,
+		67	Hydrosaurus_pustulatus,
+		68	Leiolepis_belliana,
+		69	Brookesia_brygooi,
+		70	Chamaeleo_calyptratus,
+		71	Mesoscincus_managuae,
+		72	Scincus_scincus,
+		73	Eurylepis_taeniolata,
+		74	Chalcides_ocellatus,
+		75	Plestiodon_fasciatus,
+		76	Ophiomorus_raithmai,
+		77	Sphenomorphus_variegatus,
+		78	Lobulia_elegans,
+		79	Tytthoscincus_parvus,
+		80	Tiliqua_scincoides,
+		81	Emoia_caeruleocauda,
+		82	Mochlus_brevicaudis,
+		83	Marisora_unimarginata,
+		84	Brachymeles_bonitae,
+		85	Acontias_meleagris,
+		86	Cricosaura_typica,
+		87	Lepidophyma_flavimaculatum,
+		88	Xantusia_vigilis,
+		89	Smaug_mossambicus,
+		90	Cordylosaurus_subtessellatus,
+		91	Paroedura_picta,
+		92	Gekko_japonicus,
+		93	Coleonyx_variegatus,
+		94	Eublepharis_macularius,
+		95	Lialis_burtonis,
+		96	Saltuarius_cornutus,
+		97	Strophurus_ciliaris,
+		98	Sphenodon_punctatus,
+		99	Gallus_gallus,
+		100	Alligator_mississippiensis,
+		101	Chrysemys_picta,
+		102	Dibamus_novaeguineae,
+		103	Anelytropsis_papillosus,
+		104	Aspidoscelis_tigris,
+		105	Tupinambis_teguixin,
+		106	Pholidobolus_macbrydei,
+		107	Rhineura_floridana,
+		108	Lacerta_bilineata,
+		109	Bipes_biporus,
+		110	Varanus_exanthematicus,
+		111	Lanthanotus_borneensis,
+		112	Anniella_pulchra,
+		113	Dopasia_gracilis,
+		114	Shinisaurus_crocodilurus,
+		115	Xenosaurus_platyceps,
+		116	Heloderma_suspectum,
+		117	Typhlops_jamaicensis,
+		118	Rena_humilis,
+		119	Liotyphlops_albirostris,
+		120	Anilius_scytale,
+		121	Trachyboa_boulengeri,
+		122	Tropidophis_haetianus,
+		123	Acrochordus_granulatus
+	;
+	TREE * UNTITLED = [&R] (((((((((((((((((((1:1,((2:1,(3:1,4:1)0.6223:0.566525)0.4074:0.117272,(((5:1,6:1)0.6607:0.673646,7:1)0.412:0.124992,8:1)0.3806:0.073094)0.4448:0.18205)0.4373:0.168642,((((9:1,10:1)0.3986:0.102448,11:1)0.3892:0.08711,12:1)0.6315:0.592214,13:1)0.855:1.523204)0.5161:0.319528,14:1)0.5833:0.467001,15:1)0.3819:0.074279,123:1)NA:0.323619,(((((16:1,17:1)0.5974:0.501234,18:1)0.4841:0.254676,19:1)0.4409:0.171277,20:1)0.3671:0.04995,(((((21:1,22:1)0.384:0.071147,23:1)0.3989:0.101429,24:1)0.3565:0.034641,(25:1,26:1)0.4263:0.148582)0.4125:0.125954,27:1)0.5038:0.294746)0.3696:0.055755)0.518:0.008816,(28:1,29:1)0.5286:0.340828)0.3394:0.231492,(121:1,122:1)0.6978:0.785996)0.4717:0.008873,120:1)0.3396:0.70845,119:1)0.6727:0.100129,118:1)0.3975:0.015551,117:1)0.3441:1.058629,(((((((30:1,31:1)0.4643:0.20862,32:1)0.627:0.579175,((33:1,(34:1,35:1)0.3935:0.088818)0.5206:0.326929,((((((36:1,37:1)0.6705:0.702936,38:1)0.3489:0.023388,39:1)0.355:0.032556,40:1)0.3402:0.010019,(41:1,42:1)0.5511:0.394475)0.357:0.035924,(43:1,44:1)0.5011:0.288652)0.3449:0.017224)0.3459:0.018744)0.3478:0.021674,(((45:1,46:1)0.6799:0.730374,(47:1,(48:1,49:1)0.4703:0.225248)0.4581:0.205959)0.3709:0.057303,(50:1,51:1)0.5122:0.307481)0.3485:0.022569)0.3681:0.053275,((((52:1,(53:1,54:1)0.3671:0.05059)0.778:1.091839,55:1)0.3977:0.098545,56:1)0.5417:0.37359,(((57:1,58:1)0.432:0.158276,59:1)0.4464:0.181241,60:1)0.4303:0.156326)0.6322:0.594068)0.3555:0.033069,61:1)0.5728:0.443386,((((((62:1,63:1)0.6121:0.529801,64:1)0.3616:0.042479,(65:1,66:1)0.4258:0.147871)0.3937:0.094266,67:1)0.4615:0.212304,68:1)0.4655:0.220025,(69:1,70:1)0.6181:0.553646)0.6247:0.573756)0.5045:0.296427)0.7693:0.037067,((110:1,111:1)0.5377:0.364453,((((112:1,113:1)0.5055:0.298066,114:1)0.3756:0.065119,115:1)0.3791:0.07022,116:1)0.3739:0.062185)0.5344:0.358335)0.3577:0.231479,(((104:1,105:1)0.4442:0.177195,106:1)0.7599:1.011425,((107:1,108:1)0.3781:0.067762,109:1)0.4396:0.17207)0.392:0.091884)0.4712:0.226191,(102:1,103:1)0.7019:0.729418)0.4686:0.007843,(((((((71:1,72:1)0.3485:0.021349,73:1)0.3539:0.029827,74:1)0.4068:0.114986,(75:1,76:1)0.3561:0.033057)0.3735:0.060591,((((77:1,78:1)0.3813:0.072882,79:1)0.7616:1.019534,(80:1,((81:1,82:1)0.4521:0.194009,83:1)0.482:0.246589)0.3704:0.053565)0.4978:0.280897,84:1)0.341:0.010357)0.4439:0.17915,85:1)0.6479:0.635539,((86:1,(87:1,88:1)0.6377:0.591574)0.6057:0.522711,(89:1,90:1)0.5808:0.461413)0.4284:0.153431)0.4184:0.136145)0.3388:0.077636,(((91:1,92:1)0.8146:1.278559,(93:1,94:1)0.5934:0.491962)0.4204:0.13962,((95:1,96:1)0.3592:0.037846,97:1)0.7206:0.867333)0.7171:0.856015)0.3833:1.370449,(98:1,((99:1,100:1)0.4132:0.127459,101:1)0.6829:0.735322)0.8335:0)NA;
+END;

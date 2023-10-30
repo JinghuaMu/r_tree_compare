@@ -1,0 +1,225 @@
+#NEXUS
+begin taxa;
+	dimensions ntax=123;
+	taxlabels
+	Acontias_meleagris
+	Acrochordus_granulatus
+	Alligator_mississippiensis
+	Anelytropsis_papillosus
+	Anilius_scytale
+	Anniella_pulchra
+	Anolis_carolinensis[&!color=#3300ff]
+	Aspidites_melanocephalus
+	Aspidoscelis_tigris
+	Basiliscus_basiliscus
+	Bipes_biporus
+	Boa_constrictor
+	Boaedon_fuliginosus
+	Bothrops_asper
+	Brachylophus_fasciatus
+	Brachymeles_bonitae
+	Brookesia_brygooi
+	Calabaria_reinhardtii
+	Callisaurus_draconoides
+	Calotes_emma
+	Casarea_dussumieri
+	Chalarodon_madagascariensis[&!color=#ff00ff]
+	Chalcides_ocellatus
+	Chamaeleo_calyptratus
+	Chilabothrus_striatus
+	Chrysemys_picta
+	Coleonyx_variegatus
+	Cophosaurus_texanus
+	Cordylosaurus_subtessellatus
+	Corytophanes_cristatus
+	Cricosaura_typica
+	Crotalus_horridus
+	Crotaphytus_collaris
+	Cylindrophis_ruffus
+	Deinagkistrodon_acutus
+	Diadophis_punctatus
+	Dibamus_novaeguineae
+	Dipsosaurus_dorsalis
+	Dopasia_gracilis
+	Draco_blanfordii
+	Emoia_caeruleocauda
+	Enyalioides_laticeps[&!color=#ff00ff]
+	Eryx_colubrinus
+	Eublepharis_macularius
+	Eurylepis_taeniolata
+	Exiliboa_placata
+	Gallus_gallus
+	Gambelia_wislizenii
+	Gekko_japonicus
+	Heloderma_suspectum
+	Holbrookia_maculata
+	Homalopsis_buccata
+	Hydrosaurus_pustulatus
+	Lacerta_bilineata
+	Laemanctus_serratus
+	Lampropeltis_getula
+	Lanthanotus_borneensis
+	Leiocephalus_personatus
+	Leiolepis_belliana
+	Leiosaurus_catamarcensis[&!color=#ff3300]
+	Lepidophyma_flavimaculatum
+	Lialis_burtonis
+	Lichanura_trivirgata
+	Liolaemus_magellanicus
+	Liotyphlops_albirostris
+	Lobulia_elegans
+	Loxocemus_bicolor
+	Marisora_unimarginata
+	Mesoscincus_managuae
+	Micrurus_fulvius
+	Mochlus_brevicaudis
+	Morunasaurus_annularis[&!color=#ff00ff]
+	Ophiomorus_raithmai
+	Ophiophagus_hannah
+	Oplurus_cyclurus[&!color=#ff00ff]
+	Pantherophis_guttatus
+	Pareas_hamptoni
+	Paroedura_picta
+	Petrosaurus_mearnsi
+	Pholidobolus_macbrydei
+	Phrynosoma_platyrhinos
+	Phymaturus_palluma
+	Physignathus_cocincinus
+	Plestiodon_fasciatus
+	Plica_plica
+	Pogona_vitticeps
+	Polychrus_acutirostris
+	Pristidactylus_torquatus[&!color=#ff3300]
+	Protobothrops_mucrosquamatus
+	Python_molurus
+	Rena_humilis
+	Rhineura_floridana
+	Saltuarius_cornutus
+	Sauromalus_ater
+	Sceloporus_occidentalis
+	Scincus_scincus
+	Shinisaurus_crocodilurus
+	Smaug_mossambicus
+	Sphenodon_punctatus
+	Sphenomorphus_variegatus
+	Stenocercus_guentheri
+	Strophurus_ciliaris
+	Thamnophis_sirtalis
+	Tiliqua_scincoides
+	Trachyboa_boulengeri
+	Trapelus_agilis
+	Tropidophis_haetianus
+	Tupinambis_teguixin
+	Typhlops_jamaicensis
+	Tytthoscincus_parvus
+	Uma_scoparia
+	Ungaliophis_continentalis
+	Uranoscodon_superciliosus
+	Uropeltis_melanogaster
+	Urosaurus_ornatus
+	Urostrophus_vautieri[&!color=#ff3300]
+	Uta_stansburiana
+	Varanus_exanthematicus
+	Vipera_berus
+	Xantusia_vigilis
+	Xenodermus_javanicus
+	Xenopeltis_unicolor
+	Xenosaurus_platyceps
+;
+end;
+
+begin trees;
+	tree tree_1 = [&R] ((((((((Boaedon_fuliginosus[&!rotate=true]:1.0,(Ophiophagus_hannah[&!rotate=true]:1.0,Micrurus_fulvius[&!rotate=true]:1.0)[&QCF=1.0,!rotate=true]:0.480118)[&QCF=0.983733,!rotate=true]:0.058888,(((Pantherophis_guttatus[&!rotate=true]:1.0,Lampropeltis_getula[&!rotate=true]:1.0)[&QCF=1.0,!rotate=true]:0.499667,Thamnophis_sirtalis[&!rotate=true]:1.0)[&QCF=1.0,!rotate=true]:0.343168,Diadophis_punctatus[&!rotate=true]:1.0)[&QCF=0.999965,!rotate=true,!cartoon={4,0.0},!collapse={"collapsed",0.0},!name="Colubridae"]:0.106071)[&QCF=1.0,!rotate=true]:0.206108,Homalopsis_buccata[&!rotate=true]:1.0)[&QCF=1.0,!rotate=true,!collapse={"collapsed",0.0},!cartoon={8,0.0},!name="Colubridae, Elapidae, Lamprophiidae, Homalopsidae"]:0.311722,((((Protobothrops_mucrosquamatus[&!rotate=true]:1.0,Crotalus_horridus[&!rotate=true]:1.0)[&QCF=1.0,!rotate=true]:0.22829,Bothrops_asper[&!rotate=true]:1.0)[&QCF=1.0,!rotate=true]:0.264295,Deinagkistrodon_acutus[&!rotate=true]:1.0)[&QCF=1.0,!rotate=true]:0.956513,Vipera_berus[&!rotate=true]:1.0)[&QCF=1.0,!rotate=true,!cartoon={5,0.0},!collapse={"collapsed",0.0},!name="Viperidae"]:2.208035)[&QCF=1.0,!rotate=true]:0.254436,Pareas_hamptoni[&!rotate=true]:1.0)[&QCF=1.0,!rotate=true]:0.437244,Xenodermus_javanicus[&!rotate=true]:1.0)[&QCF=0.840912,!rotate=true]:0.087613,((((Xenopeltis_unicolor[&!rotate=true]:1.0,(Loxocemus_bicolor[&!rotate=true]:1.0,(Aspidites_melanocephalus[&!rotate=true]:1.0,Python_molurus[&!rotate=true]:1.0)[&QCF=1.0,!rotate=true]:0.542511)[&QCF=1.0,!rotate=true]:0.256693)[&QCF=1.0,!rotate=true,!name="Xenopeltidae, Loxocemidae, Pythonidea",!cartoon={4,0.0},!collapse={"collapsed",0.0}]:0.294507,(Calabaria_reinhardtii[&!rotate=true]:1.0,((Chilabothrus_striatus[&!rotate=true]:1.0,Boa_constrictor[&!rotate=true]:1.0)[&QCF=0.999904,!rotate=true]:0.14437,(Eryx_colubrinus[&!rotate=true]:1.0,(Lichanura_trivirgata[&!rotate=true]:1.0,(Ungaliophis_continentalis[&!rotate=true]:1.0,Exiliboa_placata[&!rotate=true]:1.0)[&QCF=0.577132,!rotate=true,!cartoon={2,0.0},!color=#993300,!collapse={"collapsed",0.0}]:0.054143)[&QCF=0.794549,!rotate=true]:0.061453)[&QCF=0.666488,!rotate=false]:0.028924)[&QCF=1.0,!rotate=false]:0.133026)[&QCF=1.0,!rotate=false,!name="Boidae",!collapse={"collapsed",0.0}]:0.233637)[&QCF=0.989591,!rotate=false]:0.053101,(Uropeltis_melanogaster[&!rotate=true]:1.0,(Cylindrophis_ruffus[&!rotate=true]:1.0,Casarea_dussumieri[&!rotate=true]:1.0)[&QCF=0.779696,!rotate=true]:0.188069)[&QCF=0.999999,!rotate=true,!name="Bolyeriidae, Uropeltidae",!cartoon={3,0.0},!collapse={"collapsed",0.0}]:0.258462)[&QCF=0.87044,!rotate=false]:0.030758,((Tropidophis_haetianus[&!rotate=true]:1.0,Trachyboa_boulengeri[&!rotate=true]:1.0)[&QCF=1.0,!rotate=true,!name="Tropidophiidae",!cartoon={2,0.0},!collapse={"collapsed",0.0}]:0.797515,(Anilius_scytale[&!rotate=true]:1.0,(Liotyphlops_albirostris[&!rotate=true]:1.0,(Rena_humilis[&!rotate=true]:1.0,(Typhlops_jamaicensis:1.0,((((((((((((((Gambelia_wislizenii[&!color=#00cccc]:1.0,Crotaphytus_collaris[&!color=#00cccc]:1.0)[&QCF=1.0,!color=#00cccc]:0.625355,(Anolis_carolinensis[&!color=#00cccc]:1.0,Leiocephalus_personatus[&!color=#00cccc]:1.0)[&QCF=0.998485,!color=#00cccc]:0.088339)[&QCF=0.248408,!color=#00cccc]:0.040608,Polychrus_acutirostris[&!color=#00cccc]:1.0)[&QCF=0.9934,!color=#00cccc,!cartoon={5,0.0},!name="Crotaphytide, Leiocephalidae, Dactyloidae",!collapse={"collapsed",0.0}]:0.053281,((Sauromalus_ater[&!color=#00cccc]:1.0,Dipsosaurus_dorsalis[&!color=#00cccc]:1.0)[&QCF=0.999664,!color=#00cccc,!cartoon={2,0.0},!collapse={"collapsed",0.0},!name="Iguanidae"]:0.144218,Brachylophus_fasciatus[&!color=#cc00cc]:1.0)[&QCF=1.0,!color=#00cccc]:0.189687)[&QCF=0.969841,!color=#00cccc]:0.045076,((Chalarodon_madagascariensis[&!name="OpIuridae",!color=#cc00cc]:1.0,Oplurus_cyclurus[&!name="OpIuridae",!color=#cc00cc]:1.0)[&QCF=1.0,!name="OpIuridae",!color=#cc00cc,!cartoon={2,0.0},!collapse={"collapsed",0.0}]:0.731358,Leiosaurus_catamarcensis[&!name="Leiosauridaae",!color=#cc00cc]:1.0)[&QCF=0.999962]:0.086406)[&QCF=0.72019]:0.021496,(Liolaemus_magellanicus[&!name="Liolaemidae",!color=#00cccc]:1.0,Phymaturus_palluma[&!name="Liolaemidae",!color=#00cccc]:1.0)[&QCF=1.0,!cartoon={2,0.0},!name="Liolaemidae",!color=#00cccc,!collapse={"collapsed",0.0}]:0.26383)[&QCF=0.661178]:0.025777,(Morunasaurus_annularis[&!name="Hoplocercidae",!color=#cc00cc]:1.0,Enyalioides_laticeps[&!name="Hoplocercidae",!color=#cc00cc]:1.0)[&QCF=1.0,!name="Hoplocercidae",!cartoon={2,0.0},!color=#cc00cc,!collapse={"collapsed",0.0}]:0.287636)[&QCF=0.996398]:0.063767,((Uma_scoparia[&!color=#ff9900]:1.0,(((Callisaurus_draconoides[&!color=#ff9900]:1.0,Holbrookia_maculata[&!color=#ff9900]:1.0)[&QCF=0.997608,!color=#ff9900]:0.103893,Cophosaurus_texanus[&!color=#ff9900]:1.0)[&QCF=1.0,!color=#ff9900]:1.428184,Phrynosoma_platyrhinos[&!color=#ff9900]:1.0)[&QCF=0.891699,!color=#ff9900]:0.148431)[&QCF=1.0,!color=#ff9900]:0.38465,(((Urosaurus_ornatus[&!color=#ff9900]:1.0,Sceloporus_occidentalis[&!color=#ff9900]:1.0)[&QCF=0.999998,!color=#ff9900]:0.165118,Uta_stansburiana[&!color=#ff9900]:1.0)[&QCF=1.0,!color=#ff9900]:0.371623,Petrosaurus_mearnsi[&!color=#ff9900]:1.0)[&QCF=1.0,!color=#ff9900]:0.168363)[&QCF=1.0,!cartoon={9,0.0},!color=#ffffff]:0.602197)[&QCF=0.002892]:0.019843,((Corytophanes_cristatus[&!color=#ffff66]:1.0,Basiliscus_basiliscus[&!color=#ffff66]:1.0)[&QCF=0.834206,!color=#ffff66]:0.100662,Laemanctus_serratus[&!color=#ffff66]:1.0)[&QCF=1.0,!cartoon={3,0.0},!color=#ffff66]:0.3241)[&QCF=0.604238]:0.015602,(Uranoscodon_superciliosus[&!color=#009933]:1.0,(Plica_plica[&!color=#009933]:1.0,Stenocercus_guentheri[&!color=#009933]:1.0)[&QCF=0.980807,!color=#009933]:0.205365)[&QCF=1.0,!cartoon={3,0.0},!color=#009933]:0.562165)[&QCF=0.986475]:0.051423,(Urostrophus_vautieri[&!name="Leiosauridaae",!color=#cc00cc]:1.0,Pristidactylus_torquatus[&!name="Leiosauridaae",!color=#cc00cc]:1.0)[&QCF=0.945092,!cartoon={2,0.0},!name="Leiosauridaae",!color=#cc00cc]:0.083985)[&QCF=1.0,!name="Pleurodonta",!collapse={"collapsed",0.0}]:0.529237,((((((Physignathus_cocincinus[&!color=#000099]:1.0,Pogona_vitticeps[&!color=#000099]:1.0)[&QCF=1.0,!color=#000099]:0.502429,Trapelus_agilis[&!color=#000099]:1.0)[&QCF=0.915389,!color=#000099]:0.070627,(Calotes_emma[&!color=#000099]:1.0,Draco_blanfordii[&!color=#000099]:1.0)[&QCF=0.941413,!color=#000099]:0.067469)[&QCF=0.999993,!color=#000099]:0.139734,Hydrosaurus_pustulatus[&!color=#000099]:1.0)[&QCF=1.0,!color=#000099]:0.242316,Leiolepis_belliana[&!color=#000099]:1.0)[&QCF=1.0,!color=#000099]:0.240297,(Chamaeleo_calyptratus[&!color=#000099]:1.0,Brookesia_brygooi[&!color=#000099]:1.0)[&QCF=1.0,!color=#000099]:0.494798)[&QCF=1.0,!color=#6600cc,!name="Acrodonta",!cartoon={9,0.0},!collapse={"collapsed",0.0}]:0.5556)[&QCF=1.0]:0.396485,((Heloderma_suspectum[&!color=#cc3300]:1.0,((Shinisaurus_crocodilurus[&!color=#cc3300]:1.0,(Dopasia_gracilis[&!color=#cc3300]:1.0,Anniella_pulchra[&!color=#cc3300]:1.0)[&QCF=1.0,!color=#cc3300]:0.210104)[&QCF=1.0,!color=#cc3300]:0.180757,Xenosaurus_platyceps[&!color=#cc3300]:1.0)[&QCF=0.99947,!color=#cc3300]:0.103651)[&QCF=0.99441,!color=#cc3300]:0.090722,(Lanthanotus_borneensis[&!color=#cc3300]:1.0,Varanus_exanthematicus[&!color=#cc3300]:1.0)[&QCF=1.0,!color=#cc3300]:0.329214)[&QCF=1.0,!cartoon={7,0.0},!color=#cc3300,!collapse={"collapsed",0.0},!name="Anguimorpha"]:0.394588)[&QCF=1.0,!rotate=true]:0.096004,((((Rhineura_floridana[&!color=#663300,!rotate=false]:1.0,Lacerta_bilineata[&!color=#663300,!rotate=false]:1.0)[&QCF=0.995193,!color=#663300,!rotate=false]:0.117516,Bipes_biporus[&!color=#663300,!rotate=false]:1.0)[&QCF=0.999998,!color=#663300,!rotate=false]:0.167031,(Pholidobolus_macbrydei[&!color=#663300,!rotate=false]:1.0,(Tupinambis_teguixin[&!color=#663300,!rotate=false]:1.0,Aspidoscelis_tigris[&!color=#663300,!rotate=false]:1.0)[&QCF=0.997949,!color=#663300,!rotate=false]:0.191997)[&QCF=1.0,!color=#663300,!rotate=false]:1.002733)[&QCF=1.0,!color=#cc6600,!rotate=false,!name="Lacertoidae",!collapse={"collapsed",0.0}]:0.086509,((((Cordylosaurus_subtessellatus[&!color=#663300,!rotate=false]:1.0,Smaug_mossambicus[&!color=#663300,!rotate=false]:1.0)[&QCF=1.0,!color=#663300,!rotate=false]:0.568203,(((Lepidophyma_flavimaculatum[&!color=#663300,!rotate=false]:1.0,Xantusia_vigilis[&!color=#663300,!rotate=false]:1.0)[&QCF=1.0,!color=#663300,!rotate=false]:0.631882,Cricosaura_typica[&!color=#663300,!rotate=false]:1.0)[&QCF=1.0,!color=#663300,!rotate=false,!cartoon={3,0.0}]:0.560758,(Acontias_meleagris[&!color=#663300,!rotate=false]:1.0,(((((Marisora_unimarginata[&!color=#663300,!rotate=false]:1.0,(Emoia_caeruleocauda[&!color=#663300,!rotate=false]:1.0,Mochlus_brevicaudis[&!color=#663300,!rotate=false]:1.0)[&QCF=1.0,!color=#663300,!rotate=false]:0.29497)[&QCF=1.0,!color=#663300,!rotate=false]:0.756027,((Lobulia_elegans[&!color=#663300,!rotate=false]:1.0,Sphenomorphus_variegatus[&!color=#663300,!rotate=false]:1.0)[&QCF=0.997381,!color=#663300,!rotate=false]:0.115449,Tytthoscincus_parvus[&!color=#663300,!rotate=false]:1.0)[&QCF=1.0,!color=#663300,!rotate=false]:1.558277)[&QCF=0.792313,!color=#663300,!rotate=false]:0.102388,Tiliqua_scincoides[&!color=#663300,!rotate=false]:1.0)[&QCF=0.999093,!color=#663300,!rotate=false]:0.214796,Brachymeles_bonitae[&!color=#663300,!rotate=false]:1.0)[&QCF=0.728236,!color=#663300,!rotate=false]:0.045874,((Mesoscincus_managuae[&!color=#663300,!rotate=true]:1.0,((Scincus_scincus[&!color=#663300,!rotate=false]:1.0,Eurylepis_taeniolata[&!color=#663300,!rotate=false]:1.0)[&QCF=0.372587,!color=#663300,!rotate=false]:0.013004,Chalcides_ocellatus[&!color=#663300,!rotate=false]:1.0)[&QCF=0.443432,!color=#663300,!rotate=false]:0.012889)[&QCF=0.999967,!color=#663300,!rotate=true]:0.159972,(Ophiomorus_raithmai[&!color=#663300,!rotate=false]:1.0,Plestiodon_fasciatus[&!color=#663300,!rotate=true]:1.0)[&QCF=0.396973,!color=#663300,!rotate=true]:0.00762)[&QCF=0.915827,!color=#663300,!rotate=false]:0.066865)[&QCF=0.999999,!color=#663300,!rotate=false]:0.204522)[&QCF=1.0,!color=#663300,!rotate=false]:0.606591)[&QCF=0.0,!color=#663300,!rotate=false]:0.0)[&QCF=1.0,!color=#660066,!rotate=false,!collapse={"collapsed",0.0},!name="Scincodiea"]:0.141898,((((Paroedura_picta[&!color=#663300,!rotate=false]:1.0,Gekko_japonicus[&!color=#663300,!rotate=false]:1.0)[&QCF=1.0,!color=#663300,!rotate=false]:2.327134,(Coleonyx_variegatus[&!color=#663300,!rotate=false]:1.0,Eublepharis_macularius[&!color=#663300,!rotate=false]:1.0)[&QCF=1.0,!color=#663300,!rotate=false]:0.447828)[&QCF=1.0,!color=#663300,!rotate=false]:0.22207,((Strophurus_ciliaris[&!color=#663300,!rotate=false]:1.0,Lialis_burtonis[&!color=#663300,!rotate=false]:1.0)[&QCF=0.572278,!color=#663300,!rotate=false]:0.027669,Saltuarius_cornutus[&!color=#663300,!rotate=false]:1.0)[&QCF=1.0,!color=#663300,!rotate=false]:0.765448)[&QCF=1.0,!color=#3333ff,!rotate=false,!name="Gekkota",!cartoon={7,0.0},!collapse={"collapsed",0.0}]:1.001754,(((Alligator_mississippiensis[&!color=#663300,!rotate=false]:1.0,Gallus_gallus[&!color=#663300,!rotate=false]:1.0)[&QCF=0.004171,!color=#663300,!rotate=false]:0.10757,Chrysemys_picta[&!color=#663300,!rotate=false]:1.0)[&QCF=1.0,!color=#663300,!rotate=false]:0.668519,Sphenodon_punctatus[&!color=#663300,!rotate=false]:1.0)[&QCF=1.0,!rotate=true,!color=#000000,!name="Outgroups"]:1.363435)[&QCF=1.0,!color=#663300,!rotate=false]:0.205008)[&QCF=0.050538,!color=#663300,!rotate=false]:0.014669,(Dibamus_novaeguineae[&!color=#666666,!rotate=false]:1.0,Anelytropsis_papillosus[&!color=#666666,!rotate=false]:1.0)[&QCF=0.99997,!color=#666666,!rotate=false,!collapse={"collapsed",0.0},!name="Dibamidae"]:0.791585)[&QCF=1.0,!color=#663300,!rotate=false]:0.281579)[&QCF=1.0,!color=#663300,!rotate=false]:0.234302)[&QCF=1.0,!rotate=true,!collapse={"collapsed",0.0},!color=#006600,!name="Serpentes"]:1.087622)[&QCF=0.917409,!rotate=true]:0.056433)[&QCF=0.999942,!rotate=true]:0.136743)[&QCF=1.0,!rotate=true]:0.742232)[&QCF=0.620557,!rotate=true]:0.019324)[&QCF=1.0,!rotate=true]:0.186157)[&QCF=1.0,!rotate=true]:0.336147):1.0,Acrochordus_granulatus[&!rotate=true]:1.0);
+end;
+
+begin figtree;
+	set appearance.backgroundColorAttribute="Default";
+	set appearance.backgroundColour=#ffffff;
+	set appearance.branchColorAttribute="User selection";
+	set appearance.branchColorGradient=false;
+	set appearance.branchLineWidth=1.0;
+	set appearance.branchMinLineWidth=0.0;
+	set appearance.branchWidthAttribute="Fixed";
+	set appearance.foregroundColour=#000000;
+	set appearance.hilightingGradient=false;
+	set appearance.selectionColour=#2d3680;
+	set branchLabels.colorAttribute="User selection";
+	set branchLabels.displayAttribute="Branch times";
+	set branchLabels.fontName="Arial";
+	set branchLabels.fontSize=8;
+	set branchLabels.fontStyle=0;
+	set branchLabels.isShown=false;
+	set branchLabels.significantDigits=4;
+	set layout.expansion=0;
+	set layout.layoutType="RECTILINEAR";
+	set layout.zoom=0;
+	set legend.attribute="QCF";
+	set legend.fontSize=10.0;
+	set legend.isShown=false;
+	set legend.significantDigits=4;
+	set nodeBars.barWidth=4.0;
+	set nodeBars.displayAttribute=null;
+	set nodeBars.isShown=false;
+	set nodeLabels.colorAttribute="User selection";
+	set nodeLabels.displayAttribute="QCF";
+	set nodeLabels.fontName="Arial";
+	set nodeLabels.fontSize=15;
+	set nodeLabels.fontStyle=1;
+	set nodeLabels.isShown=true;
+	set nodeLabels.significantDigits=4;
+	set nodeShapeExternal.colourAttribute="User selection";
+	set nodeShapeExternal.isShown=false;
+	set nodeShapeExternal.minSize=10.0;
+	set nodeShapeExternal.scaleType=Width;
+	set nodeShapeExternal.shapeType=Circle;
+	set nodeShapeExternal.size=4.0;
+	set nodeShapeExternal.sizeAttribute="Fixed";
+	set nodeShapeInternal.colourAttribute="User selection";
+	set nodeShapeInternal.isShown=false;
+	set nodeShapeInternal.minSize=10.0;
+	set nodeShapeInternal.scaleType=Width;
+	set nodeShapeInternal.shapeType=Circle;
+	set nodeShapeInternal.size=4.0;
+	set nodeShapeInternal.sizeAttribute="Fixed";
+	set polarLayout.alignTipLabels=false;
+	set polarLayout.angularRange=0;
+	set polarLayout.rootAngle=0;
+	set polarLayout.rootLength=100;
+	set polarLayout.showRoot=true;
+	set radialLayout.spread=0.0;
+	set rectilinearLayout.alignTipLabels=false;
+	set rectilinearLayout.curvature=0;
+	set rectilinearLayout.rootLength=3936;
+	set scale.offsetAge=0.0;
+	set scale.rootAge=1.0;
+	set scale.scaleFactor=1.0;
+	set scale.scaleRoot=false;
+	set scaleAxis.automaticScale=true;
+	set scaleAxis.fontSize=8.0;
+	set scaleAxis.isShown=false;
+	set scaleAxis.lineWidth=1.0;
+	set scaleAxis.majorTicks=1.0;
+	set scaleAxis.minorTicks=0.5;
+	set scaleAxis.origin=0.0;
+	set scaleAxis.reverseAxis=false;
+	set scaleAxis.showGrid=true;
+	set scaleBar.automaticScale=true;
+	set scaleBar.fontSize=10.0;
+	set scaleBar.isShown=true;
+	set scaleBar.lineWidth=1.0;
+	set scaleBar.scaleRange=1.0;
+	set tipLabels.colorAttribute="User selection";
+	set tipLabels.displayAttribute="Names";
+	set tipLabels.fontName="Arial";
+	set tipLabels.fontSize=14;
+	set tipLabels.fontStyle=1;
+	set tipLabels.isShown=true;
+	set tipLabels.significantDigits=4;
+	set trees.order=true;
+	set trees.orderType="increasing";
+	set trees.rooting=true;
+	set trees.rootingType="User Selection";
+	set trees.transform=true;
+	set trees.transformType="cladogram";
+end;
+

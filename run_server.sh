@@ -2,9 +2,9 @@
 
 # Set the paths and variables
 iqtree_loc="/home/tim/software/iqtree-2.2.2.7.modelmix-Linux/bin/iqtree2"
-geneset_loc="/home/tim/mixmodel/datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-gappyout/"
+geneset_loc="/home/tim/mixmodel/datasets/different_method/Squamates-Final_Alns/MAFFT-Auto-untrimmed/"
 outgroup_path="/home/tim/mixmodel/datasets/different_method/Squamates-Final_Alns/Squamates-Taxon-Outgroup.txt"
-Species_tree_path="/home/tim/mixmodel/datasets/different_method/phylogenic_tree/Squamates/Rooted_MAFFT_Auto_GappyOut_Species_Tree_Scored.tre"
+Species_tree_path="/home/tim/mixmodel/datasets/different_method/phylogenic_tree/Squamates/Rooted_RAxML_bipartitions.MAFFTAuto_Untrimmed.tre"
 
 # Read the gene sets
 gene_sets=( $(ls $geneset_loc | sort) )
@@ -13,17 +13,17 @@ echo "Current gene file location: $geneset_loc"
 echo "Number of genes: ${#gene_sets[@]}"
 
 # Set the number of threads
-num_threads=10
+num_threads=20
 
 # Set the execution count (the number of files to process)
-execution_count=1100
+execution_count=4430
 
 # Set restart flag (True or False)
-restart=False
-skip_down=True
+restart=True
+skip_down=False
 
 # Export the variables to be used by parallel
-export iqtree_loc geneset_loc outgroup_file Species_tree_path restart skip_down
+export iqtree_loc geneset_loc outgroup_path Species_tree_path restart skip_down
 
 # If restart is True, delete the record.txt file if it exists
 if [[ $restart = True && -f "record.txt" ]]; then

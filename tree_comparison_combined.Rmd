@@ -15,31 +15,26 @@ params:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,message = FALSE, warning = FALSE)
-```
-
-## Reference
-
-**Dataset:** Suvorov, Anton; Kim, Bernard; Wang, Jeremy; Armstrong, Ellie; Peede, David; D'Agostino, Emmanuel R. R.; et al. (2020). Widespread introgression across a phylogeny of 155 Drosophila genomes. figshare. Dataset. <https://doi.org/10.6084/m9.figshare.13264697.v1>
-
-**Paper:** Suvorov A, Kim BY, Wang J, Armstrong EE, Peede D, D'Agostino ERR, Price DK, Waddell P, Lang M, Courtier-Orgogozo V, David JR, Petrov D, Matute DR, Schrider DR, Comeault AA. Widespread introgression across a phylogeny of 155 Drosophila genomes. Curr Biol. 2022 Jan 10;32(1):111-123.e5. doi: 10.1016/j.cub.2021.10.052. Epub 2021 Nov 16. PMID: 34788634; PMCID: PMC8752469.
-
-## Target alignment
-
-**Name:** EOG09150AOE
-
-**Outgroup:** Anopheles
-
-**Type:** Aligned DNA BUSCO loci
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Read path data
+# path_data <- readLines("./result/UCE-2/path_info.txt")
 path_data <- readLines(paste(params$workingdict,"path_info.txt", sep = ""))
 path_data_list <- gsub(".*=", "", path_data)
 names(path_data_list) <- gsub("=.*", "", path_data)
 for (i in seq_along(path_data_list)) {
   assign(names(path_data_list)[i], path_data_list[i])
 }
+outgroup <- readLines(outgroup_path)
+```
+## Gene information
+**Reference**:  Portik, D.M. and Wiens, J.J. (2021) Do Alignment and Trimming Methods Matter for Phylogenomic (UCE) Analyses? Systematic Biology, 70 (3), pp. 440–462.  
+**Alignment name**: Squamates-UCE-MAFFT-Auto-untrimmed  
+**Alignment type**: UCE(Ultra Conserved Element)  
 
+## Target alignment
+**Name:** `r gene_name`  
+**Outgroup:** `r paste(outgroup, sep = ", ")`  
+
+```{r read_alignment, echo=FALSE, message=FALSE, warning=FALSE}
 library(Biostrings)
 
 if (tools::file_ext(gene_file) %in% c("aln", "aln-cln")) {
@@ -62,39 +57,11 @@ if (tools::file_ext(gene_file) %in% c("aln", "aln-cln")) {
 ## Alignment summary
 
 ```{r echo=FALSE, fig.height=16, fig.width=16, message=FALSE, warning=FALSE}
-# plot 
-# Visualization
-# Extract a 100-bp window with lowest dominant base ratio
-
 library("ggmsa")
 window_size <- 100
 algn_length <- ncol(alignment)
 A <- consensusMatrix(alignment, baseOnly = TRUE)
 A_base <- A[1:4, ]
-maxmum_base_num <- apply(A_base, 2, max)
-maxmum_base_ratio <- maxmum_base_num / colSums(A_base)
-
-if (algn_length > window_size) {
-  window_mean_dominant_base_ratio <- sapply(
-    1:(algn_length - window_size + 1),
-    function(i) {
-      mean(maxmum_base_ratio[i:(i + window_size - 1)])
-    }
-  )
-  start <- which.min(window_mean_dominant_base_ratio)
-  end <- start + window_size - 1
-  cat(paste("[Plot 1] Selected the window with the most sequence variation(", window_size, "bp), ", start, "-", end, "\n", sep = ""))
-  alignment_fig <- ggmsa(
-    start = start, end = end, alignment,
-    char_width = 0.5, seq_name = F
-  ) +
-    geom_seqlogo()
-} else {
-  alignment_fig <- ggmsa(alignment, char_width = 0.5, seq_name = F) +
-    geom_seqlogo()
-}
-
-alignment_fig
 ```
 
 ```{r include=FALSE}
@@ -122,6 +89,46 @@ percent_parsimony_informative <- sprintf("%.2f%%", parsimony_informative / Lengt
 site_patterns <- as.numeric(sub("Number of distinct site patterns: ","\\1",grep("Number of distinct site patterns: ", one_line, value = TRUE)))
 ```
 
+```{r echo=FALSE, fig.height=16, fig.width=16, message=FALSE, warning=FALSE}
+library(mclust)
+
+base_prop <- A / Ntaxa
+base_prop <- base_prop[1:4, ]
+H <- - colSums(log2(base_prop)*base_prop, na.rm = TRUE)
+
+model <- Mclust(H)
+GMM_pro <- model$parameters$pro
+GMM_mean <- model$parameters$mean
+GMM_num_class <- model$parameters$variance$G
+```
+
+```{r echo=FALSE, fig.height=16, fig.width=16, message=FALSE, warning=FALSE}
+# Visualization
+# Extract a 100-bp window with lowest entrophy
+
+if (algn_length > window_size) {
+  window_mean_entrophy <- sapply(
+    1:(algn_length - window_size + 1),
+    function(i) {
+      mean(H[i:(i + window_size - 1)])
+    }
+  )
+  start <- which.max(window_mean_entrophy)
+  end <- start + window_size - 1
+  cat(paste("[Plot 1] Selected the window with maximum mean entropy (", window_size, "bp), ", start, "-", end, "\n", sep = ""))
+  alignment_fig <- ggmsa(
+    start = start, end = end, alignment,
+    char_width = 0.5, seq_name = F
+  ) +
+    geom_seqlogo()
+} else {
+  alignment_fig <- ggmsa(alignment, char_width = 0.5, seq_name = F) +
+    geom_seqlogo()
+}
+
+alignment_fig
+```
+
 ```{r echo=FALSE}
 library(kableExtra)
 # Create the data frame
@@ -131,7 +138,11 @@ alignment_data <- data.frame(
   "Ntaxa" = Ntaxa,
   "Percent_constant" = percent_constant,
   "Percent_parsimony_informative" = percent_parsimony_informative,
-  "Site_patterns" = site_patterns
+  "Site_patterns" = site_patterns,
+  "real_base_freq" = paste(round(rowSums(A)/sum(A),4),collapse = ";"),
+  "GMM_pro" = paste(round(GMM_pro,4),collapse = ";"),
+  "GMM_mean" = paste(round(GMM_mean,4),collapse = ";"),
+  "GMM_num_class" = GMM_num_class
 )
 rownames(alignment_data) <- NULL
 
@@ -220,6 +231,7 @@ par(mar=c(5.1,4.1,4.1,2.1))
 # Load required packages
 library(ape)
 library(phangorn)
+library(distory)
 
 taxa_single <- One_class_tree$tip.label
 taxa_mix <- Mixture_tree$tip.label
@@ -232,7 +244,6 @@ if (!taxa_equal_model){
   cat("The taxa of the two model trees are not equal, the taxa of the two trees are unified.\n")
 }
 
-outgroup <- readLines(outgroup_path)
 taxa_species <- Species_tree$tip.label
 taxa_subset <- intersect(taxa_single, taxa_species)
 outgroup_subset <- intersect(taxa_subset, outgroup)
@@ -252,9 +263,9 @@ Species_tree_trimed <- drop.tip(Species_tree, setdiff(Species_tree$tip.label, ta
 rootable <- length(outgroup_subset) > 0
 if (rootable) {
   tryCatch({
-    One_class_tree <- root(One_class_tree, outgroup_subset)
-    Mixture_tree <- root(Mixture_tree, outgroup_subset)
-    Species_tree_trimed <- root(Species_tree_trimed, outgroup_subset)
+    One_class_tree <- root(One_class_tree, outgroup_subset, resolve.root = TRUE)
+    Mixture_tree <- root(Mixture_tree, outgroup_subset, resolve.root = TRUE)
+    Species_tree_trimed <- root(Species_tree_trimed, outgroup_subset, resolve.root = TRUE)
   }, warning = function(w) {}, 
   error = function(e) {
     print("specified outgroup is not monophyletic")
@@ -284,8 +295,8 @@ result_df <- data.frame(
   nRF_distance = numeric(0),
   wRF_distance = numeric(0),
   KF_distance = numeric(0),
-  PD_distance = numeric(0),
-  wPD_distance = numeric(0),
+  SPR_distance = numeric(0),
+  path_distance = numeric(0),
   geodesic_distance = numeric(0)
 )
 
@@ -306,16 +317,19 @@ for (comb in tree_combinations) {
     nRF_dist <- round(RF.dist(tree1, tree2, normalize = TRUE, check.labels = TRUE, rooted = all_rooted), 4)
     wRF_dist <- round(wRF.dist(tree1, tree2, normalize = FALSE, check.labels = TRUE, rooted = all_rooted), 4)
     KF_dist <- round(KF.dist(tree1, tree2, check.labels = TRUE, rooted = all_rooted), 4)
-    PD_dist <- round(path.dist(tree1, tree2, check.labels = TRUE, use.weight = FALSE), 4)
-    wPD_dist <- round(path.dist(tree1, tree2, check.labels = TRUE, use.weight = TRUE), 4)
+    SPR_dist <- round(SPR.dist(tree1, tree2), 4)
+    path_dist <- round(path.dist(tree1, tree2, check.labels = TRUE, use.weight = TRUE), 4)
     
     # If the trees are rooted calculate geodesic distance
     if (all_rooted) {
-      geodesic_dist <- round(dist.multiPhylo(c(tree1,tree2), method = "geodesic", outgroup = outgroup_subset), 4)
-    } else {
-      geodesic_dist <- NA
-    }
-  
+	  geodesic_dist <- tryCatch({
+	    round(dist.multiPhylo(c(tree1,tree2), method = "geodesic", force.multi2di = TRUE), 4)
+	  }, error = function(e) {
+	    NA
+	  })
+	} else {
+	  geodesic_dist <- NA
+	}
     # Add the results to the data frame
     result_df <- rbind(result_df, data.frame(
       Locus_name = gene_name,
@@ -325,8 +339,8 @@ for (comb in tree_combinations) {
       nRF_distance = nRF_dist,
       wRF_distance = wRF_dist,
       KF_distance = KF_dist,
-      PD_distance = PD_dist,
-      wPD_distance = wPD_dist,
+      SPR_distance = SPR_dist,
+      path_distance = path_dist,
       geodesic_distance = geodesic_dist
     ))
     rownames(result_df) <- NULL
@@ -427,5 +441,24 @@ if (!file.exists("./summary.csv")) {
 }
 
 ```
+
+```{r}
+tree_compare_sheet <- result_df[1, ]
+
+if (!file.exists("./summary_bt_trees.csv")) {
+  # If the file does not exist, write the combined data to a new CSV file
+  write.csv(tree_compare_sheet, "./summary_bt_trees.csv", row.names = FALSE)
+} else {
+  # If the file exists, load the existing data
+  existing_data <- read.csv("./summary_bt_trees.csv")
+  
+  # Check if the gene_name already exists in the existing data
+  if (!(gene_name %in% existing_data$Locus_name)) {
+    # If gene_name does not exist, append the new data to the CSV file
+    write.table(tree_compare_sheet, "./summary_bt_trees.csv", sep = ",", append = TRUE, row.names = FALSE, col.names = FALSE)
+  }
+}
+```
+
 
 
